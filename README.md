@@ -40,7 +40,7 @@ Install the project dependencies using npm:
 npm install
 ```
 
-### Running the Project Locally
+### Running the application locally
 
 Start the development server:
 
@@ -50,16 +50,16 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
-### Running Using Docker
+### Running the application locally using Docker
 
 Ensure [Docker](https://www.docker.com/) is installed on your machine. Use the following commands to run the project with Docker:
 
 ```bash
 # Stop any running containers
-docker compose down
+docker-compose down
 
 # Build and start the containers
-docker compose up --build
+docker-compose up --build
 ```
 
 The application will be available at [http://localhost:3000](http://localhost:3000).
@@ -108,4 +108,3 @@ Rules enforced by commitlint:
 - PR title format: `ticket-number: title message (e.g., STO-21: Enhance project README documentation).`
 - Include a description linking to the Linear ticket (e.g., [STO-21](https://linear.app/stormreach/issue/STO-21/update-project-readme-documentation)).
 - Ensure all checks (linting, tests, build) pass before requesting a review.
-
