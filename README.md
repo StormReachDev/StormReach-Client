@@ -7,8 +7,6 @@
     <img src="https://img.shields.io/badge/-VS%20Code-black?style=for-the-badge&logoColor=white&logo=visual-studio-code&color=007ACC" alt="vscode" />
 </div>
 
-# StormReach
-
 ## <a name="table">Table of Contents</a>
 
 1. [Introduction](#introduction)
@@ -63,7 +61,6 @@ docker-compose up --build
 ```
 
 The application will be available at [http://localhost:3000](http://localhost:3000).
-
 
 ## <a name="conventions">Conventions</a>
 
