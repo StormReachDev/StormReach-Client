@@ -3,7 +3,7 @@ import PricingPlan from '@/types/Pricing';
 
 const pricingPlans: PricingPlan[] = [
   {
-    title: 'Pay As You Go',
+    title: 'Pay as you go',
     features: [
       'Perfect for trying us out',
       'No upfront commitment',
@@ -14,7 +14,7 @@ const pricingPlans: PricingPlan[] = [
     buttonText: 'Get started',
   },
   {
-    title: 'Bulk 10 Pack',
+    title: 'Bulk 10 pack',
     features: [
       'Save $50 per appointment',
       'Initial setup fee waived',
@@ -25,7 +25,7 @@ const pricingPlans: PricingPlan[] = [
     buttonText: 'Grab your bulk 10 pack',
   },
   {
-    title: 'Bulk 20 Pack',
+    title: 'Bulk 20 pack',
     features: [
       'Save $75 per appointment',
       'Initial setup fee waived',

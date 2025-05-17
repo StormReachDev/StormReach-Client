@@ -26,10 +26,8 @@ export default function PricingCard({
         className
       )}
     >
-      <CardHeader className="p-0 space-y-0">
-        <Typography variant="h1" className="text-[32px] font-semibold">
-          {title}
-        </Typography>
+      <CardHeader className="p-0 space-y-0 text-[32px] font-semibold">
+        <Typography variant="h1">{title}</Typography>
       </CardHeader>
 
       <CardContent className="p-0 space-y-3">
@@ -55,7 +53,7 @@ export default function PricingCard({
 
       <Button
         variant="default"
-        className="w-full py-4 px-[22px] text-xl font-semibold"
+        className="w-full py-4 px-[22px] text-xl font-semibold bg-red-700"
       >
         {buttonText}
       </Button>

@@ -1,3 +1,4 @@
+// Images:
 export const swiper = [
   {
     image: '/images/swiper/flash.png',
@@ -17,6 +18,7 @@ export const swiper = [
   },
 ];
 
+// Icons:
 export const pricing = {
   icon: '/images/list-approval.png',
   iconAlt: 'Approval Icon',
@@ -26,10 +28,10 @@ export const pricing = {
 export const seeHowItWorks = [
   {
     icon: '/images/instagram.png',
-    alt: 'Instagram Icon',
+    iconAlt: 'Instagram Icon',
   },
   {
     icon: '/images/linkedin.png',
-    alt: 'LinkedIn Icon',
+    iconAlt: 'LinkedIn Icon',
   },
 ];
