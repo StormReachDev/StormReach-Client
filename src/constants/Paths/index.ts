@@ -1,35 +1,19 @@
 export const swiper = [
   {
-    image: '/images/logo.png',
-    alt: 'Image 1',
+    image: '/images/swiper/flash.png',
+    alt: 'Flash',
   },
   {
-    image: '/images/logo.png',
-    alt: 'Image 1',
+    image: '/images/swiper/geer.png',
+    alt: 'Geer',
   },
   {
-    image: '/images/logo.png',
-    alt: 'Image 1',
+    image: '/images/swiper/snowflake.png',
+    alt: 'Snowflake',
   },
   {
-    image: '/images/logo.png',
-    alt: 'Image 1',
-  },
-  {
-    image: '/images/logo.png',
-    alt: 'Image 1',
-  },
-  {
-    image: '/images/logo.png',
-    alt: 'Image 1',
-  },
-  {
-    image: '/images/logo.png',
-    alt: 'Image 1',
-  },
-  {
-    image: '/images/logo.png',
-    alt: 'Image 1',
+    image: '/images/swiper/vision.png',
+    alt: 'Vision',
   },
 ];
 

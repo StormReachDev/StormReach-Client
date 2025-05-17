@@ -13,7 +13,7 @@ export default function Swiper() {
             alt={swiper.alt}
             width={500}
             height={500}
-            className="object-cover size-full"
+            className="object-cover w-52 h-full"
           />
         </div>
       ))}
