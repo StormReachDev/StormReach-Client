@@ -7,10 +7,17 @@ import {
 } from '@/components/UI/card';
 import { cn } from '@/lib/utils';
 import CardProps from '@/types/Card';
+import Image from 'next/image';
 import Bullet from '../Bullet';
 import Typography from '../Typography';
 
-export default function CardWithIcon({ className, ...props }: CardProps) {
+export default function CardWithIcon({
+  className,
+  showIcon = false,
+  icon = '',
+  iconAlt = '',
+  ...props
+}: CardProps) {
   return (
     <Card
       className={cn(
@@ -20,8 +27,14 @@ export default function CardWithIcon({ className, ...props }: CardProps) {
       {...props}
     >
       <CardHeader className="p-0 space-y-0 flex flex-row justify-between items-center text-sm font-medium lowercase">
-        <Bullet />
-        <Typography variant="small">2 weeks ago</Typography>
+        {!showIcon && (
+          <>
+            <Bullet />
+            <Typography variant="small">2 weeks ago</Typography>
+          </>
+        )}
+
+        {showIcon && <Image src={icon} alt={iconAlt} width={36} height={36} />}
       </CardHeader>
 
       <CardTitle className="font-semibold text-xl">

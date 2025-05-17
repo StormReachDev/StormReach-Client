@@ -34,6 +34,18 @@ export const swiper = [
 ];
 
 export const pricing = {
-  approvalIcon: '/images/list-approval.png',
-  approvalIconAlt: 'Approval Icon',
+  icon: '/images/list-approval.png',
+  iconAlt: 'Approval Icon',
 };
+
+// TODO: Update this with the actual image:
+export const seeHowItWorks = [
+  {
+    icon: '/images/instagram.png',
+    alt: 'Instagram Icon',
+  },
+  {
+    icon: '/images/linkedin.png',
+    alt: 'LinkedIn Icon',
+  },
+];
