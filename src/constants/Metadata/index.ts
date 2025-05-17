@@ -1,0 +1,3 @@
+export const TITLE = 'StormReach';
+export const DESCRIPTION =
+  'StormReach is a specialized Software-as-a-Service (SaaS) platform built for roofing contractors who sell and install storm damage replacement roofs. It delivers qualified homeowner appointments—set via live cold calls—directly to a contractor’s calendar. Unlike lead lists or shared marketplaces, StormReach functions as a fully managed appointment fulfillment engine. Roofers sign up, draw their target storm-affected zones, and our call center handles all the outreach. Appointments are booked in real-time, delivered directly to the client’s calendar, and paid for on a pay-as-you-go or bulk credit model.';
