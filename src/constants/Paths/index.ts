@@ -25,13 +25,48 @@ export const pricing = {
 };
 
 // TODO: Update this with the actual image:
-export const seeHowItWorks = [
-  {
-    icon: '/images/instagram.png',
-    iconAlt: 'Instagram Icon',
+export const seeHowItWorks = [];
+
+export const commonArrowIcon = {
+  icon: '/images/arrow-right.png',
+  iconAlt: 'Right Arrow Icon',
+};
+
+export const footerIcons = {
+  upper: commonArrowIcon,
+  lower: {
+    contact: {
+      key: 'Contact',
+      email: {
+        icon: '/images/email.png',
+        iconAlt: 'Email Icon',
+      },
+      phone: {
+        icon: '/images/phone.png',
+        iconAlt: 'Phone Icon',
+      },
+      location: {
+        icon: '/images/location.png',
+        iconAlt: 'Location Icon',
+      },
+    },
   },
-  {
-    icon: '/images/linkedin.png',
-    iconAlt: 'LinkedIn Icon',
-  },
-];
+  socials: [
+    {
+      icon: '/images/socials/facebook.png',
+      iconAlt: 'Facebook Icon',
+    },
+    {
+      icon: '/images/socials/twitter.png',
+      iconAlt: 'Twitter Icon',
+    },
+    {
+      icon: '/images/socials/linkedin.png',
+      iconAlt: 'LinkedIn Icon',
+    },
+    {
+      icon: '/images/socials/instagram.png',
+      iconAlt: 'Instagram Icon',
+    },
+  ],
+};
