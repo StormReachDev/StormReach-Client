@@ -18,6 +18,11 @@ export const swiper = [
   },
 ];
 
+export const logo = {
+  image: '/images/logo.png',
+  alt: 'Logo',
+};
+
 // Icons:
 export const pricing = {
   icon: '/images/list-approval.png',
@@ -33,7 +38,13 @@ export const commonArrowIcon = {
 };
 
 export const footerIcons = {
-  upper: commonArrowIcon,
+  upper: {
+    commonArrowIcon,
+    background: {
+      image: '/images/footer-background.png',
+      alt: 'Footer Background',
+    },
+  },
   lower: {
     contact: {
       key: 'Contact',
