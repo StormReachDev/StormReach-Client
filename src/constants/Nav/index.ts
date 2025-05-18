@@ -14,7 +14,7 @@ const navItems = [
   },
 
   {
-    title: 'Contact Us',
+    title: 'Contact us',
     path: '#',
   },
 ];
