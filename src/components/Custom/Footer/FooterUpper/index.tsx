@@ -1,4 +1,4 @@
-// Imports
+// Imports:
 import ButtonWithIcon from '@/components/Generics/ButtonWithIcon';
 import Typography from '@/components/Generics/Typography';
 import Wrapper from '@/components/Generics/Wrapper';
@@ -22,7 +22,7 @@ export default function FooterUpper() {
   } = footerIcons;
 
   return (
-    <Wrapper className="text-neutral-800 relative max-w-full flex sm:flex-row flex-col sm:justify-between h-1/2">
+    <Wrapper className="text-neutral-800 relative max-w-full grid grid-cols-1 lg:grid-cols-2 h-1/2 gap-10 lg:gap-0">
       <Image
         src={image}
         alt={alt}
@@ -32,19 +32,25 @@ export default function FooterUpper() {
         priority
       />
 
-      <div className="relative w-9/12 my-auto space-y-5">
-        <Typography variant="h1" className="text-[40px] font-semibold">
+      <div className="relative w-full my-auto space-y-5">
+        <Typography
+          variant="h1"
+          className="text-[32px] sm:text-[40px] font-semibold"
+        >
           {heading}
         </Typography>
-        <Typography variant="p" className="text-3xl font-semibold">
+        <Typography
+          variant="p"
+          className="text-[28px] sm:text-xl font-semibold"
+        >
           {description}
         </Typography>
       </div>
 
-      <div className="relative w-3/12 flex items-center">
+      <div className="relative w-full flex items-center justify-start lg:justify-end">
         <ButtonWithIcon
           rightIcon={<Image src={icon} alt={iconAlt} width={25} height={25} />}
-          className="bg-primary ml-auto text-core-white text-xl font-semibold p-5 h-[70px]"
+          className="bg-primary text-core-white text-lg sm:text-xl font-semibold p-5 h-[70px]"
         >
           {btnText}
         </ButtonWithIcon>

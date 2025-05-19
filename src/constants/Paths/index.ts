@@ -2,25 +2,30 @@
 export const swiper = [
   {
     image: '/images/swiper/flash.png',
-    alt: 'Flash',
+    alt: 'Flash Image',
   },
   {
     image: '/images/swiper/geer.png',
-    alt: 'Geer',
+    alt: 'Geer Image',
   },
   {
     image: '/images/swiper/snowflake.png',
-    alt: 'Snowflake',
+    alt: 'Snowflake Image',
   },
   {
     image: '/images/swiper/vision.png',
-    alt: 'Vision',
+    alt: 'Vision Image',
   },
 ];
 
 export const logo = {
   image: '/images/logo.png',
-  alt: 'Logo',
+  alt: 'Logo Image',
+};
+
+export const hero = {
+  image: '/images/hero.png',
+  alt: 'Hero Image',
 };
 
 // Icons:
@@ -53,31 +58,31 @@ export const footerIcons = {
         iconAlt: 'Email Icon',
       },
       phone: {
-        icon: '/images/phone.png',
+        icon: '/images/phone-without-bg.png',
         iconAlt: 'Phone Icon',
       },
       location: {
-        icon: '/images/location.png',
+        icon: '/images/location-without-bg.png',
         iconAlt: 'Location Icon',
       },
     },
+    socials: [
+      {
+        icon: '/images/socials/facebook.png',
+        iconAlt: 'Facebook Icon',
+      },
+      {
+        icon: '/images/socials/twitter.png',
+        iconAlt: 'Twitter Icon',
+      },
+      {
+        icon: '/images/socials/linkedin.png',
+        iconAlt: 'LinkedIn Icon',
+      },
+      {
+        icon: '/images/socials/instagram.png',
+        iconAlt: 'Instagram Icon',
+      },
+    ],
   },
-  socials: [
-    {
-      icon: '/images/socials/facebook.png',
-      iconAlt: 'Facebook Icon',
-    },
-    {
-      icon: '/images/socials/twitter.png',
-      iconAlt: 'Twitter Icon',
-    },
-    {
-      icon: '/images/socials/linkedin.png',
-      iconAlt: 'LinkedIn Icon',
-    },
-    {
-      icon: '/images/socials/instagram.png',
-      iconAlt: 'Instagram Icon',
-    },
-  ],
 };
