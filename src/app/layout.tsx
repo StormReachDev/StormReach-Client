@@ -1,15 +1,15 @@
 // Imports:
 import { DESCRIPTION, TITLE } from '@/constants/Metadata';
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import { DM_Sans } from 'next/font/google';
 import './globals.css';
 
 // This is a custom font from Google Fonts:
-const poppins = Poppins({
+const dmSansFont = DM_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-poppins',
+  variable: '--font-dm-sans',
 });
 
 // This is a metadata object that contains the title and description of the page:
@@ -26,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={`${dmSansFont.className} bg-background`}>
+        {children}
+      </body>
     </html>
   );
 }
