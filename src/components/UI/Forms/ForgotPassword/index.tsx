@@ -6,16 +6,15 @@ import stormyContent from '@/constants/Content';
 import { imagePaths } from '@/constants/Paths/Images';
 import { FormStateProps } from '@/types/Form';
 import { Button, Typography } from '@material-tailwind/react';
-import { Lock, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function LoginForm({ setScreen }: FormStateProps) {
+export default function ForgotPasswordForm({ setScreen }: FormStateProps) {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   function toggleComponent() {
-    setScreen('forgotPassword');
+    setScreen('login');
   }
 
   return (
@@ -32,35 +31,26 @@ export default function LoginForm({ setScreen }: FormStateProps) {
           variant="h1"
           className="font-semibold text-[32px] text-neutral-800"
         >
-          {stormyContent.login.heading}
+          {stormyContent.forgotPassword.heading}
         </Typography>
 
         <Typography
           variant="lead"
           className="font-medium text-2xl text-neutral-600"
         >
-          {stormyContent.login.subheading}
+          {stormyContent.forgotPassword.subheading}
         </Typography>
       </div>
 
       <form className="space-y-8 overflow-hidden">
-        <div className="overflow-hidden space-y-7">
+        <div className="overflow-hidden">
           <InputField
             id="email"
-            label={stormyContent.login.form.email.label}
+            label={stormyContent.forgotPassword.form.email.label}
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             icon={<Mail className="h-6 w-6 text-neutral-700" />}
-          />
-
-          <InputField
-            id="password"
-            label={stormyContent.login.form.password.label}
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            icon={<Lock className="h-6 w-6 text-neutral-700" />}
           />
         </div>
 
@@ -69,7 +59,7 @@ export default function LoginForm({ setScreen }: FormStateProps) {
             className="p-3 rounded-lg bg-primary text-xl font-bold text-core-white w-full capitalize"
             variant="outlined"
           >
-            {stormyContent.login.form.submitButton.text}
+            {stormyContent.forgotPassword.form.submitButton.text}
           </Button>
         </div>
 
@@ -78,13 +68,13 @@ export default function LoginForm({ setScreen }: FormStateProps) {
             variant="lead"
             className="font-medium text-2xl text-neutral-800"
           >
-            {stormyContent.login.form.forgotPassword.text}
+            {stormyContent.forgotPassword.form.backToLogin.text}
             <Link
               href={'#'}
               className="ml-2 text-primary hover:underline"
               onClick={toggleComponent}
             >
-              {stormyContent.login.form.forgotPassword.linkText}
+              {stormyContent.forgotPassword.form.backToLogin.linkText}
             </Link>
           </Typography>
         </div>

@@ -1,3 +1,6 @@
+// Imports:
+import { Screen } from '../SplitScreen';
+
 export type InputFieldProps = {
   id: string;
   label: string;
@@ -9,4 +12,8 @@ export type InputFieldProps = {
   bgColor?: string;
   borderColor?: string;
   textColor?: string;
+};
+
+export type FormStateProps = {
+  setScreen: (screen: Screen) => void;
 };

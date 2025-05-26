@@ -5,3 +5,5 @@ export type SplitScreenProps = {
   leftClassName?: string;
   rightClassName?: string;
 };
+
+export type Screen = 'login' | 'forgotPassword' | 'resetPassword';

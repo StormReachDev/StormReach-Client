@@ -25,6 +25,44 @@ const stormyContent = {
     },
   },
 
+  forgotPassword: {
+    heading: 'Forgot Your Password?',
+    subheading:
+      'No worries — enter your email below and we’ll send you a secure link to reset your password.',
+    form: {
+      email: {
+        label: 'Enter Your Email Address',
+      },
+
+      submitButton: {
+        text: 'Send Reset Link',
+      },
+
+      backToLogin: {
+        text: 'Remember your credentials?',
+        linkText: 'Login here',
+      },
+    },
+  },
+
+  resetPassword: {
+    heading: 'Create a New Password',
+    subheading: 'Enter a strong password you haven’t used before.',
+    form: {
+      newPassword: {
+        label: 'Enter Your New password',
+      },
+
+      confirmPassword: {
+        label: 'Confirm Your New password',
+      },
+
+      submitButton: {
+        text: 'Done',
+      },
+    },
+  },
+
   slides: [
     {
       image: imagePaths.carousel.first.src,

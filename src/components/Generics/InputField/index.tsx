@@ -44,6 +44,7 @@ export default function InputField({
           placeholder={placeholder}
           className={`w-full pl-12 ${isPassword ? 'pr-12' : 'pr-3'} py-3 ${bgColor} border ${borderColor} rounded-xl ${textColor} text-lg font-medium 
           focus:outline-none focus:${borderColor}`}
+          autoComplete="off"
         />
 
         {isPassword && (
