@@ -2,32 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+  :root {
+    --background: #121212;
+    --input-field: #1e1e1e;
+    --stroke: #333;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+    --core-black: #000;
+    --core-white: #fff;
+    --primary-red: #ad1d1c;
+
+    --red-50: #fef2f2;
+    --red-100: #fee2e2;
+    --red-200: #fdcbcb;
+    --red-300: #fba7a6;
+    --red-400: #f77372;
+    --red-500: #ed4746;
+    --red-600: #da2928;
+    --red-700: #ad1d1c;
+    --red-800: #981d1c;
+    --red-900: #7e1f1e;
+
+    --neutral-50: #8c8c8c;
+    --neutral-100: #999;
+    --neutral-200: #a6a6a6;
+    --neutral-300: #b3b3b3;
+    --neutral-400: #bfbfbf;
+    --neutral-500: #ccc;
+    --neutral-600: #d9d9d9;
+    --neutral-700: #e5e5e5;
+    --neutral-800: #f2f2f2;
+    --neutral-900: #f7f7f7;
+  }
+
+  body {
+    @apply overflow-x-hidden;
   }
 }

@@ -11,6 +11,7 @@
 
 1. [Introduction](#introduction)
 2. [Quick Start](#quick-start)
+3. [Conventions](#conventions)
 
 ## <a name="introduction">Introduction</a>
 
@@ -20,16 +21,16 @@ StormReach is a specialized Software-as-a-Service (SaaS) platform built for roof
 
 ## <a name="quick-start">Quick Start</a>
 
-Follow these steps to set up the project locally on your machine.
+Follow these steps to set up and run the project locally on your machine.
 
-**Cloning the Repository**
+### Cloning the Repository
 
 ```bash
 git clone https://github.com/abrehan2/StormReach.git
 cd StormReach
 ```
 
-**Installation**
+### Installation
 
 Install the project dependencies using npm:
 
@@ -37,10 +38,70 @@ Install the project dependencies using npm:
 npm install
 ```
 
-**Running the Project**
+### Running the application locally
+
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+
+### Running the application locally using Docker
+
+Ensure [Docker](https://www.docker.com/) is installed on your machine. Use the following commands to run the project with Docker:
+
+```bash
+# Stop any running containers
+docker-compose down
+
+# Build and start the containers
+docker-compose up --build
+```
+
+The application will be available at [http://localhost:3000](http://localhost:3000).
+
+## <a name="conventions">Conventions</a>
+
+To maintain consistency and quality, StormReach follows strict conventions for branching, commits, and pull requests.
+
+### Branch Naming
+
+- Always branch from `dev`.
+- Use the format: `ticket-number/concise-message` (e.g., `sto-21/enhance-readme`).
+- Reference the ticket number from Linear (e.g., [STO-21](https://linear.app/stormreach/issue/STO-21/update-project-readme-documentation)).
+
+### Commit Messages
+
+Use the [Conventional Commits](https://www.conventionalcommits.org/) specification. The project is configured with `@commitlint/config-conventional`. Example commit message:
+
+```bash
+docs(readme): enhance documentation with detailed setup and conventions
+```
+
+Supported commit types:
+
+- `build`: Changes affecting the build system or external dependencies.
+- `ci`: Changes to CI configuration files and scripts.
+- `docs`: Documentation-only changes.
+- `feat`: New features.
+- `fix`: Bug fixes.
+- `perf`: Performance improvements.
+- `refactor`: Code changes that neither fix bugs nor add features.
+- `style`: Code style changes (e.g., formatting, missing semicolons).
+- `test`: Adding or correcting tests.
+
+Rules enforced by commitlint:
+
+- Header max length: 100 characters.
+- Body and footer max line length: 100 characters.
+- Scope must be lowercase.
+- Subject must not end with a period.
+- Supported types: `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`, `translation`, `security`, `changeset`.
+
+### Pull Requests
+
+- PR title format: `ticket-number: title message (e.g., STO-21: Enhance project README documentation).`
+- Include a description linking to the Linear ticket (e.g., [STO-21](https://linear.app/stormreach/issue/STO-21/update-project-readme-documentation)).
+- Ensure all checks (linting, tests, build) pass before requesting a review.
