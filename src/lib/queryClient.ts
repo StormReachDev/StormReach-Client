@@ -1,6 +1,14 @@
 // Imports:
 import { QueryClient } from '@tanstack/react-query';
 
-const queryClient = new QueryClient();
+// This is singleton query client instance is only for server-side services.
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+    },
+  },
+});
 
 export default queryClient;
