@@ -3,6 +3,7 @@ import { DESCRIPTION, TITLE } from '@/constants/Metadata';
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
 import './globals.css';
+import Providers from './providers';
 
 // This is a custom font from Google Fonts:
 const dmSansFont = DM_Sans({
@@ -27,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmSansFont.className} bg-background`}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

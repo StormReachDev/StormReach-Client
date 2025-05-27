@@ -1,16 +1,24 @@
 // Imports:
+import ButtonSpinner from '@/components/Generics/ButtonSpinner';
 import BaseImage from '@/components/Generics/Image';
 import InputField from '@/components/Generics/InputField';
 import Wrapper from '@/components/Generics/Wrapper';
 import stormyContent from '@/constants/Content';
 import { imagePaths } from '@/constants/Paths/Images';
+import { useResetPassword } from '@/hooks/auth';
 import { Button, Typography } from '@material-tailwind/react';
 import { Lock } from 'lucide-react';
 import { useState } from 'react';
 
-export default function ResetPasswordForm() {
-  const [newPassword, setNewPassword] = useState('');
+export default function ResetPasswordForm({ token }: { token: string }) {
+  const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const { mutate: resetPassword, isPending } = useResetPassword();
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    resetPassword({ token, password, confirmPassword });
+  }
 
   return (
     <Wrapper className="size-full place-content-center space-y-8">
@@ -37,15 +45,16 @@ export default function ResetPasswordForm() {
         </Typography>
       </div>
 
-      <form className="space-y-8 overflow-hidden">
+      <form className="space-y-8 overflow-hidden" onSubmit={handleSubmit}>
         <div className="overflow-hidden space-y-7">
           <InputField
-            id="newPassword"
+            id="password"
             label={stormyContent.resetPassword.form.newPassword.label}
             type="password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             icon={<Lock className="h-6 w-6 text-neutral-700" />}
+            required
           />
 
           <InputField
@@ -55,15 +64,21 @@ export default function ResetPasswordForm() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             icon={<Lock className="h-6 w-6 text-neutral-700" />}
+            required
           />
         </div>
 
         <div className="overflow-hidden max-w-full">
           <Button
             className="p-3 rounded-lg bg-primary text-xl font-bold text-core-white w-full capitalize"
-            variant="outlined"
+            type="submit"
+            disabled={!password.trim() || !confirmPassword.trim()}
           >
-            {stormyContent.resetPassword.form.submitButton.text}
+            {isPending ? (
+              <ButtonSpinner />
+            ) : (
+              stormyContent.resetPassword.form.submitButton.text
+            )}
           </Button>
         </div>
       </form>

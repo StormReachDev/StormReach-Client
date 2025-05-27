@@ -4,7 +4,7 @@ import { create } from 'zustand';
 
 interface ScreenState {
   currentScreen: Screen;
-  setScreen: (screen: Screen) => void;
+  setScreen: (_screen: Screen) => void;
 }
 
 export const useScreenStore = create<ScreenState>((set) => ({

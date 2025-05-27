@@ -14,6 +14,7 @@ export default function InputField({
   bgColor = 'bg-input',
   borderColor = 'border-stroke',
   textColor = 'text-neutral-700',
+  required = false,
 }: InputFieldProps) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -44,7 +45,8 @@ export default function InputField({
           placeholder={placeholder}
           className={`w-full pl-12 ${isPassword ? 'pr-12' : 'pr-3'} py-3 ${bgColor} border ${borderColor} rounded-xl ${textColor} text-lg font-medium 
           focus:outline-none focus:${borderColor}`}
-          autoComplete="off"
+          autoComplete={'off'}
+          required={required}
         />
 
         {isPassword && (

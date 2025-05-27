@@ -1,9 +1,11 @@
 // Imports:
+import ButtonSpinner from '@/components/Generics/ButtonSpinner';
 import BaseImage from '@/components/Generics/Image';
 import InputField from '@/components/Generics/InputField';
 import Wrapper from '@/components/Generics/Wrapper';
 import stormyContent from '@/constants/Content';
 import { imagePaths } from '@/constants/Paths/Images';
+import { useForgotPassword } from '@/hooks/auth';
 import { FormStateProps } from '@/types/Form';
 import { Button, Typography } from '@material-tailwind/react';
 import { Mail } from 'lucide-react';
@@ -12,9 +14,15 @@ import { useState } from 'react';
 
 export default function ForgotPasswordForm({ setScreen }: FormStateProps) {
   const [email, setEmail] = useState('');
+  const { mutate: sendResetEmail, isPending } = useForgotPassword();
 
   function toggleComponent() {
     setScreen('login');
+  }
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    sendResetEmail(email);
   }
 
   return (
@@ -42,24 +50,30 @@ export default function ForgotPasswordForm({ setScreen }: FormStateProps) {
         </Typography>
       </div>
 
-      <form className="space-y-8 overflow-hidden">
+      <form className="space-y-8 overflow-hidden" onSubmit={handleSubmit}>
         <div className="overflow-hidden">
           <InputField
-            id="email"
+            id="forgotPasswordEmail"
             label={stormyContent.forgotPassword.form.email.label}
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             icon={<Mail className="h-6 w-6 text-neutral-700" />}
+            required
           />
         </div>
 
         <div className="overflow-hidden max-w-full">
           <Button
             className="p-3 rounded-lg bg-primary text-xl font-bold text-core-white w-full capitalize"
-            variant="outlined"
+            type="submit"
+            disabled={!email.trim()}
           >
-            {stormyContent.forgotPassword.form.submitButton.text}
+            {isPending ? (
+              <ButtonSpinner />
+            ) : (
+              stormyContent.forgotPassword.form.submitButton.text
+            )}
           </Button>
         </div>
 
