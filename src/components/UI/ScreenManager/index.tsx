@@ -4,7 +4,6 @@
 import { CarouselCustomNavigation } from '@/components/Custom/Carousel';
 import Spinning from '@/components/Custom/Spinner';
 import SplitScreen from '@/components/Custom/SplitScreen';
-import Wrapper from '@/components/Generics/Wrapper';
 import { useScreenStore } from '@/stores/useScreenStore';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -50,12 +49,10 @@ export default function ScreenManager() {
   };
 
   return (
-    <Wrapper className="max-w-full size-full py-[92px] px-[70px]">
-      <SplitScreen
-        className="gap-[70px]"
-        left={<CarouselCustomNavigation />}
-        right={<RenderingComponent />}
-      />
-    </Wrapper>
+    <SplitScreen
+      className="gap-[70px]"
+      left={<CarouselCustomNavigation />}
+      right={<RenderingComponent />}
+    />
   );
 }

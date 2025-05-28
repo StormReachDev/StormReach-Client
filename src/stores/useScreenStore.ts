@@ -1,11 +1,6 @@
 // Imports:
-import { Screen } from '@/types/SplitScreen';
+import { ScreenState } from '@/types/Stores';
 import { create } from 'zustand';
-
-interface ScreenState {
-  currentScreen: Screen;
-  setScreen: (_screen: Screen) => void;
-}
 
 export const useScreenStore = create<ScreenState>((set) => ({
   currentScreen: 'login',

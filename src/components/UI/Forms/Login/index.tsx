@@ -35,7 +35,7 @@ export default function LoginForm({ setScreen }: FormStateProps) {
         priority
       />
 
-      <div className="overflow-hidden">
+      <div className="overflow-hidden space-y-2">
         <Typography
           variant="h1"
           className="font-semibold text-[32px] text-neutral-800"

@@ -82,6 +82,16 @@ const stormyContent = {
       text: 'Assign agents, review leads, and handle client needs in seconds.',
     },
   ],
+
+  mobile: {
+    comingSoon: {
+      heading: 'We’re Cooking Up Mobile Version!',
+      body: 'Soon, you’ll be able to manage appointments, credits, and disputes on the go — right from your phone.',
+      button: {
+        alt: 'Mobile Development Notice',
+      },
+    },
+  },
 };
 
 export default stormyContent;

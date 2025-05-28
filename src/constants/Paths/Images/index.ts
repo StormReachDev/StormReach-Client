@@ -20,4 +20,11 @@ export const imagePaths = {
       alt: 'Third Carousel Image',
     },
   },
+
+  mobile: {
+    comingSoon: {
+      src: '/images/mobileDevNotice.png',
+      alt: 'Mobile Development Notice',
+    },
+  },
 };
