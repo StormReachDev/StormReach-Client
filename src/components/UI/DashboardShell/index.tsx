@@ -34,7 +34,7 @@ export default function DashboardShell() {
       logout();
       setActiveItem('Dashboard');
     }
-  }, [activeItem, logout, setActiveItem]);
+  }, [activeItem]);
 
   return (
     <Wrapper className="max-w-full w-full">

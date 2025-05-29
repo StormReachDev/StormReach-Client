@@ -1,5 +1,5 @@
 // Imports:
-import { InputFieldProps } from '@/types/Form';
+import { InputFieldProps } from '@/types/UI/Form';
 import { Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 
