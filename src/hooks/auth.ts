@@ -8,7 +8,7 @@ import {
   LoginResponse,
   ResetPasswordRequest,
   User,
-} from '@/types/api/auth';
+} from '@/types/Api/Auth';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
@@ -21,8 +21,8 @@ function useLogin() {
     mutationFn: AuthService.login,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['user'] });
-      toast.success('Welcome back! You are now logged in.');
       router.push(ABSOLUTE_ROUTES.DASHBOARD);
+      toast.success('Welcome back! You are now logged in.');
     },
 
     onError: (error: {
@@ -78,10 +78,10 @@ function useResetPassword() {
   return useMutation<GenericResponse, Error, ResetPasswordRequest>({
     mutationFn: AuthService.resetPassword,
     onSuccess: () => {
+      router.push(ABSOLUTE_ROUTES.ROOT);
       toast.success(
         'Success! You’ve reset your password. Go ahead and sign in.'
       );
-      router.push(ABSOLUTE_ROUTES.ROOT);
     },
 
     onError: (error: {
@@ -97,4 +97,29 @@ function useResetPassword() {
   });
 }
 
-export { useForgotPassword, useLogin, useMe, useResetPassword };
+// Custom Hook for Logout:
+function useLogout() {
+  const router = useRouter();
+
+  return useMutation<GenericResponse, Error>({
+    mutationFn: AuthService.logout,
+    onSuccess: () => {
+      queryClient.removeQueries({ queryKey: ['user'] });
+      router.push(ABSOLUTE_ROUTES.ROOT);
+      toast.success('You’ve successfully signed out.');
+    },
+
+    onError: (error: {
+      response?: {
+        data: {
+          message: string;
+        };
+      };
+      message?: string;
+    }) => {
+      toast.error(error?.response?.data?.message);
+    },
+  });
+}
+
+export { useForgotPassword, useLogin, useLogout, useMe, useResetPassword };

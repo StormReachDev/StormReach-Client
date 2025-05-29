@@ -6,7 +6,7 @@ import {
   LoginRequest,
   LoginResponse,
   ResetPasswordRequest,
-} from '@/types/api/auth';
+} from '@/types/Api/Auth';
 
 const AuthService = {
   login: async (credentials: LoginRequest): Promise<LoginResponse> => {
@@ -15,6 +15,11 @@ const AuthService = {
       credentials
     );
 
+    return response.data;
+  },
+
+  logout: async (): Promise<GenericResponse> => {
+    const response = await axiosInstance.get(API_ABSOLUTE_ROUTES.LOGOUT);
     return response.data;
   },
 

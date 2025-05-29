@@ -3,7 +3,7 @@
 // Imports:
 import { useCountdownStore } from '@/stores/useCountdownStore';
 import { useDeviceStore } from '@/stores/useDeviceStore';
-import { ResponsiveLayoutProps } from '@/types/Wrapper';
+import { ResponsiveLayoutProps } from '@/types/Generics/Wrapper';
 import { useEffect } from 'react';
 
 export default function ResponsiveLayout({

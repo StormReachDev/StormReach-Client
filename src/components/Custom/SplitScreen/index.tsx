@@ -1,6 +1,6 @@
 // Imports:
 import { cn } from '@/lib/utils';
-import { SplitScreenProps } from '@/types/SplitScreen';
+import { SplitScreenProps } from '@/types/Generics/SplitScreen';
 
 export default function SplitScreen({
   left,

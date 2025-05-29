@@ -52,7 +52,9 @@ export default function ResetPasswordForm({ token }: { token: string }) {
             label={stormyContent.resetPassword.form.newPassword.label}
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.target.value)
+            }
             icon={<Lock className="h-6 w-6 text-neutral-700" />}
             required
           />
@@ -62,7 +64,9 @@ export default function ResetPasswordForm({ token }: { token: string }) {
             label={stormyContent.resetPassword.form.confirmPassword.label}
             type="password"
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setConfirmPassword(e.target.value)
+            }
             icon={<Lock className="h-6 w-6 text-neutral-700" />}
             required
           />

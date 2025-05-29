@@ -6,7 +6,7 @@ import Wrapper from '@/components/Generics/Wrapper';
 import stormyContent from '@/constants/Content';
 import { imagePaths } from '@/constants/Paths/Images';
 import { useForgotPassword } from '@/hooks/auth';
-import { FormStateProps } from '@/types/Form';
+import { FormStateProps } from '@/types/UI/Form';
 import { Button, Typography } from '@material-tailwind/react';
 import { Mail } from 'lucide-react';
 import Link from 'next/link';
@@ -57,7 +57,9 @@ export default function ForgotPasswordForm({ setScreen }: FormStateProps) {
             label={stormyContent.forgotPassword.form.email.label}
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
             icon={<Mail className="h-6 w-6 text-neutral-700" />}
             required
           />

@@ -11,11 +11,16 @@ export default function Layout({
 }>) {
   return (
     <DashboardLayout>
-      <Wrapper className="max-w-full size-full py-[46px] px-[35px] xl:py-[92px] xl:px-[70px] place-content-center">
-        <ResponsiveLayout mobileComponent={<MobileComingSoon />}>
-          {children}
-        </ResponsiveLayout>
-      </Wrapper>
+      <ResponsiveLayout
+        mobileComponent={
+          // TODO: The padding is half of the desktop layout.
+          <Wrapper className="max-w-full size-full py-[46px] px-[35px] place-content-center">
+            <MobileComingSoon />
+          </Wrapper>
+        }
+      >
+        {children}
+      </ResponsiveLayout>
     </DashboardLayout>
   );
 }

@@ -1,5 +1,5 @@
 // Imports:
-import { Screen } from '../SplitScreen';
+import { Screen } from '../../Generics/SplitScreen';
 
 export type InputFieldProps = {
   id: string;

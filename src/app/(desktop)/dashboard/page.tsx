@@ -1,3 +1,6 @@
+// Imports:
+import DashboardShell from '@/components/UI/DashboardShell';
+
 export default function Page() {
-  return <p className="text-neutral-700">Dashboard</p>;
+  return <DashboardShell />;
 }

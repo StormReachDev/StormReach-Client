@@ -27,4 +27,11 @@ export const imagePaths = {
       alt: 'Mobile Development Notice',
     },
   },
+
+  sidebar: {
+    userIcon: {
+      src: '/images/monogram.png',
+      alt: 'User Icon',
+    },
+  },
 };

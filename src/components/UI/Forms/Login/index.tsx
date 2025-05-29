@@ -6,7 +6,7 @@ import Wrapper from '@/components/Generics/Wrapper';
 import stormyContent from '@/constants/Content';
 import { imagePaths } from '@/constants/Paths/Images';
 import { useLogin } from '@/hooks/auth';
-import { FormStateProps } from '@/types/Form';
+import { FormStateProps } from '@/types/UI/Form';
 import { Button, Typography } from '@material-tailwind/react';
 import { Lock, Mail } from 'lucide-react';
 import Link from 'next/link';
@@ -58,7 +58,9 @@ export default function LoginForm({ setScreen }: FormStateProps) {
             label={stormyContent.login.form.email.label}
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
             icon={<Mail className="h-6 w-6 text-neutral-700" />}
             required
           />
@@ -68,7 +70,9 @@ export default function LoginForm({ setScreen }: FormStateProps) {
             label={stormyContent.login.form.password.label}
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.target.value)
+            }
             icon={<Lock className="h-6 w-6 text-neutral-700" />}
             required
           />

@@ -28,4 +28,5 @@ export const API_ABSOLUTE_ROUTES = {
   ME: `${config.API_URL}/user/me`,
   FORGOT_PASSWORD: `${config.API_URL}/user/forgot-password`,
   RESET_PASSWORD: `${config.API_URL}/user/reset-password/:token`,
+  LOGOUT: `${config.API_URL}/user/invalidate-session`,
 };

@@ -1,5 +1,5 @@
 // Imports:
-import { Screen } from '@/types/SplitScreen';
+import { Screen } from '@/types/Generics/SplitScreen';
 
 export type DeviceState = {
   isMobile: boolean;
@@ -22,4 +22,9 @@ export type CountdownState = {
   timeLeft: TimeLeft;
   startCountdown: () => void;
   stopCountdown: () => void;
+};
+
+export type SidebarState = {
+  activeItem: string;
+  setActiveItem: (_label: string) => void;
 };
