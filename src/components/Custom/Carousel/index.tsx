@@ -1,5 +1,5 @@
 // Imports:
-import BaseImage from '@/components/Generics/Image';
+import BaseImage from '@/components/UI/Image';
 import stormyContent from '@/constants/Content';
 import { Carousel, Typography } from '@material-tailwind/react';
 

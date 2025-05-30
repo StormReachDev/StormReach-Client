@@ -47,7 +47,7 @@ const AuthService = {
   },
 
   me: async (): Promise<LoginResponse> => {
-    const response = await axiosInstance.get(API_ABSOLUTE_ROUTES.LOGIN);
+    const response = await axiosInstance.get(API_ABSOLUTE_ROUTES.ME);
 
     return response.data;
   },

@@ -2,12 +2,12 @@
 import { ABSOLUTE_ROUTES } from '@/constants/Paths/Routes';
 import queryClient from '@/lib/queryClient';
 import AuthService from '@/services/auth/';
+import { useScreenStore } from '@/stores/useScreenStore';
 import {
   GenericResponse,
   LoginRequest,
   LoginResponse,
   ResetPasswordRequest,
-  User,
 } from '@/types/Api/Auth';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
@@ -40,7 +40,7 @@ function useLogin() {
 
 // Custom Hook to Fetch User Data:
 function useMe() {
-  return useQuery<User, Error>({
+  return useQuery<GenericResponse, Error>({
     queryKey: ['user'],
     queryFn: AuthService.me,
     staleTime: 5 * 60 * 1000,
@@ -74,11 +74,13 @@ function useForgotPassword() {
 // Custom Hook for Resetting Password:
 function useResetPassword() {
   const router = useRouter();
+  const { setScreen } = useScreenStore();
 
   return useMutation<GenericResponse, Error, ResetPasswordRequest>({
     mutationFn: AuthService.resetPassword,
     onSuccess: () => {
       router.push(ABSOLUTE_ROUTES.ROOT);
+      setScreen('login');
       toast.success(
         'Success! You’ve reset your password. Go ahead and sign in.'
       );

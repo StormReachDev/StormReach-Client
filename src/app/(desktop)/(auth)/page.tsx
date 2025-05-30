@@ -1,6 +1,6 @@
 // Imports:
-import Spinning from '@/components/Custom/Spinner';
-import ScreenManager from '@/components/UI/ScreenManager';
+import ScreenManager from '@/components/Custom/ScreenManager';
+import Spinning from '@/components/UI/Spinner';
 import { Suspense } from 'react';
 
 export default function Page() {

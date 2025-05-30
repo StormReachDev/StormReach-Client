@@ -1,8 +1,8 @@
 // Imports:
-import ButtonSpinner from '@/components/Generics/ButtonSpinner';
-import BaseImage from '@/components/Generics/Image';
-import InputField from '@/components/Generics/InputField';
 import Wrapper from '@/components/Generics/Wrapper';
+import ButtonSpinner from '@/components/UI/ButtonSpinner';
+import BaseImage from '@/components/UI/Image';
+import InputField from '@/components/UI/InputField';
 import stormyContent from '@/constants/Content';
 import { imagePaths } from '@/constants/Paths/Images';
 import { useResetPassword } from '@/hooks/auth';

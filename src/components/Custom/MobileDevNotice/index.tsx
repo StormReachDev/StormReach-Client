@@ -1,8 +1,8 @@
 'use client';
 
 // Imports:
-import BaseImage from '@/components/Generics/Image';
 import Wrapper from '@/components/Generics/Wrapper';
+import BaseImage from '@/components/UI/Image';
 import stormyContent from '@/constants/Content';
 import { imagePaths } from '@/constants/Paths/Images';
 import { useCountdownStore } from '@/stores/useCountdownStore';

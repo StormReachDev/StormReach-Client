@@ -15,23 +15,21 @@ export interface User {
   _id: string;
   name: string;
   email: string;
-  password: string;
   phone: string;
   timeZone: string;
   role: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 // Response types for authentication API:
-export interface LoginResponse extends User {
+export type LoginResponse = {
   success: boolean;
   token: string;
-}
+};
 
 export type GenericResponse = {
   success: boolean;
-  message: string;
+  message?: string;
+  user?: User;
 };
 
 export type ErrorResponse = {
