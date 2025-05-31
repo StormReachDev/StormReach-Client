@@ -76,7 +76,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
           <Button
             className="p-3 rounded-lg bg-primary text-xl font-bold text-core-white w-full capitalize"
             type="submit"
-            disabled={!password.trim() || !confirmPassword.trim()}
+            disabled={!password.trim() || !confirmPassword.trim() || isPending}
           >
             {isPending ? (
               <ButtonSpinner />

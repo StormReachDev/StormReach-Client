@@ -11,6 +11,10 @@ const config = withMT({
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--dm-sans)', 'sans-serif'],
+        'dm-sans': ['var(--dm-sans)', 'sans-serif'],
+      },
       colors: {
         core: {
           black: 'var(--core-black)',

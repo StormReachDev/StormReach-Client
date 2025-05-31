@@ -8,6 +8,7 @@
   }
 
   :root {
+    --dm-sans: 'DM Sans';
     --background: #121212;
     --input-field: #1e1e1e;
     --stroke: #333;

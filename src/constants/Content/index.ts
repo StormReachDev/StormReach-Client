@@ -92,6 +92,22 @@ const stormyContent = {
       },
     },
   },
+
+  modal: {
+    logout: {
+      heading: 'Confirm Logout?',
+      body: 'You’ll be signed out of the admin panel. You can log in again anytime to continue managing StormReach.',
+      buttons: {
+        cancel: {
+          text: 'Cancel',
+        },
+
+        confirm: {
+          text: 'Confirm',
+        },
+      },
+    },
+  },
 };
 
 export default stormyContent;

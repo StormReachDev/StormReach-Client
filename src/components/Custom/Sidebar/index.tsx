@@ -4,6 +4,7 @@
 import Wrapper from '@/components/Generics/Wrapper';
 import { sidebarItems } from '@/constants/Sidebar';
 import { cn } from '@/lib/utils';
+import { useModalStore } from '@/stores/useModalStore';
 import { useSidebarStore } from '@/stores/useSidebarStore';
 import { Typography } from '@material-tailwind/react';
 import UserIcon from '../UserIcon';
@@ -19,6 +20,15 @@ export default function Sidebar() {
 
 function SidebarNav() {
   const { activeItem, setActiveItem } = useSidebarStore();
+  const { openModal } = useModalStore();
+
+  function handleTrigger(label: string) {
+    if (label === 'Logout') {
+      openModal('Logout');
+    } else {
+      setActiveItem(label);
+    }
+  }
 
   return (
     <ul className="size-full space-y-3 overflow-hidden">
@@ -36,7 +46,7 @@ function SidebarNav() {
               }
             )}
             key={item.label}
-            onClick={() => setActiveItem(item.label)}
+            onClick={() => handleTrigger(item.label)}
           >
             <Icon className="size-8 text-core-white" />
             <Typography

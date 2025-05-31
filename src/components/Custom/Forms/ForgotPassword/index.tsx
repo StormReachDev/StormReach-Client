@@ -69,7 +69,7 @@ export default function ForgotPasswordForm({ setScreen }: FormStateProps) {
           <Button
             className="p-3 rounded-lg bg-primary text-xl font-bold text-core-white w-full capitalize"
             type="submit"
-            disabled={!email.trim()}
+            disabled={!email.trim() || isPending}
           >
             {isPending ? (
               <ButtonSpinner />

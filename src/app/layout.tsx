@@ -10,7 +10,7 @@ const dmSansFont = DM_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-dm-sans',
+  variable: '--dm-sans',
 });
 
 // This is a metadata object that contains the title and description of the page:
@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${dmSansFont.className} bg-background`}
+        className={`${dmSansFont.className} ${dmSansFont.variable} bg-background`}
         suppressHydrationWarning
       >
         <Providers>{children}</Providers>

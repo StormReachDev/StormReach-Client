@@ -82,7 +82,7 @@ export default function LoginForm({ setScreen }: FormStateProps) {
           <Button
             className="p-3 rounded-lg bg-primary text-xl font-bold text-core-white w-full capitalize"
             type="submit"
-            disabled={!email.trim() || !password.trim()}
+            disabled={!email.trim() || !password.trim() || isPending}
           >
             {isPending ? (
               <ButtonSpinner />

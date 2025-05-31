@@ -34,4 +34,11 @@ export const imagePaths = {
       alt: 'User Icon',
     },
   },
+
+  modal: {
+    logout: {
+      src: '/images/logout.png',
+      alt: 'Logout Image',
+    },
+  },
 };

@@ -3,10 +3,9 @@
 // Imports:
 import Sidebar from '@/components/Custom/Sidebar';
 import Wrapper from '@/components/Generics/Wrapper';
+import LogoutModal from '@/components/UI/Modals/Logout';
 import SplitScreen from '@/components/UI/SplitScreen';
-import { useLogout } from '@/hooks/auth';
 import { useSidebarStore } from '@/stores/useSidebarStore';
-import { useEffect } from 'react';
 import AuthGate from '../AuthGate';
 import AppointmentsLogModule from './Modules/AppointmentsLog';
 import CAndTModule from './Modules/CreditsAndTransactions';
@@ -27,15 +26,7 @@ const componentMap: Record<string, React.ReactNode> = {
 };
 
 export default function DashboardShell() {
-  const { activeItem, setActiveItem } = useSidebarStore();
-  const { mutate: logout } = useLogout();
-
-  useEffect(() => {
-    if (activeItem === 'Logout') {
-      logout();
-      setActiveItem('Dashboard');
-    }
-  }, [activeItem]);
+  const { activeItem } = useSidebarStore();
 
   return (
     <AuthGate>
@@ -46,6 +37,7 @@ export default function DashboardShell() {
           rightClassName="border border-blue-500 w-[1440px] bg-background py-10 px-[35px] overflow-y-auto"
           leftClassName="w-[330px] bg-core-black py-8 px-5 shrink-0"
         />
+        <LogoutModal />
       </Wrapper>
     </AuthGate>
   );
