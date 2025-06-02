@@ -11,18 +11,15 @@ import {
   DialogHeader,
   Typography,
 } from '@material-tailwind/react';
-import ButtonSpinner from '../../ButtonSpinner';
 import BaseImage from '../../Image';
 
 export default function LogoutModal() {
   const { modal, closeModal } = useModalStore();
-  const { mutate: logout, isPending } = useLogout();
-
-  if (modal !== 'Logout') return null;
+  const logout = useLogout();
 
   function logoutHandler() {
-    logout();
     closeModal();
+    logout();
   }
 
   return (
@@ -65,13 +62,8 @@ export default function LogoutModal() {
         <Button
           className="flex-1 py-3 px-5 text-core-white bg-primary capitalize text-xl font-semibold rounded-xl outline-none"
           onClick={logoutHandler}
-          disabled={isPending}
         >
-          {isPending ? (
-            <ButtonSpinner />
-          ) : (
-            stormyContent.modal.logout.buttons.confirm.text
-          )}
+          {stormyContent.modal.logout.buttons.confirm.text}
         </Button>
       </DialogFooter>
     </Dialog>

@@ -1,4 +1,5 @@
 // Imports:
+import { config } from '@/config/EnvironmentVariables';
 import { ABSOLUTE_ROUTES } from '@/constants/Paths/Routes';
 import queryClient from '@/lib/queryClient';
 import AuthService from '@/services/auth/';
@@ -10,6 +11,7 @@ import {
   ResetPasswordRequest,
 } from '@/types/Api/Auth';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 
@@ -19,7 +21,11 @@ function useLogin() {
 
   return useMutation<LoginResponse, Error, LoginRequest>({
     mutationFn: AuthService.login,
-    onSuccess: () => {
+    onSuccess: (data) => {
+      Cookies.set(config.COOKIE_NAME, data.token, {
+        expires: Number(config.COOKIE_EXPIRE),
+        sameSite: 'Lax',
+      });
       queryClient.invalidateQueries({ queryKey: ['user'] });
       router.push(ABSOLUTE_ROUTES.DASHBOARD);
       toast.success('Welcome back! You are now logged in.');
@@ -43,6 +49,7 @@ function useMe() {
   return useQuery<GenericResponse, Error>({
     queryKey: ['user'],
     queryFn: AuthService.me,
+    retry: 1,
     staleTime: 5 * 60 * 1000,
   });
 }
@@ -103,25 +110,12 @@ function useResetPassword() {
 function useLogout() {
   const router = useRouter();
 
-  return useMutation<GenericResponse, Error>({
-    mutationFn: AuthService.logout,
-    onSuccess: () => {
-      queryClient.removeQueries({ queryKey: ['user'] });
-      router.push(ABSOLUTE_ROUTES.ROOT);
-      toast.success('You’ve successfully signed out.');
-    },
-
-    onError: (error: {
-      response?: {
-        data: {
-          message: string;
-        };
-      };
-      message?: string;
-    }) => {
-      toast.error(error?.response?.data?.message);
-    },
-  });
+  return () => {
+    Cookies.remove(config.COOKIE_NAME);
+    queryClient.clear();
+    router.push(ABSOLUTE_ROUTES.ROOT);
+    toast.success('You’ve successfully signed out.');
+  };
 }
 
 export { useForgotPassword, useLogin, useLogout, useMe, useResetPassword };

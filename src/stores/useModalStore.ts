@@ -11,6 +11,6 @@ type ModalStore = {
 
 export const useModalStore = create<ModalStore>((set) => ({
   modal: null,
-  openModal: (type) => set({ modal: type }),
+  openModal: (_type) => set({ modal: _type }),
   closeModal: () => set({ modal: null }),
 }));

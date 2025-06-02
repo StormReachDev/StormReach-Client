@@ -18,11 +18,6 @@ const AuthService = {
     return response.data;
   },
 
-  logout: async (): Promise<GenericResponse> => {
-    const response = await axiosInstance.get(API_ABSOLUTE_ROUTES.LOGOUT);
-    return response.data;
-  },
-
   forgotPassword: async (email: string): Promise<GenericResponse> => {
     const response = await axiosInstance.post(
       API_ABSOLUTE_ROUTES.FORGOT_PASSWORD,
