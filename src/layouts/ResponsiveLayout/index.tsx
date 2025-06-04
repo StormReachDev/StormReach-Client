@@ -1,7 +1,6 @@
 'use client';
 
 // Imports:
-import { useCountdownStore } from '@/stores/useCountdownStore';
 import { useDeviceStore } from '@/stores/useDeviceStore';
 import { ResponsiveLayoutProps } from '@/types/Generics/Wrapper';
 import { useEffect } from 'react';
@@ -11,7 +10,6 @@ export default function ResponsiveLayout({
   mobileComponent,
 }: ResponsiveLayoutProps) {
   const { isMobile, setIsMobile } = useDeviceStore();
-  const { startCountdown, stopCountdown } = useCountdownStore();
 
   useEffect(() => {
     function handleResize() {
@@ -19,14 +17,13 @@ export default function ResponsiveLayout({
     }
 
     handleResize();
-    startCountdown();
+
     window.addEventListener('resize', handleResize);
 
     return function () {
       window.removeEventListener('resize', handleResize);
-      stopCountdown();
     };
-  }, [setIsMobile, startCountdown, stopCountdown]);
+  }, [setIsMobile]);
 
   if (isMobile) {
     return <>{mobileComponent}</>;

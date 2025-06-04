@@ -1,17 +1,17 @@
 export const imagePaths = {
   logo: {
-    src: '/images/logo.png',
+    src: 'https://res.cloudinary.com/doozfybsm/image/upload/v1748951760/logo_dkd13k.png',
     alt: 'StormReach Logo',
   },
 
   carousel: {
     first: {
-      src: '/images/carouselOne.png',
+      src: 'https://res.cloudinary.com/doozfybsm/image/upload/v1748951763/carouselOne_crxlsy.png',
       alt: 'First Carousel Image',
     },
 
     second: {
-      src: '/images/carouselTwo.png',
+      src: 'https://res.cloudinary.com/doozfybsm/image/upload/v1748951766/carouselTwo_bpwoio.png',
       alt: 'Second Carousel Image',
     },
 
@@ -23,22 +23,22 @@ export const imagePaths = {
 
   mobile: {
     comingSoon: {
-      src: '/images/mobileDevNotice.png',
+      src: 'https://res.cloudinary.com/doozfybsm/image/upload/v1748951763/mobileDevNotice_wncsno.png',
       alt: 'Mobile Development Notice',
-    },
-  },
-
-  sidebar: {
-    userIcon: {
-      src: '/images/monogram.png',
-      alt: 'User Icon',
     },
   },
 
   modal: {
     logout: {
-      src: '/images/logout.png',
+      src: 'https://res.cloudinary.com/doozfybsm/image/upload/v1748951763/logout_zf0qgw.png',
       alt: 'Logout Image',
+    },
+  },
+
+  dashboard: {
+    flag: {
+      src: 'https://flagcdn.com/48x36',
+      alt: 'Country Flag',
     },
   },
 };

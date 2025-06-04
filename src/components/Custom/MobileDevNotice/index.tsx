@@ -5,12 +5,9 @@ import Wrapper from '@/components/Generics/Wrapper';
 import BaseImage from '@/components/UI/Image';
 import stormyContent from '@/constants/Content';
 import { imagePaths } from '@/constants/Paths/Images';
-import { useCountdownStore } from '@/stores/useCountdownStore';
 import { Typography } from '@material-tailwind/react';
 
 export default function MobileComingSoon() {
-  const { timeLeft } = useCountdownStore();
-
   return (
     <Wrapper className="h-[calc(100vh-92px)] place-content-center space-y-8">
       <BaseImage
@@ -34,24 +31,6 @@ export default function MobileComingSoon() {
         >
           {stormyContent.mobile.comingSoon.body}
         </Typography>
-      </div>
-
-      <div className="overflow-hidden max-w-full w-[292px] py-5 px-3 rounded-lg bg-primary mx-auto text-core-white text-lg font-semibold text-center">
-        {timeLeft.days +
-          ' ' +
-          'Days:' +
-          ' ' +
-          timeLeft.hours +
-          ' ' +
-          'Hr:' +
-          ' ' +
-          timeLeft.minutes +
-          ' ' +
-          'Min:' +
-          ' ' +
-          timeLeft.seconds +
-          ' ' +
-          'Sec'}
       </div>
     </Wrapper>
   );

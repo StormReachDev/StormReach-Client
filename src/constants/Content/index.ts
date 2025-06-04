@@ -108,6 +108,109 @@ const stormyContent = {
       },
     },
   },
+
+  admin: {
+    dashboard: {
+      notifications: {
+        heading: 'Notifications',
+      },
+
+      customers: {
+        heading: 'Customers Summary',
+        cards: [
+          {
+            title: 'Active Customers',
+            value: '150',
+            percentage: '32%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/briefcase_enhofg.png',
+            imageAlt: 'Briefcase',
+          },
+
+          {
+            title: 'New Customers This Week',
+            value: '40',
+            percentage: '20%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/bulb_gnshzj.png',
+            imageAlt: 'Lightbulb',
+          },
+
+          {
+            title: 'Low Credit Customers',
+            value: '5',
+            percentage: '10%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/timer_gohbqz.png',
+            imageAlt: 'Timer',
+          },
+
+          {
+            title: 'Paused Accounts',
+            value: '15',
+            percentage: '10%',
+            action: 'one',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/target_ukk84k.png',
+            imageAlt: 'Target',
+          },
+        ],
+      },
+
+      teams: {
+        heading: 'Teams Summary',
+        cards: [
+          {
+            title: 'Active Telemarketers',
+            value: '25',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749041953/telemarketer_eux20j.png',
+            imageAlt: 'Telemarketer',
+          },
+
+          {
+            title: 'Active Sales Agents',
+            value: '12',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749041953/agent_sgfycm.png',
+            imageAlt: 'Sales Agent',
+          },
+
+          {
+            title: 'Active Managers',
+            value: '6',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749041954/manager_jfofkr.png',
+            imageAlt: 'Manager',
+          },
+
+          {
+            title: 'Active Admins',
+            value: '1',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749041953/admin_kbftn6.png',
+            imageAlt: 'Admin',
+          },
+        ],
+      },
+
+      disputesAndAppointments: {
+        heading: 'Disputes & Appointments',
+        disputeMetrics: {
+          heading: 'Disputes',
+          subHeading: 'Handled',
+        },
+
+        appointmentMetrics: {
+          heading: 'Appointments',
+          subHeading: 'Fulfilled',
+        },
+      },
+    },
+  },
 };
 
 export default stormyContent;

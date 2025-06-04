@@ -5,7 +5,7 @@ type ModalType = 'Logout' | 'Customer' | null;
 
 type ModalStore = {
   modal: ModalType;
-  openModal: (type: ModalType) => void;
+  openModal: (_type: ModalType) => void;
   closeModal: () => void;
 };
 
