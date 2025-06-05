@@ -36,6 +36,11 @@ export default function AppointmentsFulfilled() {
 
   const maxScaleValue = Math.ceil(maxDataValue / 20) * 20;
   const finalMaxValue = Math.max(20, maxScaleValue);
+  const percentageCompleted = Math.round(
+    (currentData.completed /
+      (currentData.cancelled + currentData.remaining + currentData.completed)) *
+      100
+  );
 
   const chartData = {
     labels: [
@@ -74,7 +79,7 @@ export default function AppointmentsFulfilled() {
           size: 12,
           align: 'center',
         },
-        formatter: (value: number) => `${value}%`,
+        formatter: (value: number) => `${value}`,
       },
 
       tooltip: {
@@ -154,7 +159,7 @@ export default function AppointmentsFulfilled() {
           className="text-[32px] font-medium text-action-two"
           variant="lead"
         >
-          {currentData.completed}%
+          {percentageCompleted}%
         </Typography>
         <Typography
           className="text-neutral-800 text-base font-medium"

@@ -15,6 +15,11 @@ export default function DisputesAnalytics() {
   const [selectedPeriod, setSelectedPeriod] = useState('This Month');
   const chartRef = useRef<ChartJS<'doughnut'>>(null);
   const currentData = monthlyDisputeData[selectedPeriod];
+  const percentageCompleted = Math.round(
+    (currentData.approved /
+      (currentData.approved + currentData.handled + currentData.pending)) *
+      100
+  );
 
   const chartData = {
     labels: ['Handled Disputes', 'Approved Disputes', 'Pending Disputes'],
@@ -48,7 +53,7 @@ export default function DisputesAnalytics() {
           size: 12,
           align: 'center',
         },
-        formatter: (value: number) => `${value}%`,
+        formatter: (value: number) => `${value}`,
       },
     },
   };
@@ -89,7 +94,7 @@ export default function DisputesAnalytics() {
           className="text-[32px] font-medium text-action-two"
           variant="lead"
         >
-          {currentData.handled}%
+          {percentageCompleted}%
         </Typography>
         <Typography
           className="text-neutral-800 text-base font-medium"

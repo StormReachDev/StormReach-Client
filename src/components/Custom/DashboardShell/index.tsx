@@ -7,6 +7,7 @@ import SplitScreen from '@/components/UI/SplitScreen';
 import { useSidebarStore } from '@/stores/useSidebarStore';
 import dynamic from 'next/dynamic';
 import AuthGate from '../AuthGate';
+import NotificationsModule from './Modules/Dashboard/Features/NotificationsModule';
 
 // Dynamic imports for modules to reduce initial load time:
 const Sidebar = dynamic(() => import('@/components/Custom/Sidebar'));
@@ -28,6 +29,7 @@ const componentMap: Record<string, React.ReactNode> = {
   'Appointments Log': <AppointmentsLogModule />,
   'Team Management': <TeamManagementModule />,
   Settings: <SettingsModule />,
+  Notifications: <NotificationsModule />,
 };
 
 export default function DashboardShell() {

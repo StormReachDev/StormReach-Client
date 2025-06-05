@@ -1,6 +1,6 @@
 // Imports:
 import IconBadge from '@/components/UI/IconBadge';
-import { MetricsProps } from '@/types/Custom/Modules/Dashboard';
+import { MetricsProps } from '@/types/Custom/Cards';
 import {
   Card,
   CardBody,

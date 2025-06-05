@@ -13,5 +13,7 @@ export type ScreenState = {
 
 export type SidebarState = {
   activeItem: string;
+  showNotifications: boolean;
   setActiveItem: (_label: string) => void;
+  setShowNotifications: (_value: boolean) => void;
 };
