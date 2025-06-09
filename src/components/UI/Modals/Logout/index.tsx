@@ -17,16 +17,20 @@ export default function LogoutModal() {
   const { modal, closeModal } = useModalStore();
   const logout = useLogout();
 
+  if (modal !== 'Logout') return null;
+
   function logoutHandler() {
     closeModal();
     logout();
+    return;
   }
 
   return (
     <Dialog
       open={!!modal}
       handler={closeModal}
-      className="max-w-[880px] w-full outline-none rounded-[20px] border border-stroke bg-input p-10 space-y-10"
+      className="w-full outline-none rounded-[20px] border border-stroke bg-input p-10 space-y-10"
+      size="md"
     >
       <DialogHeader className="overflow-hidden p-0">
         <BaseImage

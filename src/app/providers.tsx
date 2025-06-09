@@ -22,6 +22,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         draggable
         pauseOnHover
         theme="dark"
+        closeButton={false}
       />
     </QueryClientProvider>
   );
