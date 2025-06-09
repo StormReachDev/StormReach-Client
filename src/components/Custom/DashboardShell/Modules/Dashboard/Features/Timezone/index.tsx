@@ -7,7 +7,6 @@ import { format, toZonedTime } from 'date-fns-tz';
 import { useEffect, useMemo, useState } from 'react';
 
 export default function TimeZoneDisplay({ timezone }: { timezone: string }) {
-  console.log('Timezone render');
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {

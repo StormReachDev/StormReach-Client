@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@material-tailwind/react';
 
-export default function Metrics({
+export default function MetricsCard({
   title,
   value,
   percentage,
