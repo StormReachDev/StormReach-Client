@@ -19,11 +19,13 @@ export default function LoginForm({ setScreen }: FormStateProps) {
 
   function toggleComponent() {
     setScreen('forgotPassword');
+    return;
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     login({ email, password });
+    return;
   }
 
   return (
@@ -47,14 +49,14 @@ export default function LoginForm({ setScreen }: FormStateProps) {
           variant="lead"
           className="font-medium text-2xl text-neutral-600"
         >
-          {stormyContent.login.subheading}
+          {stormyContent.login.subHeading}
         </Typography>
       </div>
 
       <form className="space-y-8 overflow-hidden" onSubmit={handleSubmit}>
         <div className="overflow-hidden space-y-7">
           <InputField
-            id={'email'}
+            id={stormyContent.login.form.email.id}
             label={stormyContent.login.form.email.label}
             type="email"
             value={email}
@@ -66,7 +68,7 @@ export default function LoginForm({ setScreen }: FormStateProps) {
           />
 
           <InputField
-            id={'password'}
+            id={stormyContent.login.form.password.id}
             label={stormyContent.login.form.password.label}
             type="password"
             value={password}

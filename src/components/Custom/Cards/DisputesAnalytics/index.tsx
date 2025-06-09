@@ -11,7 +11,7 @@ import { Doughnut } from 'react-chartjs-2';
 // Chart.js registration:
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
-export default function DisputesAnalytics() {
+export default function DisputesAnalyticsCard() {
   const [selectedPeriod, setSelectedPeriod] = useState('This Month');
   const chartRef = useRef<ChartJS<'doughnut'>>(null);
   const currentData = monthlyDisputeData[selectedPeriod];

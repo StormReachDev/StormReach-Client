@@ -4,14 +4,16 @@ import { imagePaths } from '../Paths/Images';
 const stormyContent = {
   login: {
     heading: 'Login',
-    subheading: 'Secure access for internal team members only.',
+    subHeading: 'Secure access for internal team members only.',
     form: {
       email: {
         label: 'Enter Your Email Address',
+        id: 'email',
       },
 
       password: {
         label: 'Enter Your Password',
+        id: 'password',
       },
 
       submitButton: {
@@ -27,11 +29,12 @@ const stormyContent = {
 
   forgotPassword: {
     heading: 'Forgot Your Password?',
-    subheading:
+    subHeading:
       'No worries — enter your email below and we’ll send you a secure link to reset your password.',
     form: {
       email: {
         label: 'Enter Your Email Address',
+        id: 'forgotPasswordEmail',
       },
 
       submitButton: {
@@ -47,14 +50,16 @@ const stormyContent = {
 
   resetPassword: {
     heading: 'Create a New Password',
-    subheading: 'Enter a strong password you haven’t used before.',
+    subHeading: 'Enter a strong password you haven’t used before.',
     form: {
       newPassword: {
         label: 'Enter Your New password',
+        id: 'resetPasswordNew',
       },
 
       confirmPassword: {
         label: 'Confirm Your New password',
+        id: 'resetPasswordConfirm',
       },
 
       submitButton: {
@@ -104,6 +109,30 @@ const stormyContent = {
 
         confirm: {
           text: 'Confirm',
+        },
+      },
+    },
+
+    changePassword: {
+      heading: 'Change Password',
+      form: {
+        currentPassword: {
+          label: 'Enter Your Current Password',
+          id: 'currentPassword',
+        },
+
+        newPassword: {
+          label: 'Enter Your New Password',
+          id: 'newPassword',
+        },
+
+        confirmPassword: {
+          label: 'Confirm Your New Password',
+          id: 'confirmPassword',
+        },
+
+        submitButton: {
+          text: 'Update Password',
         },
       },
     },
@@ -207,6 +236,42 @@ const stormyContent = {
         appointmentMetrics: {
           heading: 'Appointments',
           subHeading: 'Fulfilled',
+        },
+      },
+    },
+
+    settings: {
+      headingOne: 'Account Settings',
+      headingTwo: 'Platform Preferences',
+      subHeading: 'Change Password',
+      form: {
+        name: {
+          label: 'Name',
+          id: 'settingsName',
+        },
+
+        email: {
+          label: 'Email',
+          id: 'settingsEmail',
+        },
+
+        phone: {
+          label: 'Phone Number',
+          id: 'settingsPhone',
+        },
+
+        timeZone: {
+          label: 'Timezone',
+          id: 'settingsTimezone',
+        },
+
+        disputeFeeAmount: {
+          label: 'Dispute Fee Amount',
+          id: 'settingsDisputeFeeAmount',
+        },
+
+        submitButton: {
+          text: 'Save',
         },
       },
     },

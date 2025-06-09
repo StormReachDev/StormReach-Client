@@ -5,7 +5,7 @@ import { NotificationProps } from '@/types/Custom/Cards';
 import { Typography } from '@material-tailwind/react';
 import { Bell, Calendar } from 'lucide-react';
 
-export default function Notification({
+export default function NotificationsCard({
   title = 'New Appointment Scheduled',
   description = 'Homeowner confirmed for Ayaan on 12 May, 2025 at 10:31 PM.',
   date = '20 May, 2025',
