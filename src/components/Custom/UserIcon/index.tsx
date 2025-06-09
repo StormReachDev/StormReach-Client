@@ -4,6 +4,7 @@
 import Wrapper from '@/components/Generics/Wrapper';
 import IconBadge from '@/components/UI/IconBadge';
 import { useMe } from '@/hooks/auth';
+import { truncateByWord } from '@/lib/utils';
 import { Typography } from '@material-tailwind/react';
 import { UserRound } from 'lucide-react';
 
@@ -23,7 +24,7 @@ export default function UserIcon() {
           variant="lead"
           className="text-neutral-800 font-semibold text-xl"
         >
-          {data?.user?.name}
+          {truncateByWord(String(data?.user?.name), 20)}
         </Typography>
 
         <Typography

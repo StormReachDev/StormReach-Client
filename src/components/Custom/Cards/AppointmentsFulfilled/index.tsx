@@ -25,7 +25,7 @@ ChartJS.register(
   Legend
 );
 
-export default function AppointmentsFulfilled() {
+export default function AppointmentsFulfilledCard() {
   const [selectedPeriod, setSelectedPeriod] = useState('This Month');
   const currentData = monthlyAppointmentData[selectedPeriod];
   const maxDataValue = Math.max(
