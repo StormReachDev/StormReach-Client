@@ -7,7 +7,7 @@ import {
   LoginRequest,
   ResetPasswordRequest,
   User,
-} from '../../types/Api/Auth';
+} from '@/types/Api/Auth';
 
 const AuthService = {
   login: async (credentials: LoginRequest): Promise<GenericResponse> => {

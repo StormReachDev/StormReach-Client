@@ -20,6 +20,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: 🧹 Clear node_modules cache
+        run: rm -rf node_modules
+
       - name: 📦 Install dependencies
         run: npm install
 
