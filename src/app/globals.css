@@ -47,4 +47,22 @@
   body {
     @apply overflow-x-hidden;
   }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    @apply hidden;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
 }

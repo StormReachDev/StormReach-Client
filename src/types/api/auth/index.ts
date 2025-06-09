@@ -1,4 +1,4 @@
-// Response types for authentication API:
+// Request types for authentication API:
 export type LoginRequest = {
   email: string;
   password: string;
@@ -17,18 +17,21 @@ export interface User {
   email: string;
   phone: string;
   timeZone: string;
+  disputeFeeAmount: number;
   role: string;
+  status: string;
 }
 
-// Response types for authentication API:
-export type LoginResponse = {
-  success: boolean;
-  token: string;
+export type ChangePasswordRequest = {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
 };
 
 export type GenericResponse = {
   success: boolean;
   message?: string;
+  token?: string;
   user?: User;
 };
 
@@ -38,4 +41,14 @@ export type ErrorResponse = {
       message: string;
     };
   };
+};
+
+// Error type for API responses:
+export type APIError = {
+  response?: {
+    data: {
+      message: string;
+    };
+  };
+  message?: string;
 };

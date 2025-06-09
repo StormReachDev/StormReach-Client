@@ -2,14 +2,15 @@
 import { API_ABSOLUTE_ROUTES } from '@/constants/Paths/Routes';
 import axiosInstance from '@/lib/axios';
 import {
+  ChangePasswordRequest,
   GenericResponse,
   LoginRequest,
-  LoginResponse,
   ResetPasswordRequest,
+  User,
 } from '@/types/Api/Auth';
 
 const AuthService = {
-  login: async (credentials: LoginRequest): Promise<LoginResponse> => {
+  login: async (credentials: LoginRequest): Promise<GenericResponse> => {
     const response = await axiosInstance.post(
       API_ABSOLUTE_ROUTES.LOGIN,
       credentials
@@ -41,8 +42,25 @@ const AuthService = {
     return response.data;
   },
 
-  me: async (): Promise<LoginResponse> => {
+  me: async (): Promise<GenericResponse> => {
     const response = await axiosInstance.get(API_ABSOLUTE_ROUTES.ME);
+
+    return response.data;
+  },
+
+  updateProfile: async (data: Partial<User>): Promise<GenericResponse> => {
+    const response = await axiosInstance.put(API_ABSOLUTE_ROUTES.ME, data);
+
+    return response.data;
+  },
+
+  changePassword: async (
+    data: ChangePasswordRequest
+  ): Promise<GenericResponse> => {
+    const response = await axiosInstance.put(
+      API_ABSOLUTE_ROUTES.CHANGE_PASSWORD,
+      data
+    );
 
     return response.data;
   },

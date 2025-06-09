@@ -5,10 +5,12 @@ import queryClient from '@/lib/queryClient';
 import AuthService from '@/services/auth/';
 import { useScreenStore } from '@/stores/useScreenStore';
 import {
+  APIError,
+  ChangePasswordRequest,
   GenericResponse,
   LoginRequest,
-  LoginResponse,
   ResetPasswordRequest,
+  User,
 } from '@/types/Api/Auth';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
@@ -19,26 +21,19 @@ import { toast } from 'react-toastify';
 function useLogin() {
   const router = useRouter();
 
-  return useMutation<LoginResponse, Error, LoginRequest>({
+  return useMutation<GenericResponse, Error, LoginRequest>({
     mutationFn: AuthService.login,
     onSuccess: (data) => {
-      Cookies.set(config.COOKIE_NAME, data.token, {
+      Cookies.set(config.COOKIE_NAME, String(data?.token), {
         expires: Number(config.COOKIE_EXPIRE),
-        sameSite: 'Lax',
+        sameSite: 'Lax', // Ensures the cookie is sent with same-site requests, not with cross-site requests, which helps prevent CSRF attacks.
       });
       queryClient.invalidateQueries({ queryKey: ['user'] });
       router.push(ABSOLUTE_ROUTES.DASHBOARD);
       toast.success('Welcome back! You are now logged in.');
     },
 
-    onError: (error: {
-      response?: {
-        data: {
-          message: string;
-        };
-      };
-      message?: string;
-    }) => {
+    onError: (error: APIError) => {
       toast.error(error?.response?.data?.message);
     },
   });
@@ -65,14 +60,7 @@ function useForgotPassword() {
       );
     },
 
-    onError: (error: {
-      response?: {
-        data: {
-          message: string;
-        };
-      };
-      message?: string;
-    }) => {
+    onError: (error: APIError) => {
       toast.error(error?.response?.data?.message);
     },
   });
@@ -93,14 +81,7 @@ function useResetPassword() {
       );
     },
 
-    onError: (error: {
-      response?: {
-        data: {
-          message: string;
-        };
-      };
-      message?: string;
-    }) => {
+    onError: (error: APIError) => {
       toast.error(error?.response?.data?.message);
     },
   });
@@ -118,4 +99,48 @@ function useLogout() {
   };
 }
 
-export { useForgotPassword, useLogin, useLogout, useMe, useResetPassword };
+// Custom Hook for Updating User Profile:
+function useUpdateProfile() {
+  return useMutation<GenericResponse, Error, Partial<User>>({
+    mutationFn: AuthService.updateProfile,
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['user'] });
+      toast.success('Success! Your profile is now up to date.');
+    },
+
+    onError: (error: APIError) => {
+      toast.error(error?.response?.data?.message);
+    },
+  });
+}
+
+// Custom Hook for Changing Password:
+function useChangePassword() {
+  return useMutation<GenericResponse, Error, ChangePasswordRequest>({
+    mutationFn: AuthService.changePassword,
+
+    onSuccess: (data) => {
+      Cookies.set(config.COOKIE_NAME, String(data?.token), {
+        expires: Number(config.COOKIE_EXPIRE),
+        sameSite: 'Lax',
+      });
+      queryClient.invalidateQueries({ queryKey: ['user'] });
+      toast.success('Success! Your password has been updated.');
+    },
+
+    onError: (error: APIError) => {
+      toast.error(error?.response?.data?.message);
+    },
+  });
+}
+
+export {
+  useChangePassword,
+  useForgotPassword,
+  useLogin,
+  useLogout,
+  useMe,
+  useResetPassword,
+  useUpdateProfile,
+};

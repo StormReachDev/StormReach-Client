@@ -18,6 +18,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     resetPassword({ token, password, confirmPassword });
+    return;
   }
 
   return (
@@ -41,14 +42,14 @@ export default function ResetPasswordForm({ token }: { token: string }) {
           variant="lead"
           className="font-medium text-2xl text-neutral-600"
         >
-          {stormyContent.resetPassword.subheading}
+          {stormyContent.resetPassword.subHeading}
         </Typography>
       </div>
 
       <form className="space-y-8 overflow-hidden" onSubmit={handleSubmit}>
         <div className="overflow-hidden space-y-7">
           <InputField
-            id="password"
+            id={stormyContent.resetPassword.form.newPassword.id}
             label={stormyContent.resetPassword.form.newPassword.label}
             type="password"
             value={password}
@@ -60,7 +61,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
           />
 
           <InputField
-            id="confirmPassword"
+            id={stormyContent.resetPassword.form.confirmPassword.id}
             label={stormyContent.resetPassword.form.confirmPassword.label}
             type="password"
             value={confirmPassword}
