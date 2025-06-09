@@ -2,8 +2,12 @@
 import { config } from '@/config/EnvironmentVariables';
 import { ABSOLUTE_ROUTES } from '@/constants/Paths/Routes';
 import queryClient from '@/lib/queryClient';
-import AuthService from '@/services/Auth';
 import { useScreenStore } from '@/stores/useScreenStore';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
+import AuthService from '../services/Auth';
 import {
   APIError,
   ChangePasswordRequest,
@@ -11,11 +15,7 @@ import {
   LoginRequest,
   ResetPasswordRequest,
   User,
-} from '@/types/Api/Auth';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import Cookies from 'js-cookie';
-import { useRouter } from 'next/navigation';
-import { toast } from 'react-toastify';
+} from '../types/Api/Auth';
 
 // Custom Hooks for Authentication:
 function useLogin() {
