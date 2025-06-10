@@ -1,5 +1,5 @@
 // Imports:
-import Spinning from './components/Custom/Spinner';
+import Spinning from './components/UI/Spinner';
 
 export default function Loading() {
   return <Spinning />;
