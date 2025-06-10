@@ -51,6 +51,7 @@ export default function ScreenManager() {
       className="gap-[70px]"
       left={<CarouselCustomNavigation />}
       right={renderForm()}
+      rightClassName="place-content-center"
     />
   );
 }

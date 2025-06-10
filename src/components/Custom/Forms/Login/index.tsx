@@ -29,7 +29,7 @@ export default function LoginForm({ setScreen }: FormStateProps) {
   }
 
   return (
-    <Wrapper className="size-full place-content-center space-y-8">
+    <Wrapper className="w-full space-y-8">
       <BaseImage
         src={imagePaths.logo.src}
         alt={imagePaths.logo.alt}

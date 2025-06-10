@@ -22,7 +22,7 @@ export default function MetricsCard({
   iconWrapperClassName = '',
 }: MetricsProps) {
   return (
-    <Card className="bg-input border border-stroke rounded-xl p-5 max-w-full w-[245px] overflow-hidden space-y-4 flex-1">
+    <Card className="bg-input border border-stroke rounded-xl p-5 flex-1 basis-[245px] max-w-full overflow-hidden space-y-4">
       <CardHeader className="overflow-hidden bg-transparent m-0 flex items-center gap-x-1 rounded-none shadow-none">
         <IconBadge
           icon={icon}
