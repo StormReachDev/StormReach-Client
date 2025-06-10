@@ -66,3 +66,9 @@
     -moz-appearance: textfield;
   }
 }
+
+@layer utilities {
+  .overflow-unset {
+    overflow: unset;
+  }
+}

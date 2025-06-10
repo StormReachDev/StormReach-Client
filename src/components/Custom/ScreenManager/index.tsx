@@ -48,7 +48,7 @@ export default function ScreenManager() {
 
   return (
     <SplitScreen
-      className="gap-[70px]"
+      className="gap-[70px] overflow-unset"
       left={<CarouselCustomNavigation />}
       right={renderForm()}
       rightClassName="place-content-center"
