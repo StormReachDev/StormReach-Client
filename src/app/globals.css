@@ -8,6 +8,7 @@
   }
 
   :root {
+    --dm-sans: 'DM Sans';
     --background: #121212;
     --input-field: #1e1e1e;
     --stroke: #333;
@@ -15,6 +16,10 @@
     --core-black: #000;
     --core-white: #fff;
     --primary-red: #ad1d1c;
+    --action-one: #ff2215;
+    --action-two: #34c759;
+    --action-three: #007aff;
+    --action-four: #ff3b30;
 
     --red-50: #fef2f2;
     --red-100: #fee2e2;
@@ -41,5 +46,23 @@
 
   body {
     @apply overflow-x-hidden;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    @apply hidden;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    -moz-appearance: textfield;
   }
 }

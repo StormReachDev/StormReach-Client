@@ -1,6 +1,6 @@
 // Imports:
 import { cn } from '@/lib/utils';
-import WrapperProps from '@/types/Wrapper';
+import WrapperProps from '@/types/Generics/Wrapper';
 
 export default function Wrapper({ className, children }: WrapperProps) {
   return (
