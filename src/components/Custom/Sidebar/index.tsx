@@ -11,7 +11,7 @@ import UserIcon from '../UserIcon';
 
 export default function Sidebar() {
   return (
-    <Wrapper className="space-y-10 h-full">
+    <Wrapper className="space-y-10 w-full">
       <UserIcon />
       <SidebarNav />
     </Wrapper>

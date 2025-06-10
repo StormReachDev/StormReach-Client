@@ -14,7 +14,7 @@ export default function Teams() {
         {stormyContent.admin.dashboard.teams.heading}
       </Typography>
 
-      <div className="flex flex-wrap items-center gap-x-5 overflow-hidden">
+      <div className="flex flex-wrap items-center gap-5 overflow-hidden">
         {stormyContent.admin.dashboard.teams.cards.map((card, index) => (
           <Metrics
             key={index}
