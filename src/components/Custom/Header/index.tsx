@@ -1,5 +1,5 @@
 // Imports:
-import Wrapper from '@/components/Generics/Wrapper';
+import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
 import { useMe } from '@/hooks/auth';
 import { useSidebarStore } from '@/stores/useSidebarStore';

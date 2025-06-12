@@ -1,8 +1,8 @@
 'use client';
 
 // Imports:
-import Wrapper from '@/components/Generics/Wrapper';
 import IconBadge from '@/components/UI/IconBadge';
+import Wrapper from '@/components/UI/Wrapper';
 import { useMe } from '@/hooks/auth';
 import { truncateByWord } from '@/lib/utils';
 import { Typography } from '@material-tailwind/react';

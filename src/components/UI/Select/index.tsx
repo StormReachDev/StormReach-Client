@@ -1,10 +1,11 @@
 // Imports:
+import { cn } from '@/lib/utils';
 import { SelectFieldProps } from '@/types/UI/Form';
 import { Listbox, Transition } from '@headlessui/react';
 import { ChevronDown } from 'lucide-react';
 import { Fragment } from 'react';
 
-export default function SelectFieldHeadless({
+export default function SelectField({
   id,
   label,
   value,
@@ -14,15 +15,19 @@ export default function SelectFieldHeadless({
   bgColor = 'bg-input',
   borderColor = 'border-stroke',
   textColor = 'text-neutral-700',
+  showLabel = true,
+  listBoxClassName = '',
 }: SelectFieldProps) {
   return (
-    <div className="w-full max-w-full space-y-5">
-      <label
-        htmlFor={id}
-        className={`text-xl font-semibold capitalize block ${textColor}`}
-      >
-        {label}
-      </label>
+    <div className="w-full max-w-full space-y-5 select-none">
+      {showLabel && (
+        <label
+          htmlFor={id}
+          className={`text-xl font-semibold capitalize block ${textColor}`}
+        >
+          {label}
+        </label>
+      )}
 
       <Listbox value={value} onChange={onChange}>
         <div className="relative">
@@ -31,8 +36,11 @@ export default function SelectFieldHeadless({
           </div>
 
           <Listbox.Button
-            className={`w-full text-left pl-12 pr-12 py-3 ${bgColor} border ${borderColor} rounded-xl ${textColor} text-lg font-medium appearance-none
-            focus:outline-none focus:${borderColor}`}
+            className={cn(
+              `w-full text-left pl-12 pr-12 py-3 ${bgColor} border ${borderColor} rounded-xl ${textColor} text-lg font-medium appearance-none
+            focus:outline-none focus:${borderColor}`,
+              listBoxClassName
+            )}
             id={id}
           >
             {options.find((option) => option.value === value)?.label}

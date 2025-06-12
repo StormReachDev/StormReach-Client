@@ -1,8 +1,8 @@
 'use client';
 
 // Imports:
-import Wrapper from '@/components/Generics/Wrapper';
 import BaseImage from '@/components/UI/Image';
+import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
 import { imagePaths } from '@/constants/Paths/Images';
 import { Typography } from '@material-tailwind/react';

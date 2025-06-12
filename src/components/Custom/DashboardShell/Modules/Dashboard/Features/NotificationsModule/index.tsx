@@ -1,7 +1,7 @@
 // Imports:
 import Notification from '@/components/Custom/Cards/Notifications';
-import Wrapper from '@/components/Generics/Wrapper';
 import BreadCrumbs from '@/components/UI/BreadCrumbs';
+import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
 import { useSidebarStore } from '@/stores/useSidebarStore';
 import { Typography } from '@material-tailwind/react';

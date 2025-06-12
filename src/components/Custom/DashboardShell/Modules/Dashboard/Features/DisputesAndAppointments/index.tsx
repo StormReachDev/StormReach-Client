@@ -1,7 +1,7 @@
 // Imports:
 import AppointmentsFulfilled from '@/components/Custom/Cards/AppointmentsFulfilled';
 import DisputesAnalytics from '@/components/Custom/Cards/DisputesAnalytics';
-import Wrapper from '@/components/Generics/Wrapper';
+import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
 import { Typography } from '@material-tailwind/react';
 

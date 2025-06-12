@@ -1,8 +1,8 @@
 // Imports:
-import Wrapper from '@/components/Generics/Wrapper';
 import ButtonSpinner from '@/components/UI/ButtonSpinner';
 import InputField from '@/components/UI/InputField';
 import SelectField from '@/components/UI/Select';
+import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
 import { useMe, useUpdateProfile } from '@/hooks/auth';
 import { useModalStore } from '@/stores/useModalStore';

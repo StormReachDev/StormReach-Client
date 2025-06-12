@@ -1,6 +1,6 @@
 // Imports:
 import Metrics from '@/components/Custom/Cards/Metrics';
-import Wrapper from '@/components/Generics/Wrapper';
+import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
 import { Typography } from '@material-tailwind/react';
 

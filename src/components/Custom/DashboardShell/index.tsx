@@ -1,9 +1,9 @@
 'use client';
 
 // Imports:
-import Wrapper from '@/components/Generics/Wrapper';
 import LogoutModal from '@/components/UI/Modals/Logout';
 import SplitScreen from '@/components/UI/SplitScreen';
+import Wrapper from '@/components/UI/Wrapper';
 import { useSidebarStore } from '@/stores/useSidebarStore';
 import dynamic from 'next/dynamic';
 import AuthGate from '../AuthGate';

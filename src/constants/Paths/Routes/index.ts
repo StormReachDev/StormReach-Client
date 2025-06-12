@@ -24,9 +24,9 @@ export const PROTECTED_ROUTES_SET = new Set(PROTECTED_ROUTES);
 
 // ******** API Routes ********
 export const API_ABSOLUTE_ROUTES = {
-  LOGIN: `${config.PROD_API_URL}/user/session`,
-  ME: `${config.PROD_API_URL}/user/me`,
-  FORGOT_PASSWORD: `${config.PROD_API_URL}/user/forgot-password`,
-  RESET_PASSWORD: `${config.PROD_API_URL}/user/reset-password/:token`,
-  CHANGE_PASSWORD: `${config.PROD_API_URL}/user/change-password`,
+  LOGIN: `${config.STAGING_API_URL}/user/session`,
+  ME: `${config.STAGING_API_URL}/user/me`,
+  FORGOT_PASSWORD: `${config.STAGING_API_URL}/user/forgot-password`,
+  RESET_PASSWORD: `${config.STAGING_API_URL}/user/reset-password/:token`,
+  CHANGE_PASSWORD: `${config.STAGING_API_URL}/user/change-password`,
 };

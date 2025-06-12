@@ -275,6 +275,47 @@ const stormyContent = {
         },
       },
     },
+
+    customers: {
+      summary: {
+        heading: 'Summary Metrics',
+      },
+
+      overview: {
+        heading: 'Overview',
+      },
+    },
+  },
+
+  plans: {
+    strike10: {
+      label: 'Strike 10',
+      value: 'Strike 10',
+      price: 2500,
+      currency: 'USD',
+      appointmentCredits: 10,
+    },
+    surge30: {
+      label: 'Surge 30',
+      value: 'Surge 30',
+      price: 6000,
+      currency: 'USD',
+      appointmentCredits: 30,
+    },
+    blackout60: {
+      label: 'Blackout 60',
+      value: 'Blackout 60',
+      price: 9000,
+      currency: 'USD',
+      appointmentCredits: 60,
+    },
+    payAsYouGo: {
+      label: 'Pay As You Go',
+      value: 'Pay As You Go',
+      price: 250,
+      currency: 'USD',
+      appointmentCredits: 1,
+    },
   },
 };
 

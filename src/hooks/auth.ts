@@ -2,7 +2,7 @@
 import { config } from '@/config/EnvironmentVariables';
 import { ABSOLUTE_ROUTES } from '@/constants/Paths/Routes';
 import queryClient from '@/lib/queryClient';
-import AuthService from '@/services';
+import AuthService from '@/services/Auth';
 import { useScreenStore } from '@/stores/useScreenStore';
 import {
   APIError,

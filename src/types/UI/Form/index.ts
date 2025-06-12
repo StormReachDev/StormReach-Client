@@ -23,7 +23,7 @@ export type FormStateProps = {
 
 export type SelectFieldProps = {
   id: string;
-  label: string;
+  label?: string;
   value: string;
   onChange: (_value: string) => void;
   options: { label: string; value: string }[];
@@ -32,4 +32,6 @@ export type SelectFieldProps = {
   borderColor?: string;
   textColor?: string;
   required?: boolean;
+  showLabel?: boolean;
+  listBoxClassName?: string;
 };
