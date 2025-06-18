@@ -8,7 +8,7 @@ import { Typography } from '@material-tailwind/react';
 import { ArrowLeft } from 'lucide-react';
 
 export default function NotificationsModule() {
-  const { setShowNotifications } = useSidebarStore();
+  const { setShowNotifications, activeItem } = useSidebarStore();
 
   function goBack() {
     setShowNotifications(false);
@@ -50,7 +50,7 @@ export default function NotificationsModule() {
           <BreadCrumbs
             items={[
               {
-                label: 'Dashboard',
+                label: activeItem,
                 onClick: goBack,
               },
               {

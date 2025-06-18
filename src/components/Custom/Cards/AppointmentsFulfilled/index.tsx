@@ -1,5 +1,5 @@
 // Imports:
-import Dropdown from '@/components/UI/DropDown';
+import CompositeDropdown from '@/components/UI/CompositeDropDown';
 import stormyContent from '@/constants/Content';
 import { monthlyAppointmentData } from '@/constants/static';
 import { Card, Typography } from '@material-tailwind/react';
@@ -146,7 +146,7 @@ export default function AppointmentsFulfilledCard() {
           }
         </Typography>
 
-        <Dropdown
+        <CompositeDropdown
           options={monthlyAppointmentData}
           selected={selectedPeriod}
           onChange={setSelectedPeriod}

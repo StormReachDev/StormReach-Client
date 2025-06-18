@@ -136,6 +136,76 @@ const stormyContent = {
         },
       },
     },
+
+    addCustomer: {
+      trigger: 'Customer',
+      heading: 'Add New Customer',
+      form: {
+        name: {
+          label: 'Name',
+          id: 'customerName',
+          placeholder: 'e.g. John Doe',
+        },
+
+        email: {
+          label: 'Email',
+          id: 'customerEmail',
+          placeholder: 'e.g. john@roofco.com',
+        },
+
+        phone: {
+          label: 'Phone Number',
+          id: 'customerPhone',
+          placeholder: 'e.g. +1 234 567 8900',
+        },
+
+        companyName: {
+          label: 'Company Name',
+          id: 'customerCompanyName',
+          placeholder: 'e.g. RoofCo',
+        },
+
+        billingAddress: {
+          label: 'Billing Address',
+          id: 'customerBillingAddress',
+          placeholder: 'e.g. 123 Main St, City, State',
+        },
+
+        zipCode: {
+          label: 'Zip Code',
+          id: 'customerZipCode',
+          placeholder: 'e.g. 44001',
+        },
+
+        planType: {
+          label: 'Plan Type',
+          id: 'customerPlanType',
+          defaultValue: 'strike10',
+        },
+
+        timeZone: {
+          label: 'Timezone',
+          id: 'customerTimezone',
+          defaultValue: 'America/New_York',
+        },
+
+        addAgents: {
+          label: 'Add Agents',
+          id: 'customerAddAgents',
+          defaultValue: 'e.g. Paul, Sarah, Mike',
+          fallbackLabel: 'No agents selected',
+        },
+
+        card: {
+          label: 'Card Details',
+          id: 'customerCardDetails',
+        },
+
+        submitButton: {
+          text: 'Add Customer',
+        },
+      },
+    },
   },
 
   admin: {
@@ -284,37 +354,6 @@ const stormyContent = {
       overview: {
         heading: 'Overview',
       },
-    },
-  },
-
-  plans: {
-    strike10: {
-      label: 'Strike 10',
-      value: 'Strike 10',
-      price: 2500,
-      currency: 'USD',
-      appointmentCredits: 10,
-    },
-    surge30: {
-      label: 'Surge 30',
-      value: 'Surge 30',
-      price: 6000,
-      currency: 'USD',
-      appointmentCredits: 30,
-    },
-    blackout60: {
-      label: 'Blackout 60',
-      value: 'Blackout 60',
-      price: 9000,
-      currency: 'USD',
-      appointmentCredits: 60,
-    },
-    payAsYouGo: {
-      label: 'Pay As You Go',
-      value: 'Pay As You Go',
-      price: 250,
-      currency: 'USD',
-      appointmentCredits: 1,
     },
   },
 };

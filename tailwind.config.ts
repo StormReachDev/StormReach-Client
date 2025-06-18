@@ -29,6 +29,7 @@ const config = withMT({
           two: 'var(--action-two)',
           three: 'var(--action-three)',
           four: 'var(--action-four)',
+          five: 'var(--action-five)',
         },
         red: {
           50: 'var(--red-50)',

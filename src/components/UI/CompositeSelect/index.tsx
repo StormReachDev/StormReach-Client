@@ -2,10 +2,10 @@
 import { cn } from '@/lib/utils';
 import { SelectFieldProps } from '@/types/UI/Form';
 import { Listbox, Transition } from '@headlessui/react';
-import { ChevronDown } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 import { Fragment } from 'react';
 
-export default function SelectField({
+export default function CompositeSelectField({
   id,
   label,
   value,
@@ -17,7 +17,34 @@ export default function SelectField({
   textColor = 'text-neutral-700',
   showLabel = true,
   listBoxClassName = '',
+  isMulti = false,
+  fallbackLabel = '',
 }: SelectFieldProps) {
+  const isSelected = (val: string) =>
+    isMulti && Array.isArray(value) ? value.includes(val) : value === val;
+
+  const handleChange = (newValue: string | string[]) => {
+    if (isMulti) {
+      onChange(Array.isArray(newValue) ? newValue : [newValue]);
+    } else {
+      onChange(newValue as string);
+    }
+  };
+
+  const getDisplayText = () => {
+    if (isMulti && Array.isArray(value)) {
+      const labels = value
+        .map((val) => options.find((o) => o.value === val)?.label)
+        .filter(Boolean);
+
+      if (labels.length === 0) return fallbackLabel;
+      if (labels.length <= 2) return labels.join(', ');
+      return `${labels[0]}, +${labels.length - 1} more`;
+    }
+
+    return options.find((o) => o.value === value)?.label || fallbackLabel;
+  };
+
   return (
     <div className="w-full max-w-full space-y-5 select-none">
       {showLabel && (
@@ -29,7 +56,7 @@ export default function SelectField({
         </label>
       )}
 
-      <Listbox value={value} onChange={onChange}>
+      <Listbox value={value} onChange={handleChange} multiple={isMulti}>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             {icon}
@@ -37,13 +64,13 @@ export default function SelectField({
 
           <Listbox.Button
             className={cn(
-              `w-full text-left pl-12 pr-12 py-3 ${bgColor} border ${borderColor} rounded-xl ${textColor} text-lg font-medium appearance-none
-            focus:outline-none focus:${borderColor}`,
+              `w-full text-left pl-12 pr-12 py-3 ${bgColor} border ${borderColor} rounded-xl ${textColor} text-lg font-medium appearance-none truncate
+              focus:outline-none focus:${borderColor}`,
               listBoxClassName
             )}
             id={id}
           >
-            {options.find((option) => option.value === value)?.label}
+            {getDisplayText()}
           </Listbox.Button>
 
           <div className="pointer-events-none absolute inset-y-0 right-0 pr-3 flex items-center">
@@ -71,7 +98,14 @@ export default function SelectField({
                     }`
                   }
                 >
-                  {option.label}
+                  <>
+                    {option.label}
+                    {isSelected(option.value) && (
+                      <span className="absolute inset-y-0 right-3 flex items-center">
+                        <Check className="w-6 h-6 text-action-two" />
+                      </span>
+                    )}
+                  </>
                 </Listbox.Option>
               ))}
             </Listbox.Options>

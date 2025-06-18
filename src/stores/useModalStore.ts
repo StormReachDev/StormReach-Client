@@ -1,7 +1,7 @@
 // Imports:
 import { create } from 'zustand';
 
-type ModalType = 'Logout' | 'Customer' | 'ChangePassword' | null;
+type ModalType = 'Logout' | 'AddCustomer' | 'ChangePassword' | null;
 
 type ModalStore = {
   modal: ModalType;

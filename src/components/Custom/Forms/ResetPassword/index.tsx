@@ -75,7 +75,7 @@ export default function ResetPasswordForm({ token }: { token: string }) {
 
         <div className="overflow-hidden max-w-full">
           <Button
-            className="p-3 rounded-lg bg-primary text-xl font-bold text-core-white w-full capitalize"
+            className="p-3 rounded-xl bg-primary text-xl font-bold text-core-white w-full capitalize"
             type="submit"
             disabled={!password.trim() || !confirmPassword.trim() || isPending}
           >

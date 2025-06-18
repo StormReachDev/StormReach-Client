@@ -11,7 +11,7 @@ import {
   LoginRequest,
   ResetPasswordRequest,
   User,
-} from '@/types/Api';
+} from '@/types/Api/Auth';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
