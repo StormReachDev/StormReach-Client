@@ -4,7 +4,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const axiosInstance = axios.create({
-  baseURL: env.PROD_API_URL,
+  baseURL: env.STAGING_API_URL,
   headers: {
     'Content-Type': 'application/json',
     'stormy-api-key': env.API_KEY,

@@ -1,7 +1,7 @@
 'use client';
 
 // Imports:
-import Wrapper from '@/components/Generics/Wrapper';
+import Wrapper from '@/components/UI/Wrapper';
 import { sidebarItems } from '@/constants/Sidebar';
 import { cn } from '@/lib/utils';
 import { useModalStore } from '@/stores/useModalStore';

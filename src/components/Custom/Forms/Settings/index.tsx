@@ -1,8 +1,8 @@
 // Imports:
-import Wrapper from '@/components/Generics/Wrapper';
 import ButtonSpinner from '@/components/UI/ButtonSpinner';
+import SelectField from '@/components/UI/CompositeSelect';
 import InputField from '@/components/UI/InputField';
-import SelectField from '@/components/UI/Select';
+import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
 import { useMe, useUpdateProfile } from '@/hooks/auth';
 import { useModalStore } from '@/stores/useModalStore';
@@ -34,7 +34,7 @@ export default function SettingsForm() {
       setEmail(data.user.email);
       setPhone(data.user.phone);
       setTimezone(data.user.timeZone);
-      setDisputeFeeAmount(data.user.disputeFeeAmount.toString());
+      setDisputeFeeAmount(String(data.user.disputeFeeAmount));
     }
 
     if (isError) {
@@ -127,7 +127,9 @@ export default function SettingsForm() {
             id={stormyContent.admin.settings.form.timeZone.id}
             label={stormyContent.admin.settings.form.timeZone.label}
             value={timezone}
-            onChange={(value: string) => setTimezone(value)}
+            onChange={(value: string | string[]) =>
+              setTimezone(value as string)
+            }
             options={timeZones.map((tz) => ({
               label: tz,
               value: tz,
@@ -149,7 +151,7 @@ export default function SettingsForm() {
         </div>
         <div className="overflow-hidden max-w-full">
           <Button
-            className="p-3 rounded-lg bg-primary text-xl font-semibold text-core-white w-full capitalize"
+            className="p-3 rounded-xl bg-primary text-xl font-semibold text-core-white w-full capitalize"
             type="submit"
             disabled={
               isPending ||

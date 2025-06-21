@@ -24,12 +24,16 @@ export type FormStateProps = {
 export type SelectFieldProps = {
   id: string;
   label: string;
-  value: string;
-  onChange: (_value: string) => void;
+  value: string | string[];
+  onChange: (_value: string | string[]) => void;
   options: { label: string; value: string }[];
   icon?: React.ReactNode;
   bgColor?: string;
   borderColor?: string;
   textColor?: string;
-  required?: boolean;
+  showLabel?: boolean;
+  listBoxClassName?: string;
+  isMulti?: boolean;
+  fallbackLabel?: string;
+  disabled?: boolean;
 };

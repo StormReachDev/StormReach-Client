@@ -1,8 +1,9 @@
 // Imports:
 import { config } from '@/config/EnvironmentVariables';
+import { QueryKeys } from '@/constants/Keys';
 import { ABSOLUTE_ROUTES } from '@/constants/Paths/Routes';
 import queryClient from '@/lib/queryClient';
-import AuthService from '@/services';
+import AuthService from '@/services/Auth';
 import { useScreenStore } from '@/stores/useScreenStore';
 import {
   APIError,
@@ -11,7 +12,7 @@ import {
   LoginRequest,
   ResetPasswordRequest,
   User,
-} from '@/types/Api';
+} from '@/types/Api/Auth';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
@@ -28,7 +29,7 @@ function useLogin() {
         expires: Number(config.COOKIE_EXPIRE),
         sameSite: 'Lax', // Ensures the cookie is sent with same-site requests, not with cross-site requests, which helps prevent CSRF attacks.
       });
-      queryClient.invalidateQueries({ queryKey: ['user'] });
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.USER] });
       router.push(ABSOLUTE_ROUTES.DASHBOARD);
       toast.success('Welcome back! You are now logged in.');
     },
@@ -42,7 +43,7 @@ function useLogin() {
 // Custom Hook to Fetch User Data:
 function useMe() {
   return useQuery<GenericResponse, Error>({
-    queryKey: ['user'],
+    queryKey: [QueryKeys.USER],
     queryFn: AuthService.me,
     retry: 1,
     staleTime: 5 * 60 * 1000,
@@ -105,7 +106,7 @@ function useUpdateProfile() {
     mutationFn: AuthService.updateProfile,
 
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['user'] });
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.USER] });
       toast.success('Success! Your profile is now up to date.');
     },
 
@@ -125,7 +126,7 @@ function useChangePassword() {
         expires: Number(config.COOKIE_EXPIRE),
         sameSite: 'Lax',
       });
-      queryClient.invalidateQueries({ queryKey: ['user'] });
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.USER] });
       toast.success('Success! Your password has been updated.');
     },
 
