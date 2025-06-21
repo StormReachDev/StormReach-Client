@@ -5,17 +5,23 @@ import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
 import { useAccountStatuses, useAllPlans } from '@/hooks/meta';
 import { useSalesAgents } from '@/hooks/salesAgent';
+import { useFilterStore } from '@/stores/useFilterStore';
 import { useModalStore } from '@/stores/useModalStore';
 import { Button } from '@material-tailwind/react';
 import { Briefcase, DollarSign, PlusCircle, Tag } from 'lucide-react';
-import { useState } from 'react';
 
 export default function Actions() {
-  const [searchValue, setSearchValue] = useState<string>('');
-  const [selectedPlan, setSelectedPlan] = useState<string>('Plan Type');
-  const [selectedStatus, setSelectedStatus] =
-    useState<string>('Account Status');
-  const [selectedAgents, setSelectedAgents] = useState<string[]>([]);
+  const {
+    keyword,
+    setKeyword,
+    plan,
+    setPlan,
+    accountStatus,
+    setAccountStatus,
+    assignedAgents,
+    setAssignedAgents,
+  } = useFilterStore();
+
   const { openModal } = useModalStore();
 
   const { data: planTypes } = useAllPlans();
@@ -43,8 +49,7 @@ export default function Actions() {
     {};
 
   const salesAgentOptions =
-    (agents?.salesAgents &&
-      agents.salesAgents.map((agent) => agent.name.split(' ')[0])) ??
+    (agents?.salesAgents && agents.salesAgents.map((agent) => agent.name)) ??
     [];
 
   function handleTrigger() {
@@ -56,15 +61,15 @@ export default function Actions() {
     <Wrapper className="max-w-full w-full flex gap-5 overflow-unset">
       <div className="overflow-hidden max-w-xs w-full">
         <SearchBar
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
         />
       </div>
       <div className="flex gap-3 items-center flex-wrap flex-1">
         <CompositeDropdown
           options={planOptions}
-          selected={selectedPlan}
-          onChange={setSelectedPlan}
+          selected={plan}
+          onChange={setPlan}
           Icon={DollarSign}
           btnClassName="bg-input border border-stroke rounded-lg gap-[10px] py-4 px-[14px]"
           triggerClassName="text-neutral-700 size-5"
@@ -75,8 +80,8 @@ export default function Actions() {
 
         <CompositeDropdown
           options={statusOptions}
-          selected={selectedStatus}
-          onChange={setSelectedStatus}
+          selected={accountStatus}
+          onChange={setAccountStatus}
           Icon={Tag}
           btnClassName="bg-input border border-stroke rounded-lg gap-[10px] py-4 px-[14px]"
           triggerClassName="text-neutral-700 size-5"
@@ -88,8 +93,8 @@ export default function Actions() {
         <CompositeDropdown
           text="Agent"
           options={salesAgentOptions}
-          selectedValues={selectedAgents}
-          onChange={setSelectedAgents}
+          selectedValues={assignedAgents}
+          onChange={setAssignedAgents}
           Icon={Briefcase}
           btnClassName="bg-input border border-stroke rounded-lg gap-[10px] py-4 px-[14px]"
           triggerClassName="text-neutral-700 size-5"

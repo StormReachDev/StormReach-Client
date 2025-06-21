@@ -29,7 +29,6 @@ import CompositeSelectField from '../../CompositeSelect';
 import FlowIndicator from '../../FlowIndicator';
 import InputField from '../../InputField';
 
-// TODO: role, priceId, paymentMethodId, transactionType = 'plan'
 export default function AddCustomerModal() {
   const { modal, closeModal } = useModalStore();
   const { activeItem } = useSidebarStore();
@@ -59,6 +58,8 @@ export default function AddCustomerModal() {
   const elements = useElements();
   const { mutate, isPending } = usePurchasePlan();
 
+  if (modal !== 'AddCustomer') return null;
+
   const planOptions =
     (planTypes?.plans &&
       Object.entries(planTypes?.plans).map(([key, value]) => ({
@@ -70,7 +71,7 @@ export default function AddCustomerModal() {
   const salesAgentOptions =
     (agents?.salesAgents &&
       agents.salesAgents.map((agent) => ({
-        label: agent.name.split(' ')[0],
+        label: agent.name,
         value: agent._id,
       }))) ??
     [];
@@ -79,8 +80,6 @@ export default function AddCustomerModal() {
     label: zone,
     value: zone,
   }));
-
-  if (modal !== 'AddCustomer') return null;
 
   function handlePlanChange(value: string | string[]) {
     if (typeof value === 'string') {
@@ -278,21 +277,21 @@ export default function AddCustomerModal() {
             />
 
             <CompositeSelectField
-              id={stormyContent.modal.addCustomer.form.planType.id}
-              label={stormyContent.modal.addCustomer.form.planType.label}
-              value={selectedPlan}
-              onChange={handlePlanChange}
-              options={planOptions}
-              icon={<DollarSign className="h-6 w-6 text-neutral-700" />}
-            />
-
-            <CompositeSelectField
               id={stormyContent.admin.settings.form.timeZone.id}
               label={stormyContent.admin.settings.form.timeZone.label}
               value={timezone}
               onChange={handleTimezoneChange}
               options={timeZoneOptions}
               icon={<Globe className="h-6 w-6 text-neutral-700" />}
+            />
+
+            <CompositeSelectField
+              id={stormyContent.modal.addCustomer.form.planType.id}
+              label={stormyContent.modal.addCustomer.form.planType.label}
+              value={selectedPlan}
+              onChange={handlePlanChange}
+              options={planOptions}
+              icon={<DollarSign className="h-6 w-6 text-neutral-700" />}
             />
 
             <CompositeSelectField

@@ -35,4 +35,5 @@ export type SelectFieldProps = {
   listBoxClassName?: string;
   isMulti?: boolean;
   fallbackLabel?: string;
+  disabled?: boolean;
 };

@@ -34,6 +34,7 @@ export const API_ABSOLUTE_ROUTES = {
   // ******** Meta ********
   GET_ALL_PLANS: `${config.STAGING_API_URL}/meta/plans`,
   GET_ACCOUNT_STATUSES: `${config.STAGING_API_URL}/meta/account-statuses`,
+  GET_USER_ROLE_SUMMARY: `${config.STAGING_API_URL}/meta/user-role-summary`,
 
   // ******** Sales Agent ********
   GET_SALES_AGENTS: `${config.STAGING_API_URL}/sales-agents`,
@@ -41,4 +42,5 @@ export const API_ABSOLUTE_ROUTES = {
   // ******** Customer ********
   PURCHASE_PLAN: `${config.STAGING_API_URL}/customer/purchase-plan`,
   GET_ALL_ROOFERS: `${config.STAGING_API_URL}/customer/all`,
+  SINGLE_ROOFER: `${config.STAGING_API_URL}/customer`,
 };

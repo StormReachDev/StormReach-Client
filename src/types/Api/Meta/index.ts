@@ -3,12 +3,6 @@ type AccountStatus = {
   value: 'active' | 'paused' | 'flagged';
 };
 
-export enum AccountStatusKeys {
-  active = 'Active',
-  paused = 'Paused',
-  flagged = 'Flagged',
-}
-
 export type AccountStatusResponse = {
   success: boolean;
   accountStatuses: AccountStatus[];
@@ -27,4 +21,11 @@ type Plan = {
 export type PlansResponse = {
   success: boolean;
   plans: Record<PlanKey, Plan>;
+};
+
+export type UserRoleSummaryResponse = {
+  success: boolean;
+  roleCounts: {
+    [role: string]: number;
+  };
 };

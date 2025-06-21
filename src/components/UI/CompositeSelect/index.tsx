@@ -19,6 +19,7 @@ export default function CompositeSelectField({
   listBoxClassName = '',
   isMulti = false,
   fallbackLabel = '',
+  disabled = false,
 }: SelectFieldProps) {
   const isSelected = (val: string) =>
     isMulti && Array.isArray(value) ? value.includes(val) : value === val;
@@ -56,7 +57,12 @@ export default function CompositeSelectField({
         </label>
       )}
 
-      <Listbox value={value} onChange={handleChange} multiple={isMulti}>
+      <Listbox
+        value={value}
+        onChange={handleChange}
+        multiple={isMulti}
+        disabled={disabled}
+      >
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             {icon}

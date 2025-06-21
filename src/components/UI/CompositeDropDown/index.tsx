@@ -93,7 +93,7 @@ export default function CompositeDropdown(props: CompositeDropdownProps) {
                         props.dropdownContextTextClassName
                       )}
                     >
-                      {option}
+                      {option.split(' ')[0]}
                     </Typography>
 
                     <Checkbox
