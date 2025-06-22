@@ -1,4 +1,3 @@
-// Request types for authentication API:
 export type LoginRequest = {
   email: string;
   password: string;
@@ -10,17 +9,16 @@ export type ResetPasswordRequest = {
   confirmPassword: string;
 };
 
-// User interface for authentication API:
-export interface User {
+export type User = {
   _id: string;
   name: string;
   email: string;
   phone: string;
   timeZone: string;
-  disputeFeeAmount: number;
+  disputeFeeAmount?: number;
   role: string;
   status: string;
-}
+};
 
 export type ChangePasswordRequest = {
   currentPassword: string;
@@ -35,15 +33,6 @@ export type GenericResponse = {
   user?: User;
 };
 
-export type ErrorResponse = {
-  response?: {
-    data: {
-      message: string;
-    };
-  };
-};
-
-// Error type for API responses:
 export type APIError = {
   response?: {
     data: {

@@ -2,6 +2,7 @@
 import stormyContent from '@/constants/Content';
 import { useChangePassword } from '@/hooks/auth';
 import { useModalStore } from '@/stores/useModalStore';
+import { useSidebarStore } from '@/stores/useSidebarStore';
 import {
   Button,
   Dialog,
@@ -17,6 +18,7 @@ import InputField from '../../InputField';
 
 export default function ChangePasswordModal() {
   const { modal, closeModal } = useModalStore();
+  const { activeItem } = useSidebarStore();
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -58,7 +60,7 @@ export default function ChangePasswordModal() {
         >
           {stormyContent.modal.changePassword.heading}
         </Typography>
-        <FlowIndicator parent="Settings" child="Change Password" />
+        <FlowIndicator parent={activeItem} child="Change Password" />
       </DialogHeader>
       <DialogBody className="overflow-hidden p-0">
         <form className="space-y-7 overflow-hidden" onSubmit={handleSubmit}>
@@ -104,7 +106,7 @@ export default function ChangePasswordModal() {
 
           <div className="overflow-hidden max-w-full">
             <Button
-              className="p-3 rounded-lg bg-primary text-xl font-semibold text-core-white w-full capitalize"
+              className="p-3 rounded-xl bg-primary text-xl font-semibold text-core-white w-full capitalize"
               type="submit"
               disabled={
                 !currentPassword.trim() ||

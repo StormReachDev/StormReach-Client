@@ -1,5 +1,5 @@
 // Imports:
-import Dropdown from '@/components/UI/DropDown';
+import CompositeDropdown from '@/components/UI/CompositeDropDown';
 import stormyContent from '@/constants/Content';
 import { monthlyDisputeData } from '@/constants/static';
 import { Card, Typography } from '@material-tailwind/react';
@@ -81,7 +81,7 @@ export default function DisputesAnalyticsCard() {
           }
         </Typography>
 
-        <Dropdown
+        <CompositeDropdown
           options={monthlyDisputeData}
           selected={selectedPeriod}
           onChange={setSelectedPeriod}

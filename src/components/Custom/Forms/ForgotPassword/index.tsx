@@ -1,8 +1,8 @@
 // Imports:
-import Wrapper from '@/components/Generics/Wrapper';
 import ButtonSpinner from '@/components/UI/ButtonSpinner';
 import BaseImage from '@/components/UI/Image';
 import InputField from '@/components/UI/InputField';
+import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
 import { imagePaths } from '@/constants/Paths/Images';
 import { useForgotPassword } from '@/hooks/auth';
@@ -69,7 +69,7 @@ export default function ForgotPasswordForm({ setScreen }: FormStateProps) {
 
         <div className="overflow-hidden max-w-full">
           <Button
-            className="p-3 rounded-lg bg-primary text-xl font-bold text-core-white w-full capitalize"
+            className="p-3 rounded-xl bg-primary text-xl font-bold text-core-white w-full capitalize"
             type="submit"
             disabled={!email.trim() || isPending}
           >

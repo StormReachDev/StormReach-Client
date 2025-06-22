@@ -1,13 +1,6 @@
 // Imports:
+import { ModalStore } from '@/types/Stores';
 import { create } from 'zustand';
-
-type ModalType = 'Logout' | 'Customer' | 'ChangePassword' | null;
-
-type ModalStore = {
-  modal: ModalType;
-  openModal: (_type: ModalType) => void;
-  closeModal: () => void;
-};
 
 export const useModalStore = create<ModalStore>((set) => ({
   modal: null,

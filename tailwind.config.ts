@@ -9,6 +9,7 @@ const config = withMT({
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: ['bg-action-two', 'bg-action-four', 'bg-action-five'],
   theme: {
     extend: {
       fontFamily: {
@@ -29,6 +30,7 @@ const config = withMT({
           two: 'var(--action-two)',
           three: 'var(--action-three)',
           four: 'var(--action-four)',
+          five: 'var(--action-five)',
         },
         red: {
           50: 'var(--red-50)',

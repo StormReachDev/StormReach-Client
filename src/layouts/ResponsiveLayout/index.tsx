@@ -2,7 +2,7 @@
 
 // Imports:
 import { useDeviceStore } from '@/stores/useDeviceStore';
-import { ResponsiveLayoutProps } from '@/types/Generics/Wrapper';
+import { ResponsiveLayoutProps } from '@/types/UI/Wrapper';
 import { useEffect } from 'react';
 
 export default function ResponsiveLayout({

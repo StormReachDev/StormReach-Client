@@ -4,4 +4,6 @@ export const config = {
   API_KEY: process.env.NEXT_PUBLIC_API_KEY || '',
   COOKIE_NAME: process.env.NEXT_PUBLIC_COOKIE_NAME || '',
   COOKIE_EXPIRE: process.env.NEXT_PUBLIC_COOKIE_EXPIRE || '',
+  STRIPE_PUBLIC_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '',
+  STRIPE_SECRET_KEY: process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY || '',
 };

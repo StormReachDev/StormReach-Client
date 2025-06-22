@@ -1,6 +1,6 @@
 // Imports:
 import MobileComingSoon from '@/components/Custom/MobileDevNotice';
-import Wrapper from '@/components/Generics/Wrapper';
+import Wrapper from '@/components/UI/Wrapper';
 import DashboardLayout from '@/layouts/DashboardLayout';
 import ResponsiveLayout from '@/layouts/ResponsiveLayout';
 

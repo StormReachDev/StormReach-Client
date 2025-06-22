@@ -1,6 +1,6 @@
 // Imports:
-import Wrapper from '@/components/Generics/Wrapper';
 import IconBadge from '@/components/UI/IconBadge';
+import Wrapper from '@/components/UI/Wrapper';
 import { NotificationProps } from '@/types/Custom/Cards';
 import { Typography } from '@material-tailwind/react';
 import { Bell, Calendar } from 'lucide-react';

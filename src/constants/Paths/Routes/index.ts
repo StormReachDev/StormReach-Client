@@ -24,9 +24,23 @@ export const PROTECTED_ROUTES_SET = new Set(PROTECTED_ROUTES);
 
 // ******** API Routes ********
 export const API_ABSOLUTE_ROUTES = {
+  // ******** Auth ********
   LOGIN: `${config.PROD_API_URL}/user/session`,
   ME: `${config.PROD_API_URL}/user/me`,
   FORGOT_PASSWORD: `${config.PROD_API_URL}/user/forgot-password`,
   RESET_PASSWORD: `${config.PROD_API_URL}/user/reset-password/:token`,
   CHANGE_PASSWORD: `${config.PROD_API_URL}/user/change-password`,
+
+  // ******** Meta ********
+  GET_ALL_PLANS: `${config.PROD_API_URL}/meta/plans`,
+  GET_ACCOUNT_STATUSES: `${config.PROD_API_URL}/meta/account-statuses`,
+  GET_USER_ROLE_SUMMARY: `${config.PROD_API_URL}/meta/user-role-summary`,
+
+  // ******** Sales Agent ********
+  GET_SALES_AGENTS: `${config.PROD_API_URL}/sales-agents`,
+
+  // ******** Customer ********
+  PURCHASE_PLAN: `${config.PROD_API_URL}/customer/purchase-plan`,
+  GET_ALL_ROOFERS: `${config.PROD_API_URL}/customer/all`,
+  SINGLE_ROOFER: `${config.PROD_API_URL}/customer`,
 };

@@ -1,5 +1,5 @@
 // Imports:
-import Wrapper from '@/components/Generics/Wrapper';
+import Wrapper from '@/components/UI/Wrapper';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

@@ -136,6 +136,143 @@ const stormyContent = {
         },
       },
     },
+
+    addCustomer: {
+      trigger: 'Customer',
+      heading: 'Add New Customer',
+      form: {
+        name: {
+          label: 'Name',
+          id: 'customerName',
+          placeholder: 'e.g. John Doe',
+        },
+
+        email: {
+          label: 'Email',
+          id: 'customerEmail',
+          placeholder: 'e.g. john@roofco.com',
+        },
+
+        phone: {
+          label: 'Phone Number',
+          id: 'customerPhone',
+          placeholder: 'e.g. +1 234 567 8900',
+        },
+
+        companyName: {
+          label: 'Company Name',
+          id: 'customerCompanyName',
+          placeholder: 'e.g. RoofCo',
+        },
+
+        billingAddress: {
+          label: 'Billing Address',
+          id: 'customerBillingAddress',
+          placeholder: 'e.g. 123 Main St, City, State',
+        },
+
+        zipCode: {
+          label: 'Zip Code',
+          id: 'customerZipCode',
+          placeholder: 'e.g. 44001',
+        },
+
+        planType: {
+          label: 'Plan Type',
+          id: 'customerPlanType',
+          defaultValue: 'strike10',
+        },
+
+        timeZone: {
+          label: 'Timezone',
+          id: 'customerTimezone',
+          defaultValue: 'America/New_York',
+        },
+
+        addAgents: {
+          label: 'Add Agents',
+          id: 'customerAddAgents',
+          fallbackLabel: 'No agents selected',
+        },
+
+        card: {
+          label: 'Card Details',
+          id: 'customerCardDetails',
+        },
+
+        submitButton: {
+          text: 'Add Customer',
+        },
+      },
+    },
+
+    editCustomer: {
+      heading: 'Edit Customer',
+      form: {
+        name: {
+          label: 'Name',
+          id: 'editCustomerName',
+          placeholder: 'e.g. John Doe',
+        },
+
+        email: {
+          label: 'Email',
+          id: 'editCustomerEmail',
+          placeholder: 'e.g. john@roofco.com',
+        },
+
+        phone: {
+          label: 'Phone Number',
+          id: 'editCustomerPhone',
+          placeholder: 'e.g. +1 234 567 8900',
+        },
+
+        companyName: {
+          label: 'Company Name',
+          id: 'editCustomerCompanyName',
+          placeholder: 'e.g. RoofCo',
+        },
+
+        billingAddress: {
+          label: 'Billing Address',
+          id: 'editCustomerBillingAddress',
+          placeholder: 'e.g. 123 Main St, City, State',
+        },
+
+        zipCode: {
+          label: 'Zip Code',
+          id: 'editCustomerZipCode',
+          placeholder: 'e.g. 44001',
+        },
+
+        planType: {
+          label: 'Plan Type',
+          id: 'editCustomerPlanType',
+          defaultValue: 'strike10',
+        },
+
+        timeZone: {
+          label: 'Timezone',
+          id: 'editCustomerTimezone',
+          defaultValue: 'America/New_York',
+        },
+
+        addAgents: {
+          label: 'Add Agents',
+          id: 'editCustomerAddAgents',
+          fallbackLabel: 'No agents selected',
+        },
+
+        selectStatus: {
+          label: 'Account Status',
+          id: 'editCustomerAccountStatus',
+        },
+
+        submitButton: {
+          text: 'Save Details',
+        },
+      },
+    },
   },
 
   admin: {
@@ -273,6 +410,16 @@ const stormyContent = {
         submitButton: {
           text: 'Save',
         },
+      },
+    },
+
+    customers: {
+      summary: {
+        heading: 'Summary Metrics',
+      },
+
+      overview: {
+        heading: 'Overview',
       },
     },
   },
