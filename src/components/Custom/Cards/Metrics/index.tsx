@@ -37,7 +37,7 @@ export default function MetricsCard({
           <div className="flex flex-1 items-center justify-end gap-x-1 overflow-hidden">
             <Typography
               variant="small"
-              className={`text-base font-medium text-action-two ${action === 'one' ? 'text-action-one' : 'text-action-two'}`}
+              className={`text-base font-medium ${action === 'one' ? 'text-action-one' : 'text-action-two'}`}
             >
               {percentage}
             </Typography>

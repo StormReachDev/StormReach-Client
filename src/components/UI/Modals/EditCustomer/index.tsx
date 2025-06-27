@@ -1,7 +1,7 @@
 // Imports:
 import stormyContent from '@/constants/Content';
 import { PlanKeys } from '@/constants/Keys';
-import { useAccountStatuses, useAllPlans } from '@/hooks/meta';
+import { useAccountStatuses, usePlanTypes } from '@/hooks/meta';
 import { useRoofer, useUpdateRoofer } from '@/hooks/roofer';
 import { useSalesAgents } from '@/hooks/salesAgent';
 import { useModalStore } from '@/stores/useModalStore';
@@ -50,7 +50,7 @@ export default function EditCustomerModal() {
   const [status, setStatus] = useState<string>();
 
   const { data: roofer } = useRoofer(String(selectedId));
-  const { data: planTypes } = useAllPlans();
+  const { data: planTypes } = usePlanTypes();
   const { data: agents } = useSalesAgents();
   const { data: accountStatus } = useAccountStatuses();
   const timeZones = Intl.supportedValuesOf('timeZone');

@@ -3,7 +3,7 @@ import CompositeDropdown from '@/components/UI/CompositeDropDown';
 import SearchBar from '@/components/UI/Search';
 import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
-import { useAccountStatuses, useAllPlans } from '@/hooks/meta';
+import { useAccountStatuses, usePlanTypes } from '@/hooks/meta';
 import { useSalesAgents } from '@/hooks/salesAgent';
 import { useFilterStore } from '@/stores/useFilterStore';
 import { useModalStore } from '@/stores/useModalStore';
@@ -24,7 +24,7 @@ export default function Actions() {
 
   const { openModal } = useModalStore();
 
-  const { data: planTypes } = useAllPlans();
+  const { data: planTypes } = usePlanTypes();
   const { data: status } = useAccountStatuses();
   const { data: agents } = useSalesAgents();
 
@@ -104,9 +104,9 @@ export default function Actions() {
           isMulti
         />
 
-        <div className="overflow-hidden flex-1">
+        <div className="overflow-hidden flex-grow">
           <Button
-            className="flex w-full items-center gap-2 justify-center py-4 px-[14px] rounded-lg bg-primary text-neutral-700 text-lg font-medium capitalize"
+            className="flex w-full max-w-full items-center gap-2 justify-center py-4 px-[14px] rounded-lg bg-primary text-neutral-700 text-lg font-medium capitalize"
             type="button"
             onClick={handleTrigger}
           >

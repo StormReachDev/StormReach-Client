@@ -32,9 +32,13 @@ export const API_ABSOLUTE_ROUTES = {
   CHANGE_PASSWORD: `${config.PROD_API_URL}/user/change-password`,
 
   // ******** Meta ********
-  GET_ALL_PLANS: `${config.PROD_API_URL}/meta/plans`,
+  GET_PLANS: `${config.PROD_API_URL}/meta/plans`,
   GET_ACCOUNT_STATUSES: `${config.PROD_API_URL}/meta/account-statuses`,
   GET_USER_ROLE_SUMMARY: `${config.PROD_API_URL}/meta/user-role-summary`,
+  GET_TRANSACTION_TYPES: `${config.PROD_API_URL}/meta/transaction-types`,
+  GET_TRANSACTION_STATUSES: `${config.PROD_API_URL}/meta/transaction-statuses`,
+  GET_CUSTOMER_METRICS: `${config.PROD_API_URL}/meta/customer-metrics`,
+  GET_TRANSACTION_METRICS: `${config.PROD_API_URL}/meta/transaction-metrics`,
 
   // ******** Sales Agent ********
   GET_SALES_AGENTS: `${config.PROD_API_URL}/sales-agents`,
@@ -43,4 +47,8 @@ export const API_ABSOLUTE_ROUTES = {
   PURCHASE_PLAN: `${config.PROD_API_URL}/customer/purchase-plan`,
   GET_ALL_ROOFERS: `${config.PROD_API_URL}/customer/all`,
   SINGLE_ROOFER: `${config.PROD_API_URL}/customer`,
+
+  // ******** Transaction ********
+  GET_ALL_TRANSACTIONS: `${config.PROD_API_URL}/transaction/all`,
+  DELETE_TRANSACTION: `${config.PROD_API_URL}/transaction`,
 };
