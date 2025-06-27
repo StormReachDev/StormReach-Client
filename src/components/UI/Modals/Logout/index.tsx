@@ -59,6 +59,7 @@ export default function LogoutModal() {
         <Button
           className="flex-1 py-3 px-5 text-primary bg-core-white capitalize text-xl font-semibold rounded-xl outline-0"
           onClick={closeModal}
+          type="button"
         >
           {stormyContent.modal.logout.buttons.cancel.text}
         </Button>
@@ -66,6 +67,7 @@ export default function LogoutModal() {
         <Button
           className="flex-1 py-3 px-5 text-core-white bg-primary capitalize text-xl font-semibold rounded-xl outline-none"
           onClick={logoutHandler}
+          type="button"
         >
           {stormyContent.modal.logout.buttons.confirm.text}
         </Button>

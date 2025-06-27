@@ -1,12 +1,11 @@
 // Imports:
 import { QueryKeys } from '@/constants/Keys';
 import MetaService from '@/services/Meta';
-import { AccountStatusResponse, PlansResponse } from '@/types/Api/Meta';
+import { AccountStatusResponse, PlanTypeResponse } from '@/types/Api/Meta';
 import { useQuery } from '@tanstack/react-query';
 
-// Custom Hook to Fetch All Plans:
-function useAllPlans() {
-  return useQuery<PlansResponse, Error>({
+function usePlanTypes() {
+  return useQuery<PlanTypeResponse, Error>({
     queryKey: [QueryKeys.PLANS],
     queryFn: MetaService.plans,
     retry: 1,
@@ -14,7 +13,6 @@ function useAllPlans() {
   });
 }
 
-// Custom Hook to Fetch Account Statuses:
 function useAccountStatuses() {
   return useQuery<AccountStatusResponse, Error>({
     queryKey: [QueryKeys.ACCOUNT_STATUSES],
@@ -24,7 +22,6 @@ function useAccountStatuses() {
   });
 }
 
-// Custom Hook to Fetch User Role Summary:
 function useUserRoleSummary() {
   return useQuery({
     queryKey: [QueryKeys.USER_ROLE_SUMMARY],
@@ -34,4 +31,48 @@ function useUserRoleSummary() {
   });
 }
 
-export { useAccountStatuses, useAllPlans, useUserRoleSummary };
+function useTransactionTypes() {
+  return useQuery({
+    queryKey: [QueryKeys.TRANSACTION_TYPES],
+    queryFn: MetaService.transactionTypes,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+function useTransactionStatuses() {
+  return useQuery({
+    queryKey: [QueryKeys.TRANSACTION_STATUSES],
+    queryFn: MetaService.transactionStatuses,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+function useCustomerMetrics() {
+  return useQuery({
+    queryKey: [QueryKeys.CUSTOMER_METRICS],
+    queryFn: MetaService.customerMetrics,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+function useTransactionMetrics() {
+  return useQuery({
+    queryKey: [QueryKeys.TRANSACTION_METRICS],
+    queryFn: MetaService.transactionMetrics,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+export {
+  useAccountStatuses,
+  useCustomerMetrics,
+  usePlanTypes,
+  useTransactionMetrics,
+  useTransactionStatuses,
+  useTransactionTypes,
+  useUserRoleSummary,
+};

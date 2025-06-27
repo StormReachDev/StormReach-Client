@@ -1,17 +1,13 @@
 // Imports:
-import { columns as customerColumns } from '@/constants/Table/Columns';
-import { CustomersTableComponentProps } from '@/types/UI/Table';
+import { TableComponentProps } from '@/types/UI/Table';
 import {
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import React, { useMemo } from 'react';
 
-const CustomersTable: React.FC<CustomersTableComponentProps> = ({ data }) => {
-  const columns = useMemo(() => customerColumns, []);
-
-  const table = useReactTable({
+const Table = <T,>({ data, columns }: TableComponentProps<T>): JSX.Element => {
+  const table = useReactTable<T>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
@@ -59,4 +55,4 @@ const CustomersTable: React.FC<CustomersTableComponentProps> = ({ data }) => {
   );
 };
 
-export default CustomersTable;
+export default Table;

@@ -273,6 +273,24 @@ const stormyContent = {
         },
       },
     },
+
+    actions: {
+      deleteTransaction: {
+        actionHeading: 'Delete This Transaction?',
+        actionBody:
+          'This will permanently remove the selected credit adjustment from the transaction history. This action cannot be undone.',
+        actionText: 'Delete Transaction',
+        key: 'deleteTransaction',
+      },
+
+      deleteCustomer: {
+        actionHeading: 'Delete Customer?',
+        actionBody:
+          'This will permanently remove the customer and their appointment history. This action cannot be undone.',
+        actionText: 'Delete Customer',
+        key: 'deleteCustomer',
+      },
+    },
   },
 
   admin: {
@@ -295,7 +313,7 @@ const stormyContent = {
           },
 
           {
-            title: 'New Customers This Week',
+            title: 'New Customers',
             value: '40',
             percentage: '20%',
             action: 'two',
@@ -420,6 +438,57 @@ const stormyContent = {
 
       overview: {
         heading: 'Overview',
+      },
+    },
+
+    creditsAndTransactions: {
+      summary: {
+        heading: 'Summary Metrics',
+        cards: [
+          {
+            title: 'Total Credits Issued',
+            value: '100',
+            percentage: '32%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/briefcase_enhofg.png',
+            imageAlt: 'Briefcase',
+          },
+
+          {
+            title: 'Total Appointment Credits',
+            value: '40',
+            percentage: '20%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/bulb_gnshzj.png',
+            imageAlt: 'Lightbulb',
+          },
+
+          {
+            title: 'Total Dispute Credits',
+            value: '5',
+            percentage: '10%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/timer_gohbqz.png',
+            imageAlt: 'Timer',
+          },
+
+          {
+            title: 'Auto-Reloads Triggered',
+            value: '15',
+            percentage: '10%',
+            action: 'one',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/target_ukk84k.png',
+            imageAlt: 'Target',
+          },
+        ],
+      },
+
+      overview: {
+        heading: 'Credits & Transactions Overview',
       },
     },
   },

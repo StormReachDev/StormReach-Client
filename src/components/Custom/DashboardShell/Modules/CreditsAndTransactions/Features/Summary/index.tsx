@@ -3,30 +3,30 @@ import Metrics from '@/components/Custom/Cards/Metrics';
 import CardSkeleton from '@/components/UI/Skeletons/Card';
 import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
-import { useCustomerMetrics } from '@/hooks/meta';
-import { CustomerMetricKeys } from '@/types/Api/Meta';
+import { useTransactionMetrics } from '@/hooks/meta';
+import { TransactionMetriKeys } from '@/types/Api/Meta';
 import { Typography } from '@material-tailwind/react';
 
-export default function Customers() {
-  const { data, isLoading } = useCustomerMetrics();
-  const customerMetrics =
+export default function Summary() {
+  const { data, isLoading } = useTransactionMetrics();
+  const transactionMetrics =
     data?.metrics ||
     ({} as Record<
-      CustomerMetricKeys,
+      TransactionMetriKeys,
       { value: number; changePercent: number }
     >);
 
-  const customerKeyMap: Record<string, CustomerMetricKeys> = {
-    'Active Customers': 'activeCustomers',
-    'New Customers': 'newCustomers',
-    'Low Credit Customers': 'lowCreditCustomers',
-    'Paused Accounts': 'pausedCustomers',
+  const transactionKeyMap: Record<string, TransactionMetriKeys> = {
+    'Total Credits Issued': 'totalCreditsIssued',
+    'Total Appointment Credits': 'totalAppointmentCredits',
+    'Total Dispute Credits': 'totalDisputeCredits',
+    'Auto-Reloads Triggered': 'autoReloadsTriggered',
   };
 
-  const updatedCards = stormyContent.admin.dashboard.customers.cards.map(
-    (card) => {
-      const customerKey = customerKeyMap[card.title];
-      const stats = customerMetrics[customerKey];
+  const updatedCards =
+    stormyContent.admin.creditsAndTransactions.summary.cards.map((card) => {
+      const transactionKey = transactionKeyMap[card.title];
+      const stats = transactionMetrics[transactionKey];
 
       return {
         ...card,
@@ -34,8 +34,7 @@ export default function Customers() {
         percentage: `${stats?.changePercent}%`,
         action: stats?.changePercent < 50 ? 'one' : 'two',
       };
-    }
-  );
+    });
 
   return (
     <Wrapper className="max-w-full w-full space-y-7">
@@ -43,7 +42,7 @@ export default function Customers() {
         variant="lead"
         className="text-neutral-800 font-semibold text-[28px]"
       >
-        {stormyContent.admin.dashboard.customers.heading}
+        {stormyContent.admin.creditsAndTransactions.summary.heading}
       </Typography>
 
       <div className="flex flex-wrap items-center gap-5 overflow-hidden">

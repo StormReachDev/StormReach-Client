@@ -6,6 +6,11 @@ export enum QueryKeys {
   ROOFER = 'roofer',
   USER_ROLE_SUMMARY = 'user-role-summary',
   SALES_AGENTS = 'sales-agents',
+  TRANSACTION_TYPES = 'transaction-types',
+  TRANSACTION_STATUSES = 'transaction-statuses',
+  TRANSACTIONS = 'transactions',
+  CUSTOMER_METRICS = 'customer-metrics',
+  TRANSACTION_METRICS = 'transaction-metrics',
 }
 
 export const PlanKeys = {
@@ -19,4 +24,9 @@ export enum AccountStatusKeys {
   active = 'Active',
   paused = 'Paused',
   flagged = 'Flagged',
+}
+
+export enum TransactionTypeKeys {
+  plan = 'Plan',
+  refund = 'Refund',
 }

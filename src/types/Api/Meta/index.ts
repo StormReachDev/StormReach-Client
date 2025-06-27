@@ -1,14 +1,21 @@
+export type PlanKey = 'strike10' | 'surge30' | 'blackout60' | 'payAsYouGo';
+
+export type CustomerMetricKeys =
+  | 'activeCustomers'
+  | 'newCustomers'
+  | 'lowCreditCustomers'
+  | 'pausedCustomers';
+
+export type TransactionMetriKeys =
+  | 'totalCreditsIssued'
+  | 'totalAppointmentCredits'
+  | 'totalDisputeCredits'
+  | 'autoReloadsTriggered';
+
 type AccountStatus = {
   label: string;
   value: 'active' | 'paused' | 'flagged';
 };
-
-export type AccountStatusResponse = {
-  success: boolean;
-  accountStatuses: AccountStatus[];
-};
-
-type PlanKey = 'strike10' | 'surge30' | 'blackout60' | 'payAsYouGo';
 
 type Plan = {
   name: string;
@@ -18,7 +25,19 @@ type Plan = {
   priceId: string;
 };
 
-export type PlansResponse = {
+type TransactionType = {
+  label: string;
+  value: string;
+};
+
+type TransactionStatus = TransactionType;
+
+export type AccountStatusResponse = {
+  success: boolean;
+  accountStatuses: AccountStatus[];
+};
+
+export type PlanTypeResponse = {
   success: boolean;
   plans: Record<PlanKey, Plan>;
 };
@@ -28,4 +47,29 @@ export type UserRoleSummaryResponse = {
   roleCounts: {
     [role: string]: number;
   };
+};
+
+export type TransactionTypeResponse = {
+  success: boolean;
+  transactionTypes: TransactionType[];
+};
+
+export type TransactionStatusResponse = {
+  success: boolean;
+  transactionStatuses: TransactionStatus[];
+};
+
+type MetricValue = {
+  value: number;
+  changePercent: number;
+};
+
+export type CustomerMetricsResponse = {
+  success: boolean;
+  metrics: Record<CustomerMetricKeys, MetricValue>;
+};
+
+export type TransactionMetricsResponse = {
+  success: boolean;
+  metrics: Record<TransactionMetriKeys, MetricValue>;
 };

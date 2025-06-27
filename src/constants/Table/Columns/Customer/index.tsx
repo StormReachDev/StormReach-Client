@@ -1,6 +1,5 @@
 // Imports:
 import { QueryKeys } from '@/constants/Keys';
-import { useDeleteRoofer } from '@/hooks/roofer';
 import queryClient from '@/lib/queryClient';
 import { cn } from '@/lib/utils';
 import RooferService from '@/services/Roofer';
@@ -157,11 +156,9 @@ function AssignedAgentsCell({
 
 // ******** Customer Actions Cell ********
 function CustomerActionsCell({ row }: { row: Row<CustomersTableProps> }) {
+  const rooferId = row.original.id;
   const { openModal } = useModalStore();
   const { setId } = useTableStore();
-  const rooferId = row.original.id;
-
-  const mutation = useDeleteRoofer();
 
   async function handleTrigger() {
     setId(rooferId);
@@ -174,12 +171,19 @@ function CustomerActionsCell({ row }: { row: Row<CustomersTableProps> }) {
   }
 
   function handleDelete() {
-    mutation.mutate(rooferId);
+    setId(rooferId);
+    openModal('ActionModal');
+    return;
   }
 
   return (
     <div className="flex items-center justify-between">
-      <Button size="sm" className="bg-transparent p-0" ripple={false}>
+      <Button
+        size="sm"
+        className="bg-transparent p-0"
+        ripple={false}
+        type="button"
+      >
         <MapPin className="size-5 hover:text-primary transition-colors" />
       </Button>
 
@@ -188,6 +192,7 @@ function CustomerActionsCell({ row }: { row: Row<CustomersTableProps> }) {
         className="bg-transparent p-0"
         onClick={handleTrigger}
         ripple={false}
+        type="button"
       >
         <Edit3 className="size-5 hover:text-primary transition-colors" />
       </Button>
@@ -197,6 +202,7 @@ function CustomerActionsCell({ row }: { row: Row<CustomersTableProps> }) {
         className="bg-transparent p-0 text-action-four"
         ripple={false}
         onClick={handleDelete}
+        type="button"
       >
         <Trash2 className="size-5 hover:text-primary transition-colors" />
       </Button>

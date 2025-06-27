@@ -23,6 +23,7 @@ type ModalType =
   | 'AddCustomer'
   | 'ChangePassword'
   | 'EditCustomer'
+  | 'ActionModal'
   | null;
 
 export type ModalStore = {
@@ -44,6 +45,8 @@ export type CustomerFilters = {
   assignedAgents: string[];
   page: number;
   limit: number;
+  transactionStatus: string;
+  transactionType: string;
 
   setKeyword: (_value: string) => void;
   setPlan: (_value: string) => void;
@@ -51,4 +54,7 @@ export type CustomerFilters = {
   setAssignedAgents: (_values: string[]) => void;
   setPage: (_page: number) => void;
   setLimit: (_limit: number) => void;
+  setTransactionStatus: (_value: string) => void;
+  setTransactionType: (_value: string) => void;
+  resetToDefaults: () => void;
 };

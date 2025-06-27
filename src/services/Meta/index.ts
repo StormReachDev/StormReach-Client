@@ -3,7 +3,11 @@ import { API_ABSOLUTE_ROUTES } from '@/constants/Paths/Routes';
 import axiosInstance from '@/lib/axios';
 import {
   AccountStatusResponse,
-  PlansResponse,
+  CustomerMetricsResponse,
+  PlanTypeResponse,
+  TransactionMetricsResponse,
+  TransactionStatusResponse,
+  TransactionTypeResponse,
   UserRoleSummaryResponse,
 } from '@/types/Api/Meta';
 
@@ -16,8 +20,8 @@ const MetaService = {
     return response.data;
   },
 
-  plans: async (): Promise<PlansResponse> => {
-    const response = await axiosInstance.get(API_ABSOLUTE_ROUTES.GET_ALL_PLANS);
+  plans: async (): Promise<PlanTypeResponse> => {
+    const response = await axiosInstance.get(API_ABSOLUTE_ROUTES.GET_PLANS);
 
     return response.data;
   },
@@ -25,6 +29,38 @@ const MetaService = {
   userRoleSummary: async (): Promise<UserRoleSummaryResponse> => {
     const response = await axiosInstance.get(
       API_ABSOLUTE_ROUTES.GET_USER_ROLE_SUMMARY
+    );
+
+    return response.data;
+  },
+
+  transactionTypes: async (): Promise<TransactionTypeResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.GET_TRANSACTION_TYPES
+    );
+
+    return response.data;
+  },
+
+  transactionStatuses: async (): Promise<TransactionStatusResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.GET_TRANSACTION_STATUSES
+    );
+
+    return response.data;
+  },
+
+  customerMetrics: async (): Promise<CustomerMetricsResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.GET_CUSTOMER_METRICS
+    );
+
+    return response.data;
+  },
+
+  transactionMetrics: async (): Promise<TransactionMetricsResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.GET_TRANSACTION_METRICS
     );
 
     return response.data;

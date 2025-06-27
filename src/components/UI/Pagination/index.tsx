@@ -32,6 +32,7 @@ export function Pagination({
         onClick={prev}
         disabled={page === 1}
         ripple
+        type="button"
       >
         <ChevronLeft />
       </Button>
@@ -54,6 +55,7 @@ export function Pagination({
         onClick={next}
         disabled={page === totalPages}
         ripple
+        type="button"
       >
         <ChevronRight />
       </Button>

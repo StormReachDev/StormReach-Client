@@ -4,6 +4,7 @@
 import Wrapper from '@/components/UI/Wrapper';
 import { sidebarItems } from '@/constants/Sidebar';
 import { cn } from '@/lib/utils';
+import { useFilterStore } from '@/stores/useFilterStore';
 import { useModalStore } from '@/stores/useModalStore';
 import { useSidebarStore } from '@/stores/useSidebarStore';
 import { Typography } from '@material-tailwind/react';
@@ -21,17 +22,19 @@ export default function Sidebar() {
 function SidebarNav() {
   const { activeItem, setActiveItem } = useSidebarStore();
   const { openModal } = useModalStore();
+  const { resetToDefaults } = useFilterStore();
 
   function handleTrigger(label: string) {
     if (label === 'Logout') {
       openModal('Logout');
     } else {
       setActiveItem(label);
+      resetToDefaults();
     }
   }
 
   return (
-    <ul className="size-full space-y-3 overflow-hidden">
+    <ul className="size-full space-y-3 overflow-y-auto max-h-[calc(100vh-150px)] scrollbar-hide">
       {sidebarItems.map((item) => {
         const Icon = item.icon;
         const isActive = activeItem === item.label;
