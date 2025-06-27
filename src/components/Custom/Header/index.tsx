@@ -10,6 +10,8 @@ export default function Header() {
   const { data } = useMe();
   const { setShowNotifications } = useSidebarStore();
 
+  if (!data?.user) return null;
+
   function triggerNotifications() {
     setShowNotifications(true);
     return;
