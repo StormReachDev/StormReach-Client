@@ -1,3 +1,6 @@
+import { Transaction } from '@/types/Api/Transaction';
+import { ColumnDef } from '@tanstack/react-table';
+
 export type CustomersTableProps = {
   id: string;
   name: string;
@@ -8,6 +11,9 @@ export type CustomersTableProps = {
   assignedAgents: string[];
 };
 
-export type CustomersTableComponentProps = {
-  data: CustomersTableProps[];
+export type CreditsAndTransactionsTableProps = Omit<Transaction, 'currency'>;
+
+export type TableComponentProps<TData> = {
+  data: TData[];
+  columns: ColumnDef<TData, any>[];
 };

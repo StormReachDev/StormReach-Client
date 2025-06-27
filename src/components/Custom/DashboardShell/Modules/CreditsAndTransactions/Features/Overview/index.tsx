@@ -4,44 +4,37 @@ import TableSkeleton from '@/components/UI/Skeletons/Table';
 import Table from '@/components/UI/Table';
 import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
-import { AccountStatusKeys } from '@/constants/Keys';
-import { columns as customerColumns } from '@/constants/Table/Columns/Customer';
-import { useAllRoofers } from '@/hooks/roofer';
+import { columns as CreditsAndTransactionsColumns } from '@/constants/Table/Columns/CreditsAndTransactions';
+import { useAllTransactions } from '@/hooks/transaction';
 import { useFilterStore } from '@/stores/useFilterStore';
-import { Roofer } from '@/types/Api/Roofer';
-import { CustomersTableProps } from '@/types/UI/Table';
+import { Transaction } from '@/types/Api/Transaction';
+import { CreditsAndTransactionsTableProps } from '@/types/UI/Table';
 import { Typography } from '@material-tailwind/react';
 import { useMemo } from 'react';
 import Actions from '../Actions';
 
 export default function Overview() {
-  const { keyword, plan, accountStatus, assignedAgents, page, limit } =
+  const { keyword, transactionType, transactionStatus, page, limit } =
     useFilterStore();
-  const { data, isLoading } = useAllRoofers(
+  const { data, isLoading } = useAllTransactions(
     keyword.trim(),
-    plan.trim(),
-    accountStatus.trim(),
-    assignedAgents,
+    transactionType.trim(),
+    transactionStatus.trim(),
     page,
     limit
   );
 
-  const columns = useMemo(() => customerColumns, []);
+  const columns = useMemo(() => CreditsAndTransactionsColumns, []);
   const rows =
-    data?.roofers?.map((roofer: Roofer) => ({
-      id: roofer._id,
-      name: roofer?.userInfo?.name ?? '',
-      email: roofer?.userInfo?.email ?? '',
-      plan: roofer.plan,
-      credits: roofer.appointmentCredits,
-      accountStatus:
-        AccountStatusKeys[
-          roofer?.userInfo?.status as keyof typeof AccountStatusKeys
-        ],
-      assignedAgents:
-        roofer?.agentsInfo?.map((agent) => agent?.name ?? '') ?? [],
+    data?.transactions.map((transaction: Transaction) => ({
+      _id: transaction._id,
+      customerUser: { name: transaction.customerUser?.name ?? '' },
+      plan: transaction.plan,
+      amount: transaction.amount,
+      transactionType: transaction.transactionType,
+      transactionStatus: transaction.transactionStatus,
+      createdAt: new Date(transaction.createdAt).toLocaleDateString(),
     })) ?? [];
-
   const totalPages = Math.ceil(Number(data?.totalCount) / limit);
 
   return (
@@ -50,7 +43,7 @@ export default function Overview() {
         variant="lead"
         className="text-neutral-800 font-semibold text-[28px]"
       >
-        {stormyContent.admin.customers.overview.heading}
+        {stormyContent.admin.creditsAndTransactions.overview.heading}
       </Typography>
       <Actions />
 
@@ -58,7 +51,10 @@ export default function Overview() {
         <TableSkeleton length={rows.length > 0 ? rows.length : 2} />
       ) : (
         rows.length > 0 && (
-          <Table<CustomersTableProps> data={rows} columns={columns} />
+          <Table<CreditsAndTransactionsTableProps>
+            data={rows}
+            columns={columns}
+          />
         )
       )}
 

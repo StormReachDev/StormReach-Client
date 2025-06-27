@@ -18,7 +18,6 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 
-// Custom Hooks for Authentication:
 function useLogin() {
   const router = useRouter();
 
@@ -40,7 +39,6 @@ function useLogin() {
   });
 }
 
-// Custom Hook to Fetch User Data:
 function useMe() {
   return useQuery<GenericResponse, Error>({
     queryKey: [QueryKeys.USER],
@@ -50,7 +48,6 @@ function useMe() {
   });
 }
 
-// Custom Hook for Forgot Password:
 function useForgotPassword() {
   return useMutation<GenericResponse, Error, string>({
     mutationFn: AuthService.forgotPassword,
@@ -67,7 +64,6 @@ function useForgotPassword() {
   });
 }
 
-// Custom Hook for Resetting Password:
 function useResetPassword() {
   const router = useRouter();
   const { setScreen } = useScreenStore();
@@ -88,7 +84,6 @@ function useResetPassword() {
   });
 }
 
-// Custom Hook for Logout:
 function useLogout() {
   const router = useRouter();
 
@@ -100,7 +95,6 @@ function useLogout() {
   };
 }
 
-// Custom Hook for Updating User Profile:
 function useUpdateProfile() {
   return useMutation<GenericResponse, Error, Partial<User>>({
     mutationFn: AuthService.updateProfile,
@@ -116,7 +110,6 @@ function useUpdateProfile() {
   });
 }
 
-// Custom Hook for Changing Password:
 function useChangePassword() {
   return useMutation<GenericResponse, Error, ChangePasswordRequest>({
     mutationFn: AuthService.changePassword,

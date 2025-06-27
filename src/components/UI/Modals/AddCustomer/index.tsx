@@ -1,6 +1,6 @@
 // Imports:
 import stormyContent from '@/constants/Content';
-import { useAllPlans } from '@/hooks/meta';
+import { usePlanTypes } from '@/hooks/meta';
 import { usePurchasePlan } from '@/hooks/plan';
 import { useSalesAgents } from '@/hooks/salesAgent';
 import { useModalStore } from '@/stores/useModalStore';
@@ -50,7 +50,7 @@ export default function AddCustomerModal() {
     stormyContent.modal.addCustomer.form.timeZone.defaultValue
   );
 
-  const { data: planTypes } = useAllPlans();
+  const { data: planTypes } = usePlanTypes();
   const { data: agents } = useSalesAgents();
   const timeZones = Intl.supportedValuesOf('timeZone');
 
