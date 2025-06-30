@@ -24,6 +24,8 @@ type ModalType =
   | 'ChangePassword'
   | 'EditCustomer'
   | 'ActionModal'
+  | 'AddTeam'
+  | 'EditTeam'
   | null;
 
 export type ModalStore = {

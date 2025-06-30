@@ -9,7 +9,13 @@ const config = withMT({
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  safelist: ['bg-action-two', 'bg-action-four', 'bg-action-five'],
+  safelist: [
+    'bg-action-two',
+    'bg-action-four',
+    'bg-action-five',
+    'text-action-two',
+    'text-action-four',
+  ],
   theme: {
     extend: {
       fontFamily: {
