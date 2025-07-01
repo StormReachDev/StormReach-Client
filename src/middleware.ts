@@ -15,9 +15,17 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  if (ABSOLUTE_ROUTES.ROOT === pathname) {
+    if (token) {
+      return NextResponse.redirect(
+        new URL(ABSOLUTE_ROUTES.DASHBOARD, request.url)
+      );
+    }
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/dashboard/:slug*'],
+  matcher: ['/dashboard/:slug*', '/'],
 };

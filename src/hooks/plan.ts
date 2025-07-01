@@ -17,6 +17,7 @@ function usePurchasePlan() {
       queryClient.refetchQueries({
         queryKey: [QueryKeys.TRANSACTION_METRICS],
       });
+      queryClient.refetchQueries({ queryKey: [QueryKeys.TEAM_MEMBERS] });
       toast.success(data.message);
     },
 
