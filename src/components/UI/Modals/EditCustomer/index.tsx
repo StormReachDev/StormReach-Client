@@ -91,13 +91,10 @@ export default function EditCustomerModal() {
   const salesAgentOptions = useMemo(
     () =>
       agents?.salesAgents
-        ? agents?.salesAgents &&
-          agents.salesAgents
-            .filter((agent) => agent.status !== 'paused')
-            .map((agent) => ({
-              label: agent.name,
-              value: agent._id,
-            }))
+        ? agents.salesAgents.map((agent) => ({
+            label: agent.name,
+            value: agent._id,
+          }))
         : [],
     [agents?.salesAgents]
   );
@@ -148,7 +145,7 @@ export default function EditCustomerModal() {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const formData = new FormData();

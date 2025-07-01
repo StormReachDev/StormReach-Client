@@ -7,7 +7,7 @@ import { useCustomerMetrics } from '@/hooks/meta';
 import { CustomerMetricKeys } from '@/types/Api/Meta';
 import { Typography } from '@material-tailwind/react';
 
-export default function Customers({ heading }: { heading?: string }) {
+export default function Customers() {
   const { data, isLoading } = useCustomerMetrics();
   const customerMetrics =
     data?.metrics ||
@@ -43,7 +43,7 @@ export default function Customers({ heading }: { heading?: string }) {
         variant="lead"
         className="text-neutral-800 font-semibold text-[28px]"
       >
-        {heading}
+        {stormyContent.admin.dashboard.customers.heading}
       </Typography>
 
       <div className="flex flex-wrap items-center gap-5 overflow-hidden">

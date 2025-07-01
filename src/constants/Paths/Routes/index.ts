@@ -39,7 +39,6 @@ export const API_ABSOLUTE_ROUTES = {
   GET_TRANSACTION_STATUSES: `${config.PROD_API_URL}/meta/transaction-statuses`,
   GET_CUSTOMER_METRICS: `${config.PROD_API_URL}/meta/customer-metrics`,
   GET_TRANSACTION_METRICS: `${config.PROD_API_URL}/meta/transaction-metrics`,
-  GET_USER_ROLES: `${config.PROD_API_URL}/meta/user-roles`,
 
   // ******** Sales Agent ********
   GET_SALES_AGENTS: `${config.PROD_API_URL}/sales-agents`,
@@ -51,10 +50,5 @@ export const API_ABSOLUTE_ROUTES = {
 
   // ******** Transaction ********
   GET_ALL_TRANSACTIONS: `${config.PROD_API_URL}/transaction/all`,
-  SINGLE_TRANSACTION: `${config.PROD_API_URL}/transaction`,
-
-  // ******** Team ********
-  CREATE_MEMBER: `${config.PROD_API_URL}/user/create`,
-  GET_ALL_TEAM_MEMBERS: `${config.PROD_API_URL}/team/all`,
-  SINGLE_MEMBER: `${config.PROD_API_URL}/team`,
+  DELETE_TRANSACTION: `${config.PROD_API_URL}/transaction`,
 };

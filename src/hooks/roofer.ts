@@ -54,14 +54,13 @@ function useDeleteRoofer() {
     mutationFn: (id: string) => RooferService.deleteRoofer(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QueryKeys.ROOFERS] });
-      queryClient.refetchQueries({
+      queryClient.invalidateQueries({
         queryKey: [QueryKeys.CUSTOMER_METRICS],
       });
       queryClient.refetchQueries({ queryKey: [QueryKeys.TRANSACTIONS] });
       queryClient.refetchQueries({
         queryKey: [QueryKeys.TRANSACTION_METRICS],
       });
-      queryClient.refetchQueries({ queryKey: [QueryKeys.TEAM_MEMBERS] });
       toast.success('Success! Customer has been deleted successfully.');
     },
 
@@ -81,7 +80,6 @@ function useUpdateRoofer() {
       queryClient.invalidateQueries({ queryKey: [QueryKeys.ROOFERS] });
       queryClient.invalidateQueries({ queryKey: [QueryKeys.ROOFER, id] });
       queryClient.refetchQueries({ queryKey: [QueryKeys.CUSTOMER_METRICS] });
-      queryClient.refetchQueries({ queryKey: [QueryKeys.TEAM_MEMBERS] });
       toast.success('Success! Customer updated successfully.');
     },
 

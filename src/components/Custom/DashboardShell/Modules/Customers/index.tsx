@@ -1,5 +1,4 @@
 // Imports:
-import Customers from '@/components/Shared/Customers';
 import ActionModal from '@/components/UI/Modals/Action';
 import AddCustomerModal from '@/components/UI/Modals/AddCustomer';
 import EditCustomerModal from '@/components/UI/Modals/EditCustomer';
@@ -11,6 +10,7 @@ import { useModalStore } from '@/stores/useModalStore';
 import { useTableStore } from '@/stores/useTableStore';
 import { X } from 'lucide-react';
 import Overview from './Features/Overview';
+import Summary from './Features/Summary';
 
 export default function CustomersModule() {
   const mutation = useDeleteRoofer();
@@ -28,7 +28,7 @@ export default function CustomersModule() {
 
   return (
     <HeaderLayout>
-      <Customers heading={stormyContent.admin.customers.summary.heading} />
+      <Summary />
       <Overview />
       <PaymentProvider>
         <AddCustomerModal />

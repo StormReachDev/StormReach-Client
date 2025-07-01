@@ -70,12 +70,10 @@ export default function AddCustomerModal() {
 
   const salesAgentOptions =
     (agents?.salesAgents &&
-      agents.salesAgents
-        .filter((agent) => agent.status !== 'paused')
-        .map((agent) => ({
-          label: agent.name,
-          value: agent._id,
-        }))) ??
+      agents.salesAgents.map((agent) => ({
+        label: agent.name,
+        value: agent._id,
+      }))) ??
     [];
 
   const timeZoneOptions = timeZones.map((zone) => ({

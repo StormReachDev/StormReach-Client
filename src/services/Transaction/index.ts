@@ -29,7 +29,7 @@ const TransactionService = {
 
   deleteTransaction: async (id: string): Promise<void> => {
     await axiosInstance.delete(
-      `${API_ABSOLUTE_ROUTES.SINGLE_TRANSACTION}/${id}`
+      `${API_ABSOLUTE_ROUTES.DELETE_TRANSACTION}/${id}`
     );
   },
 };

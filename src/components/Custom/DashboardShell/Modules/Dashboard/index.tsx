@@ -1,16 +1,15 @@
 // Imports:
-import Teams from '@/components/Shared/Teams';
-import stormyContent from '@/constants/Content';
 import HeaderLayout from '@/layouts/HeaderLayout';
-import Customers from '../../../../Shared/Customers';
+import Customers from './Features/Customers';
 import DisputesAndAppointments from './Features/DisputesAndAppointments';
+import Teams from './Features/Teams';
 
 export default function DashboardModule() {
   return (
     <>
       <HeaderLayout>
-        <Customers heading={stormyContent.admin.dashboard.customers.heading} />
-        <Teams heading={stormyContent.admin.dashboard.teams.heading} />
+        <Customers />
+        <Teams />
         <DisputesAndAppointments />
       </HeaderLayout>
     </>

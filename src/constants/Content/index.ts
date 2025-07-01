@@ -290,118 +290,6 @@ const stormyContent = {
         actionText: 'Delete Customer',
         key: 'deleteCustomer',
       },
-
-      deleteMember: {
-        actionHeading: 'Delete This Team Member?',
-        actionBody:
-          'This action will permanently remove the appointment and its record from the system. This cannot be undone.',
-        actionText: 'Delete Team Member',
-        key: 'deleteMember',
-      },
-    },
-
-    addTeam: {
-      trigger: 'Team Member',
-      heading: 'Add New Team Member',
-      form: {
-        name: {
-          label: 'Name',
-          id: 'teamMemberName',
-          placeholder: 'e.g. Sarah Smith',
-        },
-
-        role: {
-          label: 'Select Role',
-          id: 'teamMemberRole',
-          defaultValue: 'salesAgent',
-        },
-
-        email: {
-          label: 'Email',
-          id: 'teamMemberEmail',
-          placeholder: 'e.g. sarah@stormreach.com',
-        },
-
-        phone: {
-          label: 'Phone Number',
-          id: 'teamMemberPhone',
-          placeholder: 'e.g. +1 234 567 8900',
-        },
-
-        timeZone: {
-          label: 'Timezone',
-          id: 'teamMemberTimezone',
-          defaultValue: 'America/New_York',
-        },
-
-        addCustomers: {
-          label: 'Assigned Customers',
-          id: 'teamMemberAssignedCustomers',
-          fallbackLabel: 'Select from customer list (optional)',
-        },
-
-        submitButton: {
-          text: 'Add Team Member',
-        },
-
-        alert: {
-          text: 'Sales Agents are assigned via Customers module only.',
-        },
-      },
-    },
-
-    editTeam: {
-      heading: 'Edit Team Member',
-      form: {
-        name: {
-          label: 'Name',
-          id: 'editTeamMemberName',
-          placeholder: 'e.g. Sarah Smith',
-        },
-
-        role: {
-          label: 'Select Role',
-          id: 'editTeamMemberRole',
-          defaultValue: 'salesAgent',
-        },
-
-        email: {
-          label: 'Email',
-          id: 'editTeamMemberEmail',
-          placeholder: 'e.g. sarah@stormreach.com',
-        },
-
-        phone: {
-          label: 'Phone Number',
-          id: 'editTeamMemberPhone',
-          placeholder: 'e.g. +1 234 567 8900',
-        },
-
-        timeZone: {
-          label: 'Timezone',
-          id: 'editTeamMemberTimezone',
-          defaultValue: 'America/New_York',
-        },
-
-        addCustomers: {
-          label: 'Assigned Customers',
-          id: 'editTeamMemberAssignedCustomers',
-          fallbackLabel: 'Select from customer list (optional)',
-        },
-
-        selectStatus: {
-          label: 'Account Status',
-          id: 'editTeamMemberAccountStatus',
-        },
-
-        submitButton: {
-          text: 'Save Details',
-        },
-
-        alert: {
-          text: 'Sales Agents are assigned via Customers module only.',
-        },
-      },
     },
   },
 
@@ -601,16 +489,6 @@ const stormyContent = {
 
       overview: {
         heading: 'Credits & Transactions Overview',
-      },
-    },
-
-    teamManagement: {
-      summary: {
-        heading: 'Summary Metrics',
-      },
-
-      overview: {
-        heading: 'Team Overview',
       },
     },
   },

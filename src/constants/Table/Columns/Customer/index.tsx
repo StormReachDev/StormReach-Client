@@ -126,28 +126,19 @@ function AssignedAgentsCell({
 
   return (
     <div className="flex gap-1 flex-wrap items-center">
-      {displayAgents.length === 0 ? (
+      {displayAgents.map((agent, idx) => (
         <Typography
+          key={`${agent}-${idx}`}
           variant="lead"
-          className="text-lg font-medium text-action-four"
+          className={cn(
+            'text-lg font-medium',
+            idx === 1 ? 'text-red-500' : 'text-neutral-800'
+          )}
         >
-          Unassigned
+          {agent}
+          {idx === 0 && displayAgents.length > 1 ? ' & ' : ''}
         </Typography>
-      ) : (
-        displayAgents.map((agent, idx) => (
-          <Typography
-            key={`${agent}-${idx}`}
-            variant="lead"
-            className={cn(
-              'text-lg font-medium',
-              idx === 1 ? 'text-red-500' : 'text-neutral-800'
-            )}
-          >
-            {agent}
-            {idx === 0 && displayAgents.length > 1 ? ' & ' : ''}
-          </Typography>
-        ))
-      )}
+      ))}
       {remainingCount > 0 && (
         <Typography
           variant="lead"
@@ -163,7 +154,7 @@ function AssignedAgentsCell({
   );
 }
 
-// ******** Customer Action Cell ********
+// ******** Customer Actions Cell ********
 function CustomerActionsCell({ row }: { row: Row<CustomersTableProps> }) {
   const rooferId = row.original.id;
   const { openModal } = useModalStore();

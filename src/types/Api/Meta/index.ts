@@ -12,8 +12,6 @@ export type TransactionMetriKeys =
   | 'totalDisputeCredits'
   | 'autoReloadsTriggered';
 
-export type UserRoleKeys = 'admin' | 'manager' | 'salesAgent' | 'telemarketer';
-
 type AccountStatus = {
   label: string;
   value: 'active' | 'paused' | 'flagged';
@@ -27,12 +25,12 @@ type Plan = {
   priceId: string;
 };
 
-type GenericList = {
+type TransactionType = {
   label: string;
   value: string;
 };
 
-type TransactionStatus = GenericList;
+type TransactionStatus = TransactionType;
 
 export type AccountStatusResponse = {
   success: boolean;
@@ -53,7 +51,7 @@ export type UserRoleSummaryResponse = {
 
 export type TransactionTypeResponse = {
   success: boolean;
-  transactionTypes: GenericList[];
+  transactionTypes: TransactionType[];
 };
 
 export type TransactionStatusResponse = {
@@ -74,9 +72,4 @@ export type CustomerMetricsResponse = {
 export type TransactionMetricsResponse = {
   success: boolean;
   metrics: Record<TransactionMetriKeys, MetricValue>;
-};
-
-export type UserRoleResponse = {
-  success: boolean;
-  userRoles: GenericList[];
 };

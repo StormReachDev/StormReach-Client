@@ -111,7 +111,7 @@ export const columns = [
   }),
 ];
 
-// ******** Credits And Transactions Action Cell ********
+// ******** Credits And Transactions Actions Cell ********
 function CAndTActionsCell({
   row,
 }: {

@@ -49,10 +49,7 @@ export default function Actions() {
     {};
 
   const salesAgentOptions =
-    (agents?.salesAgents &&
-      agents.salesAgents
-        .filter((agent) => agent.status !== 'paused')
-        .map((agent) => agent.name)) ??
+    (agents?.salesAgents && agents.salesAgents.map((agent) => agent.name)) ??
     [];
 
   function handleTrigger() {
@@ -61,63 +58,61 @@ export default function Actions() {
   }
 
   return (
-    <Wrapper className="max-w-full w-full overflow-unset">
-      <div className="flex gap-5 flex-wrap">
-        <div className="overflow-hidden flex-grow min-w-[320px]">
-          <SearchBar
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-          />
-        </div>
-        <div className="flex gap-3 items-center flex-wrap">
-          <CompositeDropdown
-            options={planOptions}
-            selected={plan}
-            onChange={setPlan}
-            Icon={DollarSign}
-            btnClassName="bg-input border border-stroke rounded-lg gap-[10px] py-4 px-[14px]"
-            triggerClassName="text-neutral-700 size-5"
-            textClassName="text-neutral-700 font-medium text-lg"
-            iconClassName="text-neutral-700 size-5"
-            optionsClassName="w-full text-lg"
-          />
+    <Wrapper className="max-w-full w-full flex gap-5 overflow-unset">
+      <div className="overflow-hidden max-w-xs w-full">
+        <SearchBar
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+      </div>
+      <div className="flex gap-3 items-center flex-wrap flex-1">
+        <CompositeDropdown
+          options={planOptions}
+          selected={plan}
+          onChange={setPlan}
+          Icon={DollarSign}
+          btnClassName="bg-input border border-stroke rounded-lg gap-[10px] py-4 px-[14px]"
+          triggerClassName="text-neutral-700 size-5"
+          textClassName="text-neutral-700 font-medium text-lg"
+          iconClassName="text-neutral-700 size-5"
+          optionsClassName="w-full text-lg"
+        />
 
-          <CompositeDropdown
-            options={statusOptions}
-            selected={accountStatus}
-            onChange={setAccountStatus}
-            Icon={Tag}
-            btnClassName="bg-input border border-stroke rounded-lg gap-[10px] py-4 px-[14px]"
-            triggerClassName="text-neutral-700 size-5"
-            textClassName="text-neutral-700 font-medium text-lg"
-            iconClassName="text-neutral-700 size-5"
-            optionsClassName="w-full text-lg"
-          />
+        <CompositeDropdown
+          options={statusOptions}
+          selected={accountStatus}
+          onChange={setAccountStatus}
+          Icon={Tag}
+          btnClassName="bg-input border border-stroke rounded-lg gap-[10px] py-4 px-[14px]"
+          triggerClassName="text-neutral-700 size-5"
+          textClassName="text-neutral-700 font-medium text-lg"
+          iconClassName="text-neutral-700 size-5"
+          optionsClassName="w-full text-lg"
+        />
 
-          <CompositeDropdown
-            text="Agent"
-            options={salesAgentOptions}
-            selectedValues={assignedAgents}
-            onChange={setAssignedAgents}
-            Icon={Briefcase}
-            btnClassName="bg-input border border-stroke rounded-lg gap-[10px] py-4 px-[14px]"
-            triggerClassName="text-neutral-700 size-5"
-            textClassName="text-neutral-700 font-medium text-lg"
-            iconClassName="text-neutral-700 size-5"
-            optionsClassName="w-full"
-            isMulti
-          />
+        <CompositeDropdown
+          text="Agent"
+          options={salesAgentOptions}
+          selectedValues={assignedAgents}
+          onChange={setAssignedAgents}
+          Icon={Briefcase}
+          btnClassName="bg-input border border-stroke rounded-lg gap-[10px] py-4 px-[14px]"
+          triggerClassName="text-neutral-700 size-5"
+          textClassName="text-neutral-700 font-medium text-lg"
+          iconClassName="text-neutral-700 size-5"
+          optionsClassName="w-full"
+          isMulti
+        />
 
-          <div className="shrink-0">
-            <Button
-              className="flex w-full max-w-full items-center gap-2 justify-center py-4 px-[14px] rounded-lg bg-primary text-neutral-700 text-lg font-medium capitalize"
-              type="button"
-              onClick={handleTrigger}
-            >
-              <PlusCircle className="text-neutral-700 size-5" />
-              {stormyContent.modal.addCustomer.trigger}
-            </Button>
-          </div>
+        <div className="overflow-hidden flex-grow">
+          <Button
+            className="flex w-full max-w-full items-center gap-2 justify-center py-4 px-[14px] rounded-lg bg-primary text-neutral-700 text-lg font-medium capitalize"
+            type="button"
+            onClick={handleTrigger}
+          >
+            <PlusCircle className="text-neutral-700 size-5" />
+            {stormyContent.modal.addCustomer.trigger}
+          </Button>
         </div>
       </div>
     </Wrapper>

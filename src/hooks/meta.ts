@@ -67,20 +67,10 @@ function useTransactionMetrics() {
   });
 }
 
-function useRoleTypes() {
-  return useQuery({
-    queryKey: [QueryKeys.USER_ROLES],
-    queryFn: MetaService.roles,
-    retry: 1,
-    staleTime: 5 * 60 * 1000,
-  });
-}
-
 export {
   useAccountStatuses,
   useCustomerMetrics,
   usePlanTypes,
-  useRoleTypes,
   useTransactionMetrics,
   useTransactionStatuses,
   useTransactionTypes,
