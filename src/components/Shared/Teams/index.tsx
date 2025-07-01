@@ -6,7 +6,7 @@ import stormyContent from '@/constants/Content';
 import { useUserRoleSummary } from '@/hooks/meta';
 import { Typography } from '@material-tailwind/react';
 
-export default function Teams() {
+export default function Teams({ heading }: { heading?: string }) {
   const { data, isLoading } = useUserRoleSummary();
   const roleCounts = data?.roleCounts || {};
 
@@ -31,7 +31,7 @@ export default function Teams() {
         variant="lead"
         className="text-neutral-800 font-semibold text-[28px]"
       >
-        {stormyContent.admin.dashboard.teams.heading}
+        {heading}
       </Typography>
 
       <div className="flex flex-wrap items-center gap-5 overflow-hidden">

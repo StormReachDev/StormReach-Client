@@ -11,6 +11,9 @@ export enum QueryKeys {
   TRANSACTIONS = 'transactions',
   CUSTOMER_METRICS = 'customer-metrics',
   TRANSACTION_METRICS = 'transaction-metrics',
+  USER_ROLES = 'user-roles',
+  TEAM_MEMBERS = 'team-members',
+  TEAM_MEMBER = 'team-member',
 }
 
 export const PlanKeys = {
@@ -29,4 +32,11 @@ export enum AccountStatusKeys {
 export enum TransactionTypeKeys {
   plan = 'Plan',
   refund = 'Refund',
+}
+
+export enum UserRoleKeys {
+  admin = 'Admin',
+  manager = 'Manager',
+  salesAgent = 'Sales Agent',
+  telemarketer = 'Telemarketer',
 }

@@ -8,6 +8,7 @@ import {
   TransactionMetricsResponse,
   TransactionStatusResponse,
   TransactionTypeResponse,
+  UserRoleResponse,
   UserRoleSummaryResponse,
 } from '@/types/Api/Meta';
 
@@ -63,6 +64,13 @@ const MetaService = {
       API_ABSOLUTE_ROUTES.GET_TRANSACTION_METRICS
     );
 
+    return response.data;
+  },
+
+  roles: async (): Promise<UserRoleResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.GET_USER_ROLES
+    );
     return response.data;
   },
 };

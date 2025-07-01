@@ -1,5 +1,11 @@
+// Imports:
 import { Transaction } from '@/types/Api/Transaction';
 import { ColumnDef } from '@tanstack/react-table';
+
+export type TableComponentProps<TData> = {
+  data: TData[];
+  columns: ColumnDef<TData, any>[];
+};
 
 export type CustomersTableProps = {
   id: string;
@@ -13,7 +19,12 @@ export type CustomersTableProps = {
 
 export type CreditsAndTransactionsTableProps = Omit<Transaction, 'currency'>;
 
-export type TableComponentProps<TData> = {
-  data: TData[];
-  columns: ColumnDef<TData, any>[];
+export type TeamMembersTableProps = {
+  id: string;
+  name: string;
+  role: string;
+  email: string;
+  assignedCustomers: number;
+  accountStatus: 'Active' | 'Paused' | 'Flagged';
+  appointmentsBooked?: number;
 };
