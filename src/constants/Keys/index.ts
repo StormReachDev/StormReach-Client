@@ -14,6 +14,7 @@ export enum QueryKeys {
   USER_ROLES = 'user-roles',
   TEAM_MEMBERS = 'team-members',
   TEAM_MEMBER = 'team-member',
+  NOTIFICATIONS = 'notifications',
 }
 
 export const PlanKeys = {

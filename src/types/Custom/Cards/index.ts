@@ -2,6 +2,7 @@
 import { LucideIcon } from 'lucide-react';
 
 export type NotificationProps = {
+  id: string;
   title: string;
   description: string;
   date: string;

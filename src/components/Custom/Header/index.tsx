@@ -1,7 +1,9 @@
 // Imports:
 import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
+import { QueryKeys } from '@/constants/Keys';
 import { useMe } from '@/hooks/auth';
+import queryClient from '@/lib/queryClient';
 import { useSidebarStore } from '@/stores/useSidebarStore';
 import { Bell } from 'lucide-react';
 import TimeZoneDisplay from '../DashboardShell/Modules/Dashboard/Features/Timezone';
@@ -14,6 +16,7 @@ export default function Header() {
 
   function triggerNotifications() {
     setShowNotifications(true);
+    queryClient.refetchQueries({ queryKey: [QueryKeys.NOTIFICATIONS] });
     return;
   }
 
