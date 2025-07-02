@@ -409,6 +409,7 @@ const stormyContent = {
     dashboard: {
       notifications: {
         heading: 'Notifications',
+        message: 'You have no new notifications.',
       },
 
       customers: {
