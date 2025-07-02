@@ -57,4 +57,7 @@ export const API_ABSOLUTE_ROUTES = {
   CREATE_MEMBER: `${config.PROD_API_URL}/user/create`,
   GET_ALL_TEAM_MEMBERS: `${config.PROD_API_URL}/team/all`,
   SINGLE_MEMBER: `${config.PROD_API_URL}/team`,
+
+  // ******** Notification ********
+  GET_NOTIFICATIONS: `${config.PROD_API_URL}/notifications`,
 };

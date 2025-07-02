@@ -1,33 +1,23 @@
 // Imports:
 import Notification from '@/components/Custom/Cards/Notifications';
 import BreadCrumbs from '@/components/UI/BreadCrumbs';
+import NotificationsCardSkeleton from '@/components/UI/Skeletons/Notification';
 import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
+import { useNotifications } from '@/hooks/notification';
 import { useSidebarStore } from '@/stores/useSidebarStore';
 import { Typography } from '@material-tailwind/react';
+import { format } from 'date-fns-tz';
 import { ArrowLeft } from 'lucide-react';
 
 export default function NotificationsModule() {
   const { setShowNotifications, activeItem } = useSidebarStore();
+  const { data, isLoading } = useNotifications();
 
   function goBack() {
     setShowNotifications(false);
     return;
   }
-
-  const notifications = [
-    {
-      title: 'New Appointment Scheduled',
-      description: 'Homeowner confirmed for Ayaan on 12 May, 2025 at 10:31 PM.',
-      date: '20 May, 2025',
-    },
-    {
-      title: 'Payment Received',
-      description:
-        'Payment of $250 received from John Smith for service #12345.',
-      date: '19 May, 2025',
-    },
-  ];
 
   return (
     <>
@@ -62,14 +52,37 @@ export default function NotificationsModule() {
         </div>
 
         <div className="space-y-5 overflow-hidden">
-          {notifications.map((notification, index) => (
-            <Notification
-              key={index}
-              title={notification.title}
-              description={notification.description}
-              date={notification.date}
-            />
-          ))}
+          {isLoading ? (
+            <NotificationsCardSkeleton />
+          ) : (
+            data &&
+            data?.notifications.length > 0 &&
+            data.notifications.map((notification, index) => {
+              const formattedDate = format(
+                notification.createdAt,
+                'EEEE, MMMM d'
+              );
+
+              return (
+                <Notification
+                  key={index}
+                  id={notification._id}
+                  title={notification.content.heading}
+                  description={notification.content.message}
+                  date={formattedDate}
+                />
+              );
+            })
+          )}
+
+          {!isLoading && data?.notifications.length === 0 && (
+            <Typography
+              variant="lead"
+              className="text-neutral-800 font-semibold text-[28px] text-center"
+            >
+              {stormyContent.admin.dashboard.notifications.message}
+            </Typography>
+          )}
         </div>
       </Wrapper>
     </>
