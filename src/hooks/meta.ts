@@ -76,8 +76,38 @@ function useRoleTypes() {
   });
 }
 
+function useAppointmentMetrics() {
+  return useQuery({
+    queryKey: [QueryKeys.APPOINTMENT_METRICS],
+    queryFn: MetaService.appointmentMetrics,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+function useAppointmentStatuses() {
+  return useQuery({
+    queryKey: [QueryKeys.APPOINTMENT_STATUSES],
+    queryFn: MetaService.appointmentStatuses,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+function useActiveLeaks() {
+  return useQuery({
+    queryKey: [QueryKeys.ACTIVE_LEAKS],
+    queryFn: MetaService.activeLeaks,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
 export {
   useAccountStatuses,
+  useActiveLeaks,
+  useAppointmentMetrics,
+  useAppointmentStatuses,
   useCustomerMetrics,
   usePlanTypes,
   useRoleTypes,

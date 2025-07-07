@@ -2,7 +2,7 @@ export type PlanKey = 'strike10' | 'surge30' | 'blackout60' | 'payAsYouGo';
 
 export type CustomerMetricKeys =
   | 'activeCustomers'
-  | 'newCustomers'
+  | 'flaggedCustomers'
   | 'lowCreditCustomers'
   | 'pausedCustomers';
 
@@ -11,6 +11,12 @@ export type TransactionMetriKeys =
   | 'totalAppointmentCredits'
   | 'totalDisputeCredits'
   | 'autoReloadsTriggered';
+
+export type AppointmentMetricKeys =
+  | 'totalAppointmentsBooked'
+  | 'totalAppointmentsCompleted'
+  | 'totalAppointmentsPending'
+  | 'totalAppointmentsDisputed';
 
 export type UserRoleKeys = 'admin' | 'manager' | 'salesAgent' | 'telemarketer';
 
@@ -61,9 +67,18 @@ export type TransactionStatusResponse = {
   transactionStatuses: TransactionStatus[];
 };
 
+export type AppointmentStatusResponse = {
+  success: boolean;
+  appointmentStatuses: GenericList[];
+};
+
+export type ActiveLeaksResponse = {
+  success: boolean;
+  activeLeaks: GenericList[];
+};
+
 type MetricValue = {
   value: number;
-  changePercent: number;
 };
 
 export type CustomerMetricsResponse = {
@@ -79,4 +94,9 @@ export type TransactionMetricsResponse = {
 export type UserRoleResponse = {
   success: boolean;
   userRoles: GenericList[];
+};
+
+export type AppointmentMetricsResponse = {
+  success: boolean;
+  metrics: Record<AppointmentMetricKeys, MetricValue>;
 };

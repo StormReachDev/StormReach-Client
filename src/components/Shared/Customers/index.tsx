@@ -10,17 +10,13 @@ import { Typography } from '@material-tailwind/react';
 export default function Customers({ heading }: { heading?: string }) {
   const { data, isLoading } = useCustomerMetrics();
   const customerMetrics =
-    data?.metrics ||
-    ({} as Record<
-      CustomerMetricKeys,
-      { value: number; changePercent: number }
-    >);
+    data?.metrics || ({} as Record<CustomerMetricKeys, { value: number }>);
 
   const customerKeyMap: Record<string, CustomerMetricKeys> = {
     'Active Customers': 'activeCustomers',
-    'New Customers': 'newCustomers',
-    'Low Credit Customers': 'lowCreditCustomers',
+    'Flagged Customers': 'flaggedCustomers',
     'Paused Accounts': 'pausedCustomers',
+    'Low Credit Customers': 'lowCreditCustomers',
   };
 
   const updatedCards = stormyContent.admin.dashboard.customers.cards.map(
@@ -31,8 +27,6 @@ export default function Customers({ heading }: { heading?: string }) {
       return {
         ...card,
         value: String(stats?.value),
-        percentage: `${stats?.changePercent}%`,
-        action: stats?.changePercent < 50 ? 'one' : 'two',
       };
     }
   );
@@ -56,12 +50,10 @@ export default function Customers({ heading }: { heading?: string }) {
                 key={index}
                 title={card.title}
                 value={card.value}
-                percentage={card.percentage}
-                action={card.action}
                 imageSrc={card.imageSrc}
                 imageAlt={card.imageAlt}
                 imageClassName={'object-fill'}
-                showStatistics
+                showStatistics={false}
               />
             ))}
       </div>

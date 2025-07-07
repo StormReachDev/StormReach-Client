@@ -1,4 +1,5 @@
 // Imports:
+import { Appointment } from '@/types/Api/Appointment';
 import { Transaction } from '@/types/Api/Transaction';
 import { ColumnDef } from '@tanstack/react-table';
 
@@ -27,4 +28,12 @@ export type TeamMembersTableProps = {
   assignedCustomers: number;
   accountStatus: 'Active' | 'Paused' | 'Flagged';
   appointmentsBooked?: number;
+};
+
+export type AppointmentsTableProps = Pick<
+  Appointment,
+  'customerUser' | 'homeOwnerName' | 'appointmentStatus' | 'bookedByInfo'
+> & {
+  appointmentDetails: string;
+  id: string;
 };

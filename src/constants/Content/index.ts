@@ -284,7 +284,7 @@ const stormyContent = {
       },
 
       deleteCustomer: {
-        actionHeading: 'Delete Customer?',
+        actionHeading: 'Delete This Customer?',
         actionBody:
           'This will permanently remove the customer and their appointment history. This action cannot be undone.',
         actionText: 'Delete Customer',
@@ -297,6 +297,14 @@ const stormyContent = {
           'This action will permanently remove the appointment and its record from the system. This cannot be undone.',
         actionText: 'Delete Team Member',
         key: 'deleteMember',
+      },
+
+      deleteAppointment: {
+        actionHeading: 'Delete This Appointment?',
+        actionBody:
+          'This action will permanently remove the appointment and its record from the system. This cannot be undone.',
+        actionText: 'Delete Appointment',
+        key: 'deleteAppointment',
       },
     },
 
@@ -403,6 +411,154 @@ const stormyContent = {
         },
       },
     },
+
+    addAppointment: {
+      trigger: 'Appointment',
+      heading: 'Add New Appointment',
+      form: {
+        name: {
+          label: 'Select Customer',
+          id: 'customerName',
+          placeholder: 'e.g. John Doe',
+        },
+
+        homeOwnerName: {
+          label: 'Home Owner',
+          id: 'homeOwnerName',
+          placeholder: 'e.g. Emily Johnson',
+        },
+
+        homeOwnerPhone: {
+          label: 'Home Owner Phone',
+          id: 'homeOwnerPhone',
+          placeholder: 'e.g. +1 234 567 8900',
+        },
+
+        homeOwnerAddress: {
+          label: 'Home Owner Address',
+          id: 'homeOwnerAddress',
+          placeholder: 'e.g. 123 Main St, City, State',
+        },
+
+        timeZone: {
+          label: 'Timezone',
+          id: 'appointmentTimezone',
+          defaultValue: 'America/New_York',
+        },
+
+        appointmentDate: {
+          label: 'Appointment Date',
+          id: 'appointmentDate',
+          placeholder: 'e.g. 01/01/2025',
+          defaultValue: new Date().toLocaleDateString(),
+        },
+
+        appointmentTime: {
+          label: 'Appointment Time',
+          id: 'appointmentTime',
+          placeholder: 'e.g. 10:00 AM',
+          defaultValue: '10:00 AM',
+        },
+
+        activeLeaks: {
+          label: 'Active Leaks',
+          id: 'activeLeaks',
+          placeholder: 'e.g. Yes or No',
+        },
+
+        roofAge: {
+          label: 'Roof Age (Years)',
+          id: 'roofAge',
+          placeholder: 'e.g. 10',
+        },
+
+        insuranceProvider: {
+          label: 'Insurance Provider',
+          id: 'insuranceProvider',
+          placeholder: 'e.g. State Farm',
+        },
+
+        submitButton: {
+          text: 'Add Appointment',
+        },
+      },
+    },
+
+    editAppointment: {
+      heading: 'Edit Appointment',
+      form: {
+        name: {
+          label: 'Select Customer',
+          id: 'editCustomerName',
+          placeholder: 'e.g. John Doe',
+        },
+
+        homeOwnerName: {
+          label: 'Home Owner',
+          id: 'editHomeOwnerName',
+          placeholder: 'e.g. Emily Johnson',
+        },
+
+        homeOwnerPhone: {
+          label: 'Home Owner Phone',
+          id: 'editHomeOwnerPhone',
+          placeholder: 'e.g. +1 234 567 8900',
+        },
+
+        homeOwnerAddress: {
+          label: 'Home Owner Address',
+          id: 'editHomeOwnerAddress',
+          placeholder: 'e.g. 123 Main St, City, State',
+        },
+
+        timeZone: {
+          label: 'Timezone',
+          id: 'editAppointmentTimezone',
+          defaultValue: 'America/New_York',
+        },
+
+        appointmentDate: {
+          label: 'Appointment Date',
+          id: 'editAppointmentDate',
+          placeholder: 'e.g. 01/01/2025',
+          defaultValue: new Date().toLocaleDateString(),
+        },
+
+        appointmentTime: {
+          label: 'Appointment Time',
+          id: 'editAppointmentTime',
+          placeholder: 'e.g. 10:00 AM',
+          defaultValue: '10:00 AM',
+        },
+
+        activeLeaks: {
+          label: 'Active Leaks',
+          id: 'editActiveLeaks',
+          placeholder: 'e.g. Yes or No',
+        },
+
+        roofAge: {
+          label: 'Roof Age (Years)',
+          id: 'editRoofAge',
+          placeholder: 'e.g. 10',
+        },
+
+        insuranceProvider: {
+          label: 'Insurance Provider',
+          id: 'editInsuranceProvider',
+          placeholder: 'e.g. State Farm',
+        },
+
+        appointmentStatus: {
+          label: 'Appointment Status',
+          id: 'editAppointmentStatus',
+        },
+
+        submitButton: {
+          text: 'Save Details',
+        },
+      },
+    },
   },
 
   admin: {
@@ -426,23 +582,13 @@ const stormyContent = {
           },
 
           {
-            title: 'New Customers',
+            title: 'Flagged Customers',
             value: '40',
             percentage: '20%',
             action: 'two',
             imageSrc:
               'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/bulb_gnshzj.png',
             imageAlt: 'Lightbulb',
-          },
-
-          {
-            title: 'Low Credit Customers',
-            value: '5',
-            percentage: '10%',
-            action: 'two',
-            imageSrc:
-              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/timer_gohbqz.png',
-            imageAlt: 'Timer',
           },
 
           {
@@ -453,6 +599,16 @@ const stormyContent = {
             imageSrc:
               'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/target_ukk84k.png',
             imageAlt: 'Target',
+          },
+
+          {
+            title: 'Low Credit Customers',
+            value: '5',
+            percentage: '10%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/timer_gohbqz.png',
+            imageAlt: 'Timer',
           },
         ],
       },
@@ -612,6 +768,57 @@ const stormyContent = {
 
       overview: {
         heading: 'Team Overview',
+      },
+    },
+
+    appointmentLog: {
+      summary: {
+        heading: 'Summary Metrics',
+        cards: [
+          {
+            title: 'Appointments Booked',
+            value: '100',
+            percentage: '32%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/briefcase_enhofg.png',
+            imageAlt: 'Briefcase',
+          },
+
+          {
+            title: 'Appointments Completed',
+            value: '40',
+            percentage: '20%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/bulb_gnshzj.png',
+            imageAlt: 'Lightbulb',
+          },
+
+          {
+            title: 'Appointments Pending',
+            value: '5',
+            percentage: '10%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/timer_gohbqz.png',
+            imageAlt: 'Timer',
+          },
+
+          {
+            title: 'Appointments Disputed',
+            value: '15',
+            percentage: '10%',
+            action: 'one',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/target_ukk84k.png',
+            imageAlt: 'Target',
+          },
+        ],
+      },
+
+      overview: {
+        heading: 'Appointments Overview',
       },
     },
   },
