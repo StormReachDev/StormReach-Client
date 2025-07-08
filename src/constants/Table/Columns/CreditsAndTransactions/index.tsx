@@ -24,12 +24,12 @@ export const columns = [
   }),
 
   columnHelper.accessor('plan', {
-    header: 'Plan',
+    header: 'Reason',
     cell: function (info) {
       return (
         <Typography
           variant="lead"
-          className="text-lg font-medium text-neutral-800 text-ellipsis"
+          className="text-lg font-medium text-action-four text-ellipsis"
         >
           {info.getValue()}
         </Typography>
@@ -45,7 +45,7 @@ export const columns = [
           variant="lead"
           className="text-lg font-medium text-neutral-800 text-ellipsis"
         >
-          {info.getValue()}
+          {`$${info.getValue()}`}
         </Typography>
       );
     },

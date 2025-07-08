@@ -15,6 +15,14 @@ export enum QueryKeys {
   TEAM_MEMBERS = 'team-members',
   TEAM_MEMBER = 'team-member',
   NOTIFICATIONS = 'notifications',
+  APPOINTMENT_METRICS = 'appointment-metrics',
+  APPOINTMENT_STATUSES = 'appointment-statuses',
+  APPOINTMENTS = 'appointments',
+  APPOINTMENT = 'appointment',
+  ACTIVE_LEAKS = 'active-leaks',
+  DISPUTE_METRICS = 'dispute-metrics',
+  DISPUTES = 'disputes',
+  DISPUTE = 'dispute',
 }
 
 export const PlanKeys = {
@@ -40,4 +48,12 @@ export enum UserRoleKeys {
   manager = 'Manager',
   salesAgent = 'Sales Agent',
   telemarketer = 'Telemarketer',
+}
+
+export enum AppointmentStatusKeys {
+  completed = 'Completed',
+  disputed = 'Disputed',
+  scheduled = 'Scheduled',
+  pending = 'Pending',
+  denied = 'Denied',
 }

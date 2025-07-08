@@ -1,34 +1,35 @@
 // Imports:
-import Metrics from '@/components/Custom/Cards/Metrics';
+import MetricsCard from '@/components/Custom/Cards/Metrics';
 import CardSkeleton from '@/components/UI/Skeletons/Card';
 import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
-import { useTransactionMetrics } from '@/hooks/meta';
-import { TransactionMetriKeys } from '@/types/Api/Meta';
+import { useAppointmentMetrics } from '@/hooks/meta';
+import { AppointmentMetricKeys } from '@/types/Api/Meta';
 import { Typography } from '@material-tailwind/react';
 
 export default function Summary() {
-  const { data, isLoading } = useTransactionMetrics();
-  const transactionMetrics =
-    data?.metrics || ({} as Record<TransactionMetriKeys, { value: number }>);
+  const { data, isLoading } = useAppointmentMetrics();
+  const appointmentMetrics =
+    data?.metrics || ({} as Record<AppointmentMetricKeys, { value: number }>);
 
-  const transactionKeyMap: Record<string, TransactionMetriKeys> = {
-    'Total Credits Issued': 'totalCreditsIssued',
-    'Total Appointment Credits': 'totalAppointmentCredits',
-    'Total Dispute Credits': 'totalDisputeCredits',
-    'Auto-Reloads Triggered': 'autoReloadsTriggered',
+  const AppointmentKeyMap: Record<string, AppointmentMetricKeys> = {
+    'Appointments Booked': 'totalAppointmentsBooked',
+    'Appointments Completed': 'totalAppointmentsCompleted',
+    'Appointments Pending': 'totalAppointmentsPending',
+    'Appointments Disputed': 'totalAppointmentsDisputed',
   };
 
-  const updatedCards =
-    stormyContent.admin.creditsAndTransactions.summary.cards.map((card) => {
-      const transactionKey = transactionKeyMap[card.title];
-      const stats = transactionMetrics[transactionKey];
+  const updatedCards = stormyContent.admin.appointmentLog.summary.cards.map(
+    (card) => {
+      const appointmentKey = AppointmentKeyMap[card.title];
+      const stats = appointmentMetrics[appointmentKey];
 
       return {
         ...card,
         value: String(stats?.value),
       };
-    });
+    }
+  );
 
   return (
     <Wrapper className="max-w-full w-full space-y-7">
@@ -36,7 +37,7 @@ export default function Summary() {
         variant="lead"
         className="text-neutral-800 font-semibold text-[28px]"
       >
-        {stormyContent.admin.creditsAndTransactions.summary.heading}
+        {stormyContent.admin.appointmentLog.summary.heading}
       </Typography>
 
       <div className="flex flex-wrap items-center gap-5 overflow-hidden">
@@ -45,7 +46,7 @@ export default function Summary() {
               <CardSkeleton key={index} />
             ))
           : updatedCards.map((card, index) => (
-              <Metrics
+              <MetricsCard
                 key={index}
                 title={card.title}
                 value={card.value}

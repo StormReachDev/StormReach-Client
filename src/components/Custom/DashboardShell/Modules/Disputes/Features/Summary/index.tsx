@@ -1,34 +1,35 @@
 // Imports:
-import Metrics from '@/components/Custom/Cards/Metrics';
+import MetricsCard from '@/components/Custom/Cards/Metrics';
 import CardSkeleton from '@/components/UI/Skeletons/Card';
 import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
-import { useTransactionMetrics } from '@/hooks/meta';
-import { TransactionMetriKeys } from '@/types/Api/Meta';
+import { useDisputeMetrics } from '@/hooks/meta';
+import { DisputeMetricKeys } from '@/types/Api/Meta';
 import { Typography } from '@material-tailwind/react';
 
 export default function Summary() {
-  const { data, isLoading } = useTransactionMetrics();
-  const transactionMetrics =
-    data?.metrics || ({} as Record<TransactionMetriKeys, { value: number }>);
+  const { data, isLoading } = useDisputeMetrics();
+  const disputeMetrics =
+    data?.metrics || ({} as Record<DisputeMetricKeys, { value: number }>);
 
-  const transactionKeyMap: Record<string, TransactionMetriKeys> = {
-    'Total Credits Issued': 'totalCreditsIssued',
-    'Total Appointment Credits': 'totalAppointmentCredits',
-    'Total Dispute Credits': 'totalDisputeCredits',
-    'Auto-Reloads Triggered': 'autoReloadsTriggered',
+  const appointmentKeyMap: Record<string, DisputeMetricKeys> = {
+    'Total Disputes': 'totalDisputes',
+    'Approved Disputes': 'approvedDisputes',
+    'Pending Disputes': 'pendingDisputes',
+    'Denied Disputes': 'deniedDisputes',
   };
 
-  const updatedCards =
-    stormyContent.admin.creditsAndTransactions.summary.cards.map((card) => {
-      const transactionKey = transactionKeyMap[card.title];
-      const stats = transactionMetrics[transactionKey];
+  const updatedCards = stormyContent.admin.disputes.summary.cards.map(
+    (card) => {
+      const disputeKey = appointmentKeyMap[card.title];
+      const stats = disputeMetrics[disputeKey];
 
       return {
         ...card,
         value: String(stats?.value),
       };
-    });
+    }
+  );
 
   return (
     <Wrapper className="max-w-full w-full space-y-7">
@@ -36,7 +37,7 @@ export default function Summary() {
         variant="lead"
         className="text-neutral-800 font-semibold text-[28px]"
       >
-        {stormyContent.admin.creditsAndTransactions.summary.heading}
+        {stormyContent.admin.disputes.summary.heading}
       </Typography>
 
       <div className="flex flex-wrap items-center gap-5 overflow-hidden">
@@ -45,7 +46,7 @@ export default function Summary() {
               <CardSkeleton key={index} />
             ))
           : updatedCards.map((card, index) => (
-              <Metrics
+              <MetricsCard
                 key={index}
                 title={card.title}
                 value={card.value}

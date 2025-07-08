@@ -3,32 +3,33 @@ import Metrics from '@/components/Custom/Cards/Metrics';
 import CardSkeleton from '@/components/UI/Skeletons/Card';
 import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
-import { useTransactionMetrics } from '@/hooks/meta';
-import { TransactionMetriKeys } from '@/types/Api/Meta';
+import { useCustomerMetrics } from '@/hooks/meta';
+import { CustomerMetricKeys } from '@/types/Api/Meta';
 import { Typography } from '@material-tailwind/react';
 
-export default function Summary() {
-  const { data, isLoading } = useTransactionMetrics();
-  const transactionMetrics =
-    data?.metrics || ({} as Record<TransactionMetriKeys, { value: number }>);
+export default function DisputeCard({ heading }: { heading?: string }) {
+  const { data, isLoading } = useCustomerMetrics();
+  const customerMetrics =
+    data?.metrics || ({} as Record<CustomerMetricKeys, { value: number }>);
 
-  const transactionKeyMap: Record<string, TransactionMetriKeys> = {
-    'Total Credits Issued': 'totalCreditsIssued',
-    'Total Appointment Credits': 'totalAppointmentCredits',
-    'Total Dispute Credits': 'totalDisputeCredits',
-    'Auto-Reloads Triggered': 'autoReloadsTriggered',
+  const customerKeyMap: Record<string, CustomerMetricKeys> = {
+    'Active Customers': 'activeCustomers',
+    'Flagged Customers': 'flaggedCustomers',
+    'Paused Accounts': 'pausedCustomers',
+    'Low Credit Customers': 'lowCreditCustomers',
   };
 
-  const updatedCards =
-    stormyContent.admin.creditsAndTransactions.summary.cards.map((card) => {
-      const transactionKey = transactionKeyMap[card.title];
-      const stats = transactionMetrics[transactionKey];
+  const updatedCards = stormyContent.admin.dashboard.customers.cards.map(
+    (card) => {
+      const customerKey = customerKeyMap[card.title];
+      const stats = customerMetrics[customerKey];
 
       return {
         ...card,
         value: String(stats?.value),
       };
-    });
+    }
+  );
 
   return (
     <Wrapper className="max-w-full w-full space-y-7">
@@ -36,7 +37,7 @@ export default function Summary() {
         variant="lead"
         className="text-neutral-800 font-semibold text-[28px]"
       >
-        {stormyContent.admin.creditsAndTransactions.summary.heading}
+        {heading}
       </Typography>
 
       <div className="flex flex-wrap items-center gap-5 overflow-hidden">

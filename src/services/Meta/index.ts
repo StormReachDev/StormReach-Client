@@ -3,7 +3,11 @@ import { API_ABSOLUTE_ROUTES } from '@/constants/Paths/Routes';
 import axiosInstance from '@/lib/axios';
 import {
   AccountStatusResponse,
+  ActiveLeaksResponse,
+  AppointmentMetricsResponse,
+  AppointmentStatusResponse,
   CustomerMetricsResponse,
+  DisputeMetricsResponse,
   PlanTypeResponse,
   TransactionMetricsResponse,
   TransactionStatusResponse,
@@ -71,6 +75,37 @@ const MetaService = {
     const response = await axiosInstance.get(
       API_ABSOLUTE_ROUTES.GET_USER_ROLES
     );
+    return response.data;
+  },
+
+  appointmentMetrics: async (): Promise<AppointmentMetricsResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.GET_APPOINTMENT_METRICS
+    );
+
+    return response.data;
+  },
+
+  appointmentStatuses: async (): Promise<AppointmentStatusResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.GET_APPOINTMENT_STATUSES
+    );
+
+    return response.data;
+  },
+
+  activeLeaks: async (): Promise<ActiveLeaksResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.GET_ACTIVE_LEAKS
+    );
+    return response.data;
+  },
+
+  disputeMetrics: async (): Promise<DisputeMetricsResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.GET_DISPUTE_METRICS
+    );
+
     return response.data;
   },
 };
