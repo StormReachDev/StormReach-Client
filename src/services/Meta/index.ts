@@ -7,6 +7,7 @@ import {
   AppointmentMetricsResponse,
   AppointmentStatusResponse,
   CustomerMetricsResponse,
+  DisputeMetricsResponse,
   PlanTypeResponse,
   TransactionMetricsResponse,
   TransactionStatusResponse,
@@ -97,6 +98,14 @@ const MetaService = {
     const response = await axiosInstance.get(
       API_ABSOLUTE_ROUTES.GET_ACTIVE_LEAKS
     );
+    return response.data;
+  },
+
+  disputeMetrics: async (): Promise<DisputeMetricsResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.GET_DISPUTE_METRICS
+    );
+
     return response.data;
   },
 };

@@ -1,47 +1,16 @@
 // Imports:
-import { QueryKeys } from '@/constants/Keys';
-import queryClient from '@/lib/queryClient';
-import AppointmentService from '@/services/Appointment';
 import { useModalStore } from '@/stores/useModalStore';
 import { useTableStore } from '@/stores/useTableStore';
-import { AppointmentsTableProps } from '@/types/UI/Table';
+import { DisputesTableProps } from '@/types/UI/Table';
 import { Button, Chip, Typography } from '@material-tailwind/react';
 import { createColumnHelper, Row } from '@tanstack/react-table';
-import { Edit3, Trash2 } from 'lucide-react';
+import { Check, Trash2, X } from 'lucide-react';
 
-// ******** Appointment Table ********
-const columnHelper = createColumnHelper<AppointmentsTableProps>();
+// ******** Dispute Table ********
+const columnHelper = createColumnHelper<DisputesTableProps>();
 export const columns = [
   columnHelper.accessor('customerUser.name', {
     header: 'Customer Name',
-    cell: function (info) {
-      return (
-        <Typography
-          variant="lead"
-          className="text-lg font-medium text-neutral-800"
-        >
-          {info.getValue()}
-        </Typography>
-      );
-    },
-  }),
-
-  columnHelper.accessor('homeOwnerName', {
-    header: 'Home Owner',
-    cell: function (info) {
-      return (
-        <Typography
-          variant="lead"
-          className="text-lg font-medium text-neutral-800 text-ellipsis"
-        >
-          {info.getValue()}
-        </Typography>
-      );
-    },
-  }),
-
-  columnHelper.accessor('appointmentDetails', {
-    header: 'Appointment Details',
     cell: function (info) {
       return (
         <Typography
@@ -75,8 +44,22 @@ export const columns = [
     },
   }),
 
-  columnHelper.accessor('bookedByInfo.name', {
-    header: 'Booked By',
+  columnHelper.accessor('appointmentDetails', {
+    header: 'Appointment Details',
+    cell: function (info) {
+      return (
+        <Typography
+          variant="lead"
+          className="text-lg font-medium text-neutral-800"
+        >
+          {info.getValue()}
+        </Typography>
+      );
+    },
+  }),
+
+  columnHelper.accessor('disputeSubmissionDate', {
+    header: 'Submission Date',
     cell: function (info) {
       return (
         <Typography
@@ -92,51 +75,59 @@ export const columns = [
   columnHelper.display({
     id: 'actions',
     header: 'Actions',
-    cell: (info) => <CustomerActionsCell row={info.row} />,
+    cell: (info) => <DisputeActionsCell row={info.row} />,
   }),
 ];
 
-// ******** Appointment Action Cell ********
-function CustomerActionsCell({ row }: { row: Row<AppointmentsTableProps> }) {
-  const appointmentId = row.original.id;
+// ******** Dispute Action Cell ********
+function DisputeActionsCell({ row }: { row: Row<DisputesTableProps> }) {
+  const disputeId = row.original.id;
   const { openModal } = useModalStore();
   const { setId } = useTableStore();
 
-  async function handleTrigger() {
-    setId(appointmentId);
-    await queryClient.prefetchQuery({
-      queryKey: [QueryKeys.APPOINTMENT, appointmentId],
-      queryFn: () => AppointmentService.getAppointment(appointmentId),
-    });
-    openModal('EditAppointment');
+  function handleDelete() {
+    setId(disputeId);
+    openModal('ActionModal');
     return;
   }
 
-  function handleDelete() {
-    setId(appointmentId);
-    openModal('ActionModal');
+  function handleResolve() {
+    setId(disputeId);
+    openModal('ResolveDispute');
+    return;
+  }
+
+  function handleDeny() {
+    setId(disputeId);
+    openModal('DenyDispute');
     return;
   }
 
   return (
     <div className="flex items-center justify-between">
-      {/* <Button
+      <Button
         size="sm"
-        className="bg-transparent p-0"
+        className="bg-transparent p-0 text-action-two"
+        onClick={handleResolve}
         ripple={false}
         type="button"
+        disabled={row.original.appointmentStatus === 'Disputed'}
       >
-        <MapPin className="size-5 hover:text-primary transition-colors" />
-      </Button> */}
+        <Check className="size-5 hover:text-primary transition-colors" />
+      </Button>
 
       <Button
         size="sm"
-        className="bg-transparent p-0"
-        onClick={handleTrigger}
+        className="bg-transparent p-0 text-action-four"
         ripple={false}
+        onClick={handleDeny}
         type="button"
+        disabled={
+          row.original.appointmentStatus === 'Disputed' ||
+          row.original.appointmentStatus === 'Denied'
+        }
       >
-        <Edit3 className="size-5 hover:text-primary transition-colors" />
+        <X className="size-5 hover:text-primary transition-colors" />
       </Button>
 
       <Button

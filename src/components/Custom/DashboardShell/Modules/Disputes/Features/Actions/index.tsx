@@ -2,18 +2,14 @@
 import CompositeDropdown from '@/components/UI/CompositeDropDown';
 import SearchBar from '@/components/UI/Search';
 import Wrapper from '@/components/UI/Wrapper';
-import stormyContent from '@/constants/Content';
 import { useAppointmentStatuses } from '@/hooks/meta';
 import { useFilterStore } from '@/stores/useFilterStore';
-import { useModalStore } from '@/stores/useModalStore';
-import { Button } from '@material-tailwind/react';
-import { PlusCircle, Tag } from 'lucide-react';
+import { DollarSign } from 'lucide-react';
 
 export default function Actions() {
-  const { keyword, setKeyword, appointmentStatus, setAppointmentStatus } =
+  const { keyword, setKeyword, disputeStatus, setDisputeStatus } =
     useFilterStore();
 
-  const { openModal } = useModalStore();
   const { data: status } = useAppointmentStatuses();
 
   const appointmentStatusOptions =
@@ -22,16 +18,11 @@ export default function Actions() {
         Object.entries(status.appointmentStatuses)
           .filter(
             ([_, value]) =>
-              value.label !== 'Pending' && value.label !== 'Denied'
+              value.label !== 'Scheduled' && value.label !== 'Completed'
           )
           .map(([key, value]) => [value.label, key])
       )) ??
     {};
-
-  function handleTrigger() {
-    openModal('AddAppointment');
-    return;
-  }
 
   return (
     <Wrapper className="max-w-full w-full overflow-unset">
@@ -46,26 +37,15 @@ export default function Actions() {
         <div className="flex gap-3 items-center flex-wrap">
           <CompositeDropdown
             options={appointmentStatusOptions}
-            selected={appointmentStatus}
-            onChange={setAppointmentStatus}
-            Icon={Tag}
+            selected={disputeStatus}
+            onChange={setDisputeStatus}
+            Icon={DollarSign}
             btnClassName="bg-input border border-stroke rounded-lg gap-[10px] py-4 px-[14px]"
             triggerClassName="text-neutral-700 size-5"
             textClassName="text-neutral-700 font-medium text-lg"
             iconClassName="text-neutral-700 size-5"
             optionsClassName="w-full text-lg"
           />
-
-          <div className="shrink-0">
-            <Button
-              className="flex w-full max-w-full items-center gap-2 justify-center py-4 px-[14px] rounded-lg bg-primary text-neutral-700 text-lg font-medium capitalize"
-              type="button"
-              onClick={handleTrigger}
-            >
-              <PlusCircle className="text-neutral-700 size-5" />
-              {stormyContent.modal.addAppointment.trigger}
-            </Button>
-          </div>
         </div>
       </div>
     </Wrapper>

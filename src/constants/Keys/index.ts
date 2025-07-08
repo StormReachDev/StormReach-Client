@@ -20,6 +20,9 @@ export enum QueryKeys {
   APPOINTMENTS = 'appointments',
   APPOINTMENT = 'appointment',
   ACTIVE_LEAKS = 'active-leaks',
+  DISPUTE_METRICS = 'dispute-metrics',
+  DISPUTES = 'disputes',
+  DISPUTE = 'dispute',
 }
 
 export const PlanKeys = {
@@ -51,4 +54,6 @@ export enum AppointmentStatusKeys {
   completed = 'Completed',
   disputed = 'Disputed',
   scheduled = 'Scheduled',
+  pending = 'Pending',
+  denied = 'Denied',
 }

@@ -43,10 +43,12 @@ function useDeleteAppointment() {
   return useMutation({
     mutationFn: (id: string) => AppointmentService.deleteAppointment(id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QueryKeys.APPOINTMENTS] });
-      queryClient.invalidateQueries({
+      queryClient.refetchQueries({ queryKey: [QueryKeys.APPOINTMENTS] });
+      queryClient.refetchQueries({ queryKey: [QueryKeys.DISPUTES] });
+      queryClient.refetchQueries({
         queryKey: [QueryKeys.APPOINTMENT_METRICS],
       });
+      queryClient.refetchQueries({ queryKey: [QueryKeys.DISPUTE_METRICS] });
       toast.success('Success! Appointment has been deleted successfully.');
     },
 

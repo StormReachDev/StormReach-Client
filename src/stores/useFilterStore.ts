@@ -7,6 +7,7 @@ export const useFilterStore = create<CustomerFilters>((set) => ({
   plan: 'Plan Type',
   accountStatus: 'Account Status',
   appointmentStatus: 'Appointment Status',
+  disputeStatus: 'Dispute Status',
   transactionStatus: 'Transaction Status',
   transactionType: 'Transaction Type',
   assignedAgents: [],
@@ -21,6 +22,7 @@ export const useFilterStore = create<CustomerFilters>((set) => ({
   setPage: (page: number) => set({ page }),
   setLimit: (limit: number) => set({ limit }),
   setTransactionStatus: (value) => set({ transactionStatus: value }),
+  setDisputeStatus: (value) => set({ disputeStatus: value }),
   setTransactionType: (value) => set({ transactionType: value }),
   resetToDefaults: () =>
     set({

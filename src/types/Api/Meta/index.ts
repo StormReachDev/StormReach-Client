@@ -18,6 +18,12 @@ export type AppointmentMetricKeys =
   | 'totalAppointmentsPending'
   | 'totalAppointmentsDisputed';
 
+export type DisputeMetricKeys =
+  | 'totalDisputes'
+  | 'approvedDisputes'
+  | 'pendingDisputes'
+  | 'deniedDisputes';
+
 export type UserRoleKeys = 'admin' | 'manager' | 'salesAgent' | 'telemarketer';
 
 type AccountStatus = {
@@ -99,4 +105,9 @@ export type UserRoleResponse = {
 export type AppointmentMetricsResponse = {
   success: boolean;
   metrics: Record<AppointmentMetricKeys, MetricValue>;
+};
+
+export type DisputeMetricsResponse = {
+  success: boolean;
+  metrics: Record<DisputeMetricKeys, MetricValue>;
 };

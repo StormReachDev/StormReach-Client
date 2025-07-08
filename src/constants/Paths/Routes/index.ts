@@ -43,6 +43,7 @@ export const API_ABSOLUTE_ROUTES = {
   GET_APPOINTMENT_METRICS: `${config.PROD_API_URL}/meta/appointment-metrics`,
   GET_APPOINTMENT_STATUSES: `${config.PROD_API_URL}/meta/appointment-statuses`,
   GET_ACTIVE_LEAKS: `${config.PROD_API_URL}/meta/active-leaks`,
+  GET_DISPUTE_METRICS: `${config.PROD_API_URL}/meta/dispute-metrics`,
 
   // ******** Sales Agent ********
   GET_SALES_AGENTS: `${config.PROD_API_URL}/sales-agents`,
@@ -66,6 +67,8 @@ export const API_ABSOLUTE_ROUTES = {
 
   // ******** Appointment ********
   GET_APPOINTMENTS: `${config.PROD_API_URL}/appointment/all`,
+  GET_DISPUTES: `${config.PROD_API_URL}/dispute/all`,
   CREATE_APPOINTMENT: `${config.PROD_API_URL}/appointment/create`,
   APPOINTMENT: `${config.PROD_API_URL}/appointment`,
+  DISPUTE: `${config.PROD_API_URL}/dispute`,
 };

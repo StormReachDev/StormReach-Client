@@ -1,5 +1,6 @@
 // Imports:
 import stormyContent from '@/constants/Content';
+import { AppointmentStatusKeys } from '@/constants/Keys';
 import { useAppointment, useUpdateAppointment } from '@/hooks/appointment';
 import { useActiveLeaks, useAppointmentStatuses } from '@/hooks/meta';
 import { useAllRoofers } from '@/hooks/roofer';
@@ -105,7 +106,12 @@ export default function EditAppointmentModal() {
   const appointmentStatusOptions = useMemo(
     () =>
       status?.appointmentStatuses
-        .filter((status) => status.label !== 'Pending')
+        .filter(
+          (status) =>
+            status.label !== 'Pending' &&
+            status.label !== 'Denied' &&
+            status.label !== 'Disputed'
+        )
         .map((status) => ({
           label: status.label,
           value: status.value,
@@ -269,6 +275,12 @@ export default function EditAppointmentModal() {
               onChange={handleStatusChange}
               options={appointmentStatusOptions}
               icon={<Tag className="h-6 w-6 text-neutral-700" />}
+              disabled={selectedStatus === 'disputed'}
+              fallbackLabel={
+                AppointmentStatusKeys[
+                  selectedStatus as keyof typeof AppointmentStatusKeys
+                ]
+              }
             />
 
             <CompositeSelectField

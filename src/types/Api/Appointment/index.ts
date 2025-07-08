@@ -9,7 +9,12 @@ export type Appointment = {
   activeLeaks: 'yes' | 'no';
   roofAge: string;
   insuranceProvider: string;
-  appointmentStatus: 'Scheduled' | 'Completed' | 'Disputed';
+  appointmentStatus:
+    | 'Scheduled'
+    | 'Completed'
+    | 'Disputed'
+    | 'Pending'
+    | 'Denied';
   isDisputed: boolean;
   customerUser: {
     name: string;
@@ -17,12 +22,19 @@ export type Appointment = {
   bookedByInfo: {
     name: string;
   };
+  disputeSubmissionDate?: string;
 };
 
 export type AppointmentsResponse = {
   success: boolean;
   totalCount: number;
   appointments: Appointment[];
+};
+
+export type DisputesResponse = {
+  success: boolean;
+  totalCount: number;
+  disputes: Appointment[];
 };
 
 export type CreateAppointmentRequest = Omit<

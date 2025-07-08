@@ -37,3 +37,11 @@ export type AppointmentsTableProps = Pick<
   appointmentDetails: string;
   id: string;
 };
+
+export type DisputesTableProps = Pick<
+  Appointment,
+  'customerUser' | 'appointmentStatus' | 'disputeSubmissionDate'
+> & {
+  appointmentDetails: string;
+  id: string;
+};

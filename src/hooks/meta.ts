@@ -103,12 +103,22 @@ function useActiveLeaks() {
   });
 }
 
+function useDisputeMetrics() {
+  return useQuery({
+    queryKey: [QueryKeys.DISPUTE_METRICS],
+    queryFn: MetaService.disputeMetrics,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
 export {
   useAccountStatuses,
   useActiveLeaks,
   useAppointmentMetrics,
   useAppointmentStatuses,
   useCustomerMetrics,
+  useDisputeMetrics,
   usePlanTypes,
   useRoleTypes,
   useTransactionMetrics,

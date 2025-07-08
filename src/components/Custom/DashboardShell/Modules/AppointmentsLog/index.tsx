@@ -16,7 +16,7 @@ export default function AppointmentsLogModule() {
   const { selectedId } = useTableStore();
   const { closeModal } = useModalStore();
 
-  function handleDeleteCustomer() {
+  function handleDeleteAppointment() {
     mutation.mutate(String(selectedId), {
       onSuccess: () => {
         closeModal();
@@ -39,7 +39,7 @@ export default function AppointmentsLogModule() {
         actionBody={stormyContent.modal.actions.deleteAppointment.actionBody}
         actionText={stormyContent.modal.actions.deleteAppointment.actionText}
         icon={X}
-        actionTrigger={handleDeleteCustomer}
+        actionTrigger={handleDeleteAppointment}
         isPending={mutation.isPending}
       />
     </HeaderLayout>

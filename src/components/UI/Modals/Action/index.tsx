@@ -17,24 +17,33 @@ import IconBadge from '../../IconBadge';
 export default function ActionModal({
   icon,
   iconPrimaryClassName,
+  iconSecondaryClassName,
   actionHeading = '',
   actionBody = '',
   actionTrigger,
+  actionTriggerClassName,
   actionText = '',
   isPending = false,
 }: {
   icon?: LucideIcon;
   iconPrimaryClassName?: string;
+  iconSecondaryClassName?: string;
   actionHeading?: string;
   actionBody?: string;
   actionTrigger?: () => void;
+  actionTriggerClassName?: string;
   actionText?: string;
   isPending?: boolean;
 }) {
   const { modal, closeModal } = useModalStore();
   const { setId } = useTableStore();
 
-  if (modal !== 'ActionModal') return null;
+  if (
+    modal !== 'ActionModal' &&
+    modal !== 'ResolveDispute' &&
+    modal !== 'DenyDispute'
+  )
+    return null;
 
   function closeHandler() {
     setId('');
@@ -56,7 +65,7 @@ export default function ActionModal({
               'size-12 p-3 rounded-[10px] border-transparent',
               iconPrimaryClassName
             )}
-            iconClassName="text-red-800 size-7"
+            iconClassName={cn('text-red-800 size-7', iconSecondaryClassName)}
           />
 
           <div className="flex flex-col items-start gap-3">
@@ -77,7 +86,10 @@ export default function ActionModal({
         </DialogHeader>
         <DialogBody className="p-0 flex flex-col gap-4 overflow-hidden">
           <Button
-            className="flex-1 py-3 px-5 text-core-white bg-primary capitalize text-xl font-semibold rounded-xl outline-none"
+            className={cn(
+              'flex-1 py-3 px-5 text-core-white bg-primary capitalize text-xl font-semibold rounded-xl outline-none',
+              actionTriggerClassName
+            )}
             onClick={actionTrigger}
             type="button"
           >

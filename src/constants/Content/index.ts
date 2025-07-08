@@ -306,6 +306,30 @@ const stormyContent = {
         actionText: 'Delete Appointment',
         key: 'deleteAppointment',
       },
+
+      approveDispute: {
+        actionHeading: 'Approve This Dispute?',
+        actionBody:
+          'The customer will receive a credit, and a $25 dispute fee will be automatically applied to their account.',
+        actionText: 'Approve Dispute',
+        key: 'approveDispute',
+      },
+
+      denyDispute: {
+        actionHeading: 'Deny This Dispute?',
+        actionBody:
+          "The customer's request will be closed without issuing a credit. Please ensure all lead details are thoroughly verified beforehand.",
+        actionText: 'Deny Dispute',
+        key: 'denyDispute',
+      },
+
+      deleteDispute: {
+        actionHeading: 'Delete This Dispute Request?',
+        actionBody:
+          'This will permanently remove the dispute from the system and it will no longer appear in the dispute history or reports.',
+        actionText: 'Delete Dispute',
+        key: 'deleteDispute',
+      },
     },
 
     addTeam: {
@@ -819,6 +843,57 @@ const stormyContent = {
 
       overview: {
         heading: 'Appointments Overview',
+      },
+    },
+
+    disputes: {
+      summary: {
+        heading: 'Summary Metrics',
+        cards: [
+          {
+            title: 'Total Disputes',
+            value: '100',
+            percentage: '32%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/briefcase_enhofg.png',
+            imageAlt: 'Briefcase',
+          },
+
+          {
+            title: 'Approved Disputes',
+            value: '40',
+            percentage: '20%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/bulb_gnshzj.png',
+            imageAlt: 'Lightbulb',
+          },
+
+          {
+            title: 'Pending Disputes',
+            value: '5',
+            percentage: '10%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/timer_gohbqz.png',
+            imageAlt: 'Timer',
+          },
+
+          {
+            title: 'Denied Disputes',
+            value: '15',
+            percentage: '10%',
+            action: 'one',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/target_ukk84k.png',
+            imageAlt: 'Target',
+          },
+        ],
+      },
+
+      overview: {
+        heading: 'Disputes Overview',
       },
     },
   },

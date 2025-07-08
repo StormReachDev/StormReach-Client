@@ -28,6 +28,8 @@ type ModalType =
   | 'EditTeam'
   | 'AddAppointment'
   | 'EditAppointment'
+  | 'ResolveDispute'
+  | 'DenyDispute'
   | null;
 
 export type ModalStore = {
@@ -47,6 +49,7 @@ export type CustomerFilters = {
   plan: string;
   accountStatus: string;
   appointmentStatus: string;
+  disputeStatus: string;
   assignedAgents: string[];
   page: number;
   limit: number;
@@ -56,6 +59,7 @@ export type CustomerFilters = {
   setKeyword: (_value: string) => void;
   setPlan: (_value: string) => void;
   setAccountStatus: (_value: string) => void;
+  setDisputeStatus: (_value: string) => void;
   setAppointmentStatus: (_value: string) => void;
   setAssignedAgents: (_values: string[]) => void;
   setPage: (_page: number) => void;
