@@ -31,10 +31,9 @@ export default function Actions() {
   const planOptions =
     (planTypes?.plans &&
       Object.fromEntries(
-        Object.entries(planTypes?.plans).map(([key, value]) => [
-          value.name,
-          key,
-        ])
+        Object.entries(planTypes?.plans)
+          .filter(([_, value]) => value.name !== 'Dispute Resolution')
+          .map(([key, value]) => [value.name, key])
       )) ??
     {};
 

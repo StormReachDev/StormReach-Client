@@ -226,11 +226,11 @@ export default function AddTeamModal() {
                 className="p-3 rounded-lg bg-primary text-xl font-semibold text-core-white w-full capitalize"
                 type="submit"
                 disabled={
-                  !form.name ||
-                  !form.email ||
-                  !form.phone ||
-                  !selectedRole ||
-                  !timezone
+                  !form.name.trim() ||
+                  !form.email.trim() ||
+                  !form.phone.trim() ||
+                  !selectedRole.trim() ||
+                  !timezone.trim()
                 }
               >
                 {isPending ? (

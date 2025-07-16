@@ -1,32 +1,31 @@
 // Imports:
-import CompositeDropdown from '@/components/UI/CompositeDropDown';
-import stormyContent from '@/constants/Content';
-import { monthlyDisputeData } from '@/constants/static';
+import { PieAnalyticsProps } from '@/types/UI/Statistics';
 import { Card, Typography } from '@material-tailwind/react';
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
 // Chart.js registration:
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
-export default function DisputesAnalyticsCard() {
-  const [selectedPeriod, setSelectedPeriod] = useState('This Month');
+export default function PieAnalyticsCard({
+  labels = [],
+  data = [],
+  percentageCompleted,
+  legendItems = [],
+  heading,
+  subHeading,
+  colors = ['#34C759', '#007AFF', '#FF3B30'],
+}: PieAnalyticsProps) {
   const chartRef = useRef<ChartJS<'doughnut'>>(null);
-  const currentData = monthlyDisputeData[selectedPeriod];
-  const percentageCompleted = Math.round(
-    (currentData.approved /
-      (currentData.approved + currentData.handled + currentData.pending)) *
-      100
-  );
 
   const chartData = {
-    labels: ['Handled Disputes', 'Approved Disputes', 'Pending Disputes'],
+    labels: labels,
     datasets: [
       {
-        data: [currentData.handled, currentData.approved, currentData.pending],
-        backgroundColor: ['#34C759', '#007AFF', '#FF3B30'],
+        data: data,
+        backgroundColor: colors.map((color) => color),
         borderWidth: 0,
         cutout: '0%',
       },
@@ -43,9 +42,20 @@ export default function DisputesAnalyticsCard() {
       },
 
       tooltip: {
-        enabled: false,
+        displayColors: false,
+        backgroundColor: '#333',
+        border: false,
+        bodyFont: {
+          size: 12,
+          weight: 500,
+        },
+        callbacks: {
+          title: () => '',
+          label: (context: { label: String }) => {
+            return context?.label;
+          },
+        },
       },
-
       datalabels: {
         color: '#FFF',
         font: {
@@ -58,36 +68,14 @@ export default function DisputesAnalyticsCard() {
     },
   };
 
-  const legendItems = [
-    { label: 'Handled', color: '#34C759', value: currentData.handled },
-    {
-      label: 'Approved',
-      color: '#007AFF',
-      value: currentData.approved,
-    },
-    { label: 'Pending', color: '#FF3B30', value: currentData.pending },
-  ];
-
   return (
     <Card className="bg-input border border-stroke rounded-xl py-4 px-5 max-w-full w-[343px] overflow-hidden space-y-2">
-      <div className="flex items-center">
-        <Typography
-          variant="lead"
-          className="text-base font-semibold text-neutral-800"
-        >
-          {
-            stormyContent.admin.dashboard.disputesAndAppointments.disputeMetrics
-              .heading
-          }
-        </Typography>
-
-        <CompositeDropdown
-          options={monthlyDisputeData}
-          selected={selectedPeriod}
-          onChange={setSelectedPeriod}
-          className="ml-auto"
-        />
-      </div>
+      <Typography
+        variant="lead"
+        className="text-base font-semibold text-neutral-800"
+      >
+        {heading}
+      </Typography>
 
       <div className="overflow-hidden">
         <Typography
@@ -100,19 +88,16 @@ export default function DisputesAnalyticsCard() {
           className="text-neutral-800 text-base font-medium"
           variant="small"
         >
-          {
-            stormyContent.admin.dashboard.disputesAndAppointments.disputeMetrics
-              .subHeading
-          }
+          {subHeading}
         </Typography>
       </div>
 
-      <div className="flex flex-col items-center gap-3 overflow-hidden">
-        <div className="flex-1 max-w-[130px] w-full">
+      <div className="flex flex-col items-center gap-6 overflow-hidden">
+        <div className="flex-1 w-full">
           <Doughnut
             ref={chartRef}
             data={chartData}
-            options={chartOptions}
+            options={chartOptions as object}
             width={130}
           />
         </div>
@@ -124,7 +109,7 @@ export default function DisputesAnalyticsCard() {
               className="flex flex-col items-center gap-2 text-center"
             >
               <div
-                className="w-[15px] h-[15px] rounded-full"
+                className="size-[15px] rounded-full"
                 style={{ backgroundColor: item.color }}
               />
               <Typography

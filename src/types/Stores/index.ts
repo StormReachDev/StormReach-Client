@@ -30,6 +30,8 @@ type ModalType =
   | 'EditAppointment'
   | 'ResolveDispute'
   | 'DenyDispute'
+  | 'PauseAccount'
+  | 'FlagAccount'
   | null;
 
 export type ModalStore = {
@@ -67,4 +69,20 @@ export type CustomerFilters = {
   setTransactionStatus: (_value: string) => void;
   setTransactionType: (_value: string) => void;
   resetToDefaults: () => void;
+};
+
+export type UploadState = {
+  imageUrl: string;
+  publicId: string;
+  setImageUrl: (_url: string) => void;
+  setPublicId: (_id: string) => void;
+  clearImage: () => void;
+};
+
+export type StepperState = {
+  activeStep: number;
+  setActiveStep: (_step: number) => void;
+  nextStep: () => void;
+  prevStep: () => void;
+  resetStepper: () => void;
 };

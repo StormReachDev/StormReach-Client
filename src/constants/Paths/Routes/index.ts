@@ -44,6 +44,9 @@ export const API_ABSOLUTE_ROUTES = {
   GET_APPOINTMENT_STATUSES: `${config.PROD_API_URL}/meta/appointment-statuses`,
   GET_ACTIVE_LEAKS: `${config.PROD_API_URL}/meta/active-leaks`,
   GET_DISPUTE_METRICS: `${config.PROD_API_URL}/meta/dispute-metrics`,
+  CLOUDINARY_IMAGE: `${config.PROD_API_URL}/meta/asset`,
+  APPOINTMENTS_PER_DAY: `${config.PROD_API_URL}/meta/appointments-per-day`,
+  CUSTOMER_APPOINTMENT_METRICS: `${config.PROD_API_URL}/meta/customer-appointment-metrics`,
 
   // ******** Sales Agent ********
   GET_SALES_AGENTS: `${config.PROD_API_URL}/sales-agents`,

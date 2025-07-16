@@ -3,8 +3,9 @@ import IconBadge from '@/components/UI/IconBadge';
 import Wrapper from '@/components/UI/Wrapper';
 import { useDeleteNotification } from '@/hooks/notification';
 import { NotificationProps } from '@/types/Custom/Cards';
-import { Typography } from '@material-tailwind/react';
-import { Bell, Calendar } from 'lucide-react';
+import { Button, Typography } from '@material-tailwind/react';
+import { Bell, Calendar, X } from 'lucide-react';
+import { useState } from 'react';
 
 export default function NotificationsCard({
   id,
@@ -12,27 +13,38 @@ export default function NotificationsCard({
   description = 'Homeowner confirmed for Ayaan on 12 May, 2025 at 10:31 PM.',
   date = '20 May, 2025',
 }: NotificationProps) {
+  const [isHovered, setIsHovered] = useState(false);
   const { mutate } = useDeleteNotification();
 
-  function handleDelete() {
+  function handleDelete(e: React.MouseEvent<HTMLButtonElement>) {
+    e.stopPropagation();
     mutate(id);
     return;
   }
 
   return (
     <Wrapper
-      className="bg-stroke border border-stroke rounded-xl p-4 overflow-hidden hover:bg-primary hover:border-primary hover:cursor-pointer transition-colors"
-      onClick={handleDelete}
+      className="bg-stroke border border-stroke rounded-xl p-4 overflow-hidden cursor-pointer transition-all relative duration-200"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="flex items-start justify-between">
-        <div className="flex items-center gap-4">
+      <Button
+        onClick={handleDelete}
+        className={`absolute top-3 right-3 p-0 bg-transparent rounded transition-all duration-200 ${
+          isHovered ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
+        ripple={false}
+      >
+        <X className="size-4 text-neutral-700" />
+      </Button>
+      <div className="flex items-start">
+        <div className="flex items-center gap-4 flex-1">
           <IconBadge
             icon={Bell}
             className="size-10 px-[10px] py-2 rounded-lg border-transparent"
             iconClassName="text-primary w-5"
           />
-
-          <div className="space-y-1">
+          <div className="space-y-1 overflow-hidden">
             <Typography
               variant="lead"
               className="text-xl font-semibold text-neutral-800"
@@ -47,13 +59,13 @@ export default function NotificationsCard({
               {description}
             </Typography>
           </div>
-        </div>
 
-        <div className="flex items-center gap-2 text-neutral-600">
-          <Calendar className="w-5 h-5" />
-          <Typography className="text-sm font-normal whitespace-nowrap">
-            {date}
-          </Typography>
+          <div className="flex items-center gap-2 text-neutral-600 ml-auto">
+            <Calendar className="w-5 h-5" />
+            <Typography className="text-sm font-normal whitespace-nowrap">
+              {date}
+            </Typography>
+          </div>
         </div>
       </div>
     </Wrapper>

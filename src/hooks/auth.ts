@@ -5,6 +5,7 @@ import { ABSOLUTE_ROUTES } from '@/constants/Paths/Routes';
 import queryClient from '@/lib/queryClient';
 import AuthService from '@/services/Auth';
 import { useScreenStore } from '@/stores/useScreenStore';
+import { useSidebarStore } from '@/stores/useSidebarStore';
 import {
   APIError,
   ChangePasswordRequest,
@@ -86,12 +87,14 @@ function useResetPassword() {
 
 function useLogout() {
   const router = useRouter();
+  const { setActiveItem } = useSidebarStore();
 
   return () => {
     Cookies.remove(config.COOKIE_NAME);
     queryClient.clear();
     router.push(ABSOLUTE_ROUTES.ROOT);
     toast.success('You’ve successfully signed out.');
+    setActiveItem('Dashboard');
   };
 }
 
