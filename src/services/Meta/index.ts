@@ -5,7 +5,9 @@ import {
   AccountStatusResponse,
   ActiveLeaksResponse,
   AppointmentMetricsResponse,
+  AppointmentsPerDayResponse,
   AppointmentStatusResponse,
+  CustomerAppointmentMetricsResponse,
   CustomerMetricsResponse,
   DisputeMetricsResponse,
   PlanTypeResponse,
@@ -104,6 +106,45 @@ const MetaService = {
   disputeMetrics: async (): Promise<DisputeMetricsResponse> => {
     const response = await axiosInstance.get(
       API_ABSOLUTE_ROUTES.GET_DISPUTE_METRICS
+    );
+
+    return response.data;
+  },
+
+  deleteCloudinaryImage: async (publicId: string): Promise<void> => {
+    await axiosInstance.delete(API_ABSOLUTE_ROUTES.CLOUDINARY_IMAGE, {
+      data: {
+        public_id: publicId,
+      },
+    });
+  },
+
+  getCloudinaryImage: async (publicId: string): Promise<string> => {
+    const response = await axiosInstance.put(
+      API_ABSOLUTE_ROUTES.CLOUDINARY_IMAGE,
+      {
+        data: {
+          public_id: publicId,
+        },
+      }
+    );
+
+    return response.data?.asset?.secure_url;
+  },
+
+  appointmentsPerDay: async (): Promise<AppointmentsPerDayResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.APPOINTMENTS_PER_DAY
+    );
+
+    return response.data;
+  },
+
+  customerAppointmentMetrics: async (
+    id: string
+  ): Promise<CustomerAppointmentMetricsResponse> => {
+    const response = await axiosInstance.get(
+      `${API_ABSOLUTE_ROUTES.CUSTOMER_APPOINTMENT_METRICS}/${id}`
     );
 
     return response.data;

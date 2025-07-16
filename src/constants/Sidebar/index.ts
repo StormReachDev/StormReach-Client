@@ -11,7 +11,7 @@ import {
   UsersRound,
 } from 'lucide-react';
 
-export const sidebarItems: SidebarItem[] = [
+export const adminSidebarItems: SidebarItem[] = [
   {
     icon: House,
     label: 'Dashboard',
@@ -45,6 +45,18 @@ export const sidebarItems: SidebarItem[] = [
   {
     icon: Settings,
     label: 'Settings',
+  },
+
+  {
+    icon: LogOut,
+    label: 'Logout',
+  },
+];
+
+export const rooferSidebarItems: SidebarItem[] = [
+  {
+    icon: House,
+    label: 'Dashboard',
   },
 
   {

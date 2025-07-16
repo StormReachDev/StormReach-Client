@@ -1,7 +1,5 @@
 // Imports:
-import CompositeDropdown from '@/components/UI/CompositeDropDown';
-import stormyContent from '@/constants/Content';
-import { monthlyAppointmentData } from '@/constants/static';
+import { BarAnalyticsProps } from '@/types/UI/Statistics';
 import { Card, Typography } from '@material-tailwind/react';
 import {
   BarElement,
@@ -12,7 +10,6 @@ import {
   Title,
   Tooltip,
 } from 'chart.js';
-import { useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 
 // Chart.js registration:
@@ -25,37 +22,21 @@ ChartJS.register(
   Legend
 );
 
-export default function AppointmentsFulfilledCard() {
-  const [selectedPeriod, setSelectedPeriod] = useState('This Month');
-  const currentData = monthlyAppointmentData[selectedPeriod];
-  const maxDataValue = Math.max(
-    currentData.cancelled,
-    currentData.remaining,
-    currentData.completed
-  );
-
-  const maxScaleValue = Math.ceil(maxDataValue / 20) * 20;
-  const finalMaxValue = Math.max(20, maxScaleValue);
-  const percentageCompleted = Math.round(
-    (currentData.completed /
-      (currentData.cancelled + currentData.remaining + currentData.completed)) *
-      100
-  );
-
+export default function BarAnalyticsCard({
+  labels = [],
+  data = [],
+  colors = ['#FF3B30', '#007AFF', '#34C759'],
+  percentageCompleted,
+  finalMaxValue,
+  heading,
+  subHeading,
+}: BarAnalyticsProps) {
   const chartData = {
-    labels: [
-      'Appointments Cancelled',
-      'Appointments Remaining',
-      'Appointments Completed',
-    ],
+    labels: labels,
     datasets: [
       {
-        data: [
-          currentData.cancelled,
-          currentData.remaining,
-          currentData.completed,
-        ],
-        backgroundColor: ['#FF3B30', '#007AFF', '#34C759'],
+        data: data,
+        backgroundColor: colors.map((color) => color),
         borderRadius: 4,
         barThickness: 40,
       },
@@ -85,8 +66,7 @@ export default function AppointmentsFulfilledCard() {
       tooltip: {
         displayColors: false,
         backgroundColor: '#333',
-        borderColor: '#1e1e1e',
-        borderWidth: 1,
+        border: false,
         bodyFont: {
           size: 12,
           weight: 500,
@@ -140,18 +120,15 @@ export default function AppointmentsFulfilledCard() {
           variant="lead"
           className="text-base font-semibold text-neutral-800"
         >
-          {
-            stormyContent.admin.dashboard.disputesAndAppointments
-              .appointmentMetrics.heading
-          }
+          {heading}
         </Typography>
 
-        <CompositeDropdown
+        {/* <CompositeDropdown
           options={monthlyAppointmentData}
           selected={selectedPeriod}
           onChange={setSelectedPeriod}
           className="ml-auto"
-        />
+        /> */}
       </div>
 
       <div className="overflow-hidden">
@@ -165,10 +142,7 @@ export default function AppointmentsFulfilledCard() {
           className="text-neutral-800 text-base font-medium"
           variant="small"
         >
-          {
-            stormyContent.admin.dashboard.disputesAndAppointments
-              .appointmentMetrics.subHeading
-          }
+          {subHeading}
         </Typography>
       </div>
 

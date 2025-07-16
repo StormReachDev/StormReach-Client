@@ -254,6 +254,7 @@ export default function EditTeamModal() {
                 fallbackLabel={
                   stormyContent.modal.editTeam.form.addCustomers.fallbackLabel
                 }
+                disabled={status === 'paused'}
               />
             )}
 
@@ -276,12 +277,12 @@ export default function EditTeamModal() {
                 className="p-3 rounded-lg bg-primary text-xl font-semibold text-core-white w-full capitalize"
                 type="submit"
                 disabled={
-                  !form.name ||
-                  !form.email ||
-                  !form.phone ||
-                  !selectedRole ||
-                  !timezone ||
-                  !status
+                  !form.name.trim() ||
+                  !form.email.trim() ||
+                  !form.phone.trim() ||
+                  !selectedRole?.trim() ||
+                  !timezone?.trim() ||
+                  !status?.trim()
                 }
               >
                 {isPending ? (

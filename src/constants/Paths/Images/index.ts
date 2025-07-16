@@ -33,6 +33,18 @@ export const imagePaths = {
       src: 'https://res.cloudinary.com/doozfybsm/image/upload/v1748951763/logout_zf0qgw.png',
       alt: 'Logout Image',
     },
+
+    account: {
+      paused: {
+        src: 'https://res.cloudinary.com/doozfybsm/image/upload/v1752587120/paused_ccn1od.png',
+        alt: 'Paused Account Notice',
+      },
+
+      flagged: {
+        src: 'https://res.cloudinary.com/doozfybsm/image/upload/v1752588229/flagged_wrvmnd.png',
+        alt: 'Flagged Account Notice',
+      },
+    },
   },
 
   dashboard: {

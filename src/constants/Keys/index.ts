@@ -23,6 +23,9 @@ export enum QueryKeys {
   DISPUTE_METRICS = 'dispute-metrics',
   DISPUTES = 'disputes',
   DISPUTE = 'dispute',
+  CLOUDINARY_IMAGE = 'cloudinary-image',
+  APPOINTMENTS_PER_DAY = 'appointments-per-day',
+  CUSTOMER_APPOINTMENT_METRICS = 'customer-appointment-metrics',
 }
 
 export const PlanKeys = {
@@ -48,6 +51,7 @@ export enum UserRoleKeys {
   manager = 'Manager',
   salesAgent = 'Sales Agent',
   telemarketer = 'Telemarketer',
+  roofer = 'Roofer',
 }
 
 export enum AppointmentStatusKeys {
@@ -57,3 +61,10 @@ export enum AppointmentStatusKeys {
   pending = 'Pending',
   denied = 'Denied',
 }
+
+export const AppointmentCreditKeys = {
+  'Strike 10': 10,
+  'Surge 30': 30,
+  'Blackout 60': 60,
+  'Pay As You Go': 1,
+};

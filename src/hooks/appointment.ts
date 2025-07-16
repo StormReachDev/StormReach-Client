@@ -74,7 +74,7 @@ function useUpdateAppointment() {
       AppointmentService.updateAppointment(id, data),
     onSuccess: (_, variables) => {
       const { id } = variables;
-      queryClient.invalidateQueries({ queryKey: [QueryKeys.APPOINTMENTS] });
+      queryClient.refetchQueries({ queryKey: [QueryKeys.APPOINTMENTS] });
       queryClient.invalidateQueries({ queryKey: [QueryKeys.APPOINTMENT, id] });
       queryClient.invalidateQueries({
         queryKey: [QueryKeys.APPOINTMENT_METRICS],

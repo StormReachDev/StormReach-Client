@@ -1,8 +1,11 @@
 // Imports:
 import { QueryKeys } from '@/constants/Keys';
+import queryClient from '@/lib/queryClient';
 import MetaService from '@/services/Meta';
+import { APIError } from '@/types/Api/Auth';
 import { AccountStatusResponse, PlanTypeResponse } from '@/types/Api/Meta';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 
 function usePlanTypes() {
   return useQuery<PlanTypeResponse, Error>({
@@ -112,13 +115,63 @@ function useDisputeMetrics() {
   });
 }
 
+function useDeleteCloudinaryImage() {
+  return useMutation({
+    mutationFn: (publicId: string) =>
+      MetaService.deleteCloudinaryImage(publicId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.CLOUDINARY_IMAGE] });
+    },
+    onError: (error: APIError) => {
+      toast.error(error?.response?.data?.message);
+    },
+  });
+}
+
+function useGetCloudinaryImage() {
+  return useMutation<string, Error, string>({
+    mutationFn: (publicId: string) => MetaService.getCloudinaryImage(publicId),
+    onSuccess: (_, publicId) => {
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.CLOUDINARY_IMAGE, publicId],
+      });
+    },
+    onError: (error: APIError) => {
+      toast.error(error?.response?.data?.message);
+    },
+  });
+}
+
+function useAppointmentsPerDay() {
+  return useQuery({
+    queryKey: [QueryKeys.APPOINTMENTS_PER_DAY],
+    queryFn: MetaService.appointmentsPerDay,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+function useCustomerAppointmentMetrics(id: string) {
+  return useQuery({
+    queryKey: [QueryKeys.CUSTOMER_APPOINTMENT_METRICS, id],
+    queryFn: () => MetaService.customerAppointmentMetrics(id),
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+    enabled: !!id,
+  });
+}
+
 export {
   useAccountStatuses,
   useActiveLeaks,
   useAppointmentMetrics,
+  useAppointmentsPerDay,
   useAppointmentStatuses,
+  useCustomerAppointmentMetrics,
   useCustomerMetrics,
+  useDeleteCloudinaryImage,
   useDisputeMetrics,
+  useGetCloudinaryImage,
   usePlanTypes,
   useRoleTypes,
   useTransactionMetrics,

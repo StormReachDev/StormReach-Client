@@ -474,7 +474,7 @@ const stormyContent = {
           label: 'Appointment Date',
           id: 'appointmentDate',
           placeholder: 'e.g. 01/01/2025',
-          defaultValue: new Date().toLocaleDateString(),
+          defaultValue: new Date().toISOString().split('T')[0],
         },
 
         appointmentTime: {
@@ -583,6 +583,36 @@ const stormyContent = {
         },
       },
     },
+
+    account: {
+      paused: {
+        heading: 'Your Account is Paused',
+        body: 'Your account is currently paused. Please contact support to reactivate your account.',
+        buttons: {
+          contactSupport: {
+            text: 'Contact Support',
+          },
+
+          logout: {
+            text: 'Logout',
+          },
+        },
+      },
+
+      flagged: {
+        heading: 'Your Account is Flagged',
+        body: 'Your account has been flagged for review. Please contact support for more information.',
+        buttons: {
+          contactSupport: {
+            text: 'Contact Support',
+          },
+
+          logout: {
+            text: 'Logout',
+          },
+        },
+      },
+    },
   },
 
   admin: {
@@ -674,16 +704,26 @@ const stormyContent = {
         ],
       },
 
-      disputesAndAppointments: {
+      statistics: {
         heading: 'Disputes & Appointments',
-        disputeMetrics: {
+        disputeAnalytics: {
+          key: 'admin-pie-analytics',
           heading: 'Disputes',
           subHeading: 'Handled',
+          labels: ['Handled', 'Pending', 'Denied'],
+          colors: ['#34C759', '#007AFF', '#FF3B30'],
         },
 
-        appointmentMetrics: {
+        appointmentAnalytics: {
+          key: 'admin-bar-analytics',
           heading: 'Appointments',
           subHeading: 'Fulfilled',
+          labels: [
+            'Appointments Disputed',
+            'Appointments Scheduled',
+            'Appointments Completed',
+          ],
+          colors: ['#FF3B30', '#007AFF', '#34C759'],
         },
       },
     },
@@ -894,6 +934,134 @@ const stormyContent = {
 
       overview: {
         heading: 'Disputes Overview',
+      },
+    },
+  },
+
+  cutomer: {
+    onboarding: {
+      form: {
+        companyName: {
+          label: 'Company Name',
+          id: 'onboardingCompanyName',
+          placeholder: 'e.g. RoofCo Inc.',
+        },
+
+        businessAddress: {
+          label: 'Business Address',
+          id: 'onboardingBusinessAddress',
+          placeholder: 'e.g. 123 Main St, City, State',
+        },
+
+        uploadLogo: {
+          label: 'Upload Logo (png / jpg / jpeg)',
+          id: 'onboardingUploadLogo',
+          placeholder: 'Click to upload your company logo',
+        },
+
+        contactName: {
+          label: 'Contact Name',
+          id: 'onboardingContactName',
+          placeholder: 'e.g. Emily Johnson',
+        },
+
+        contactPhone: {
+          label: 'Contact Phone',
+          id: 'onboardingContactPhone',
+          placeholder: 'e.g. +1 234 567 8900',
+        },
+
+        zipCode: {
+          label: 'Zip Code',
+          id: 'onboardingZipCode',
+          placeholder: 'e.g. 44001',
+        },
+
+        appointmentsPerDay: {
+          label: 'Maximum Appointments Per Day',
+          id: 'onboardingAppointmentsPerDay',
+          placeholder: 'e.g. 5',
+        },
+
+        nextButton: {
+          text: 'Next',
+        },
+
+        prevButton: {
+          text: 'Previous Step',
+        },
+
+        doneButton: {
+          text: 'Done',
+        },
+      },
+    },
+    dashboard: {
+      summary: {
+        heading: 'Summary Metrics',
+        cards: [
+          {
+            title: 'Total Credits Issued',
+            value: '100',
+            percentage: '32%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/briefcase_enhofg.png',
+            imageAlt: 'Briefcase',
+          },
+
+          {
+            title: 'Appointments Completed',
+            value: '40',
+            percentage: '20%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/bulb_gnshzj.png',
+            imageAlt: 'Lightbulb',
+          },
+
+          {
+            title: 'Appointments Scheduled',
+            value: '5',
+            percentage: '10%',
+            action: 'two',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/timer_gohbqz.png',
+            imageAlt: 'Timer',
+          },
+
+          {
+            title: 'Appointments Disputed',
+            value: '15',
+            percentage: '10%',
+            action: 'one',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1752532705/flag_j2rb8k.png',
+            imageAlt: 'Flag',
+          },
+        ],
+      },
+
+      statistics: {
+        heading: 'Credits & Appointments',
+        creditAnalytics: {
+          key: 'roofer-pie-analytics',
+          heading: 'Credits',
+          subHeading: 'Remaining',
+          labels: ['Used', 'Remaining'],
+          colors: ['#34C759', '#007AFF'],
+        },
+        appointmentAnalytics: {
+          key: 'roofer-bar-analytics',
+          heading: 'Appointments',
+          subHeading: 'Fulfilled',
+          labels: [
+            'Appointments Disputed',
+            'Appointments Scheduled',
+            'Appointments Completed',
+          ],
+          colors: ['#FF3B30', '#007AFF', '#34C759'],
+        },
       },
     },
   },
