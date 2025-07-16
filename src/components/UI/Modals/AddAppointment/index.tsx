@@ -342,14 +342,14 @@ export default function AddAppointmentModal() {
                 className="p-3 rounded-lg bg-primary text-xl font-semibold text-core-white w-full capitalize"
                 type="submit"
                 disabled={
-                  !form.homeOwnerName ||
-                  !form.homePhoneNumber ||
-                  !form.homeOwnerAddress ||
-                  !form.roofAge ||
-                  !selectedCustomer ||
-                  !selectedAppointmentDate ||
-                  !selectedAppointmentTime ||
-                  !selectedActiveLeaks ||
+                  !form.homeOwnerName.trim() ||
+                  !form.homePhoneNumber.trim() ||
+                  !form.homeOwnerAddress.trim() ||
+                  !form.roofAge.trim() ||
+                  !selectedCustomer?.trim() ||
+                  !selectedAppointmentDate.trim() ||
+                  !selectedAppointmentTime.trim() ||
+                  !selectedActiveLeaks.trim() ||
                   !timezone
                 }
               >

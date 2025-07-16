@@ -4,7 +4,7 @@ export type TimeZoneDisplayProps = {
 
 export type DisputeData = {
   handled: number;
-  approved: number;
+  denied: number;
   pending: number;
 };
 

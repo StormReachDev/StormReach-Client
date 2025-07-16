@@ -9,22 +9,22 @@ import {
 export const monthlyDisputeData = {
   'This Month': {
     handled: 50,
-    approved: 35,
+    denied: 35,
     pending: 15,
   },
   'Last Month': {
     handled: 45,
-    approved: 40,
+    denied: 40,
     pending: 15,
   },
   'Last 3 Months': {
     handled: 48,
-    approved: 37,
+    denied: 37,
     pending: 15,
   },
   'Last 6 Months': {
     handled: 52,
-    approved: 33,
+    denied: 33,
     pending: 15,
   },
 } as MonthlyData<DisputeData>;

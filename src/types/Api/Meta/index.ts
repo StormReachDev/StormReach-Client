@@ -1,4 +1,9 @@
-export type PlanKey = 'strike10' | 'surge30' | 'blackout60' | 'payAsYouGo';
+export type PlanKey =
+  | 'strike10'
+  | 'surge30'
+  | 'blackout60'
+  | 'payAsYouGo'
+  | 'disputeResolution';
 
 export type CustomerMetricKeys =
   | 'activeCustomers'
@@ -24,7 +29,18 @@ export type DisputeMetricKeys =
   | 'pendingDisputes'
   | 'deniedDisputes';
 
-export type UserRoleKeys = 'admin' | 'manager' | 'salesAgent' | 'telemarketer';
+export type UserRoleKeys =
+  | 'admin'
+  | 'manager'
+  | 'salesAgent'
+  | 'telemarketer'
+  | 'roofer';
+
+export type CustomerAppointmentMetricKeys =
+  | 'totalAppointmentsCompleted'
+  | 'totalAppointmentsScheduled'
+  | 'totalAppointmentsDisputed'
+  | 'totalCreditsIssued';
 
 type AccountStatus = {
   label: string;
@@ -110,4 +126,14 @@ export type AppointmentMetricsResponse = {
 export type DisputeMetricsResponse = {
   success: boolean;
   metrics: Record<DisputeMetricKeys, MetricValue>;
+};
+
+export type AppointmentsPerDayResponse = {
+  success: boolean;
+  appointmentOptions: number[];
+};
+
+export type CustomerAppointmentMetricsResponse = {
+  success: boolean;
+  metrics: Record<CustomerAppointmentMetricKeys, MetricValue>;
 };

@@ -25,7 +25,7 @@ function useDisputeAction() {
     mutationFn: ({ id, action }) => DisputeService.disputeAction(id, action),
     onSuccess: (_, variables) => {
       const { id } = variables;
-      queryClient.invalidateQueries({ queryKey: [QueryKeys.DISPUTES] });
+      queryClient.refetchQueries({ queryKey: [QueryKeys.DISPUTES] });
       queryClient.refetchQueries({ queryKey: [QueryKeys.APPOINTMENTS] });
       queryClient.invalidateQueries({ queryKey: [QueryKeys.DISPUTE, id] });
       queryClient.invalidateQueries({ queryKey: [QueryKeys.DISPUTE_METRICS] });

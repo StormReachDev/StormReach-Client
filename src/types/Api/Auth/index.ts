@@ -1,3 +1,6 @@
+// Imports:
+import { Roofer } from '../Roofer';
+
 export type LoginRequest = {
   email: string;
   password: string;
@@ -31,6 +34,7 @@ export type GenericResponse = {
   message?: string;
   token?: string;
   user?: User;
+  customer?: Roofer;
 };
 
 export type APIError = {

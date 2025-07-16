@@ -40,6 +40,7 @@ export default function AddCustomerModal() {
     billingAddress: '',
     zipCode: '',
   });
+  const [cardComplete, setCardComplete] = useState(false);
 
   const [selectedAgents, setSelectedAgents] = useState<string[]>([]);
   const [selectedPlan, setSelectedPlan] = useState<string>(
@@ -62,10 +63,12 @@ export default function AddCustomerModal() {
 
   const planOptions =
     (planTypes?.plans &&
-      Object.entries(planTypes?.plans).map(([key, value]) => ({
-        label: value.name,
-        value: key,
-      }))) ??
+      Object.entries(planTypes?.plans)
+        .filter(([_, value]) => value.name !== 'Dispute Resolution')
+        .map(([key, value]) => ({
+          label: value.name,
+          value: key,
+        }))) ??
     [];
 
   const salesAgentOptions =
@@ -318,6 +321,7 @@ export default function AddCustomerModal() {
               </label>
               <CardElement
                 id={stormyContent.modal.addCustomer.form.card.id}
+                onChange={(e) => setCardComplete(e.complete)}
                 className="w-full border border-stroke py-4 pl-3 pr-3 bg-input rounded-xl"
                 options={{
                   hidePostalCode: true,
@@ -343,14 +347,15 @@ export default function AddCustomerModal() {
                 className="p-3 rounded-lg bg-primary text-xl font-semibold text-core-white w-full capitalize"
                 type="submit"
                 disabled={
-                  !form.name ||
-                  !form.email ||
-                  !form.phone ||
-                  !form.billingAddress ||
-                  !form.zipCode ||
-                  !selectedPlan ||
-                  !timezone ||
+                  !form.name.trim() ||
+                  !form.email.trim() ||
+                  !form.phone.trim() ||
+                  !form.billingAddress.trim() ||
+                  !form.zipCode.trim() ||
+                  !selectedPlan.trim() ||
+                  !timezone.trim() ||
                   selectedAgents.length === 0 ||
+                  !cardComplete ||
                   isPending
                 }
               >

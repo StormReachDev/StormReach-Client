@@ -60,19 +60,21 @@ export default function EditCustomerModal() {
   useEffect(() => {
     if (roofer?.roofer) {
       setForm({
-        name: roofer.roofer.user.name,
-        email: roofer.roofer.user.email,
-        phone: roofer.roofer.user.phone,
-        companyName: roofer.roofer.companyName || '',
-        billingAddress: roofer.roofer.billingAddress,
-        zipCode: roofer.roofer.zipCode,
+        name: roofer.roofer.customer.user.name,
+        email: roofer.roofer.customer.user.email,
+        phone: roofer.roofer.customer.user.phone,
+        companyName: roofer.roofer.customer.companyName || '',
+        billingAddress: roofer.roofer.payment.billingAddress,
+        zipCode: roofer.roofer.payment.zipCode,
       });
 
-      setStatus(roofer.roofer.user.status);
-      setSelectedPlan(PlanKeys[roofer.roofer.plan as keyof typeof PlanKeys]);
-      setTimezone(roofer.roofer.user.timeZone);
+      setStatus(roofer.roofer.customer.user.status);
+      setSelectedPlan(
+        PlanKeys[roofer.roofer.customer.plan as keyof typeof PlanKeys]
+      );
+      setTimezone(roofer.roofer.customer.user.timeZone);
       setSelectedAgents(
-        roofer.roofer.assignedAgents?.map((agent) => agent._id) || []
+        roofer.roofer.customer.assignedAgents?.map((agent) => agent._id) || []
       );
     }
   }, [roofer?.roofer]);
@@ -346,15 +348,14 @@ export default function EditCustomerModal() {
                 className="p-3 rounded-lg bg-primary text-xl font-semibold text-core-white w-full capitalize"
                 type="submit"
                 disabled={
-                  !form.name ||
-                  !form.email ||
-                  !form.phone ||
-                  !form.billingAddress ||
-                  !form.zipCode ||
-                  !selectedPlan ||
-                  !timezone ||
-                  !status ||
-                  selectedAgents.length === 0
+                  !form.name.trim() ||
+                  !form.email.trim() ||
+                  !form.phone.trim() ||
+                  !form.billingAddress.trim() ||
+                  !form.zipCode.trim() ||
+                  !selectedPlan?.trim() ||
+                  !timezone?.trim() ||
+                  !status?.trim()
                 }
               >
                 {isPending ? (
