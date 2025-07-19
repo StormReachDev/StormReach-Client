@@ -89,8 +89,9 @@ function useUpdateAppointment() {
 }
 
 function useFlagAppointment() {
-  return useMutation<void, Error, { id: string }>({
-    mutationFn: ({ id }) => AppointmentService.flagAppointment(id),
+  return useMutation<void, Error, { id: string; disputeReason: string }>({
+    mutationFn: ({ id, disputeReason }) =>
+      AppointmentService.flagAppointment(id, disputeReason),
     onSuccess: (_, variables) => {
       const { id } = variables;
       queryClient.invalidateQueries({

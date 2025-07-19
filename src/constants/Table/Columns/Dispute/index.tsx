@@ -1,8 +1,9 @@
 // Imports:
+import { truncateByWord } from '@/lib/utils';
 import { useModalStore } from '@/stores/useModalStore';
 import { useTableStore } from '@/stores/useTableStore';
 import { DisputesTableProps } from '@/types/UI/Table';
-import { Button, Chip, Typography } from '@material-tailwind/react';
+import { Button, Chip, Tooltip, Typography } from '@material-tailwind/react';
 import { createColumnHelper, Row } from '@tanstack/react-table';
 import { Check, Trash2, X } from 'lucide-react';
 
@@ -58,6 +59,24 @@ export const columns = [
     },
   }),
 
+  columnHelper.accessor('disputeReason', {
+    header: 'Reason',
+    cell: function (info) {
+      const fullText = String(info.getValue());
+      const truncatedText = truncateByWord(fullText, 10);
+
+      return (
+        <Tooltip content={fullText} placement="top" className="z-50 bg-primary">
+          <Typography
+            variant="lead"
+            className="text-lg font-medium text-neutral-800 cursor-pointer"
+          >
+            {truncatedText}
+          </Typography>
+        </Tooltip>
+      );
+    },
+  }),
   columnHelper.accessor('disputeSubmissionDate', {
     header: 'Submission Date',
     cell: function (info) {

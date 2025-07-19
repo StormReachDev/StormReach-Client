@@ -1,7 +1,10 @@
 // Imports:
 import { API_ABSOLUTE_ROUTES } from '@/constants/Paths/Routes';
 import axiosInstance from '@/lib/axios';
-import { DisputesResponse } from '@/types/Api/Appointment';
+import {
+  DisputeReasonsResponse,
+  DisputesResponse,
+} from '@/types/Api/Appointment';
 import { GenericResponse } from '@/types/Api/Auth';
 
 const DisputeService = {
@@ -29,8 +32,16 @@ const DisputeService = {
     action: string
   ): Promise<GenericResponse> => {
     const response = await axiosInstance.put(
-      `${API_ABSOLUTE_ROUTES.DISPUTE}/${id}`,
+      `${API_ABSOLUTE_ROUTES.DISPUTE}/${id}/action`,
       { action }
+    );
+
+    return response.data;
+  },
+
+  disputeReasons: async (): Promise<DisputeReasonsResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.GET_DISPUTE_REASONS
     );
 
     return response.data;

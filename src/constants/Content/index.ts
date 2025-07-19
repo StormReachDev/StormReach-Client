@@ -613,6 +613,28 @@ const stormyContent = {
         },
       },
     },
+
+    disputeAppointment: {
+      heading: 'Dispute Appointment?',
+      body: 'Tell us why this appointment didn’t meet your expectations so we can review and resolve it quickly.',
+      form: {
+        reason: {
+          id: 'disputeReason',
+          label: 'Reason',
+          fallbackLabel: 'Select reason e.g. Invalid address',
+        },
+
+        buttons: {
+          cancel: {
+            text: 'Cancel',
+          },
+
+          disputeAppointment: {
+            text: 'Dispute Appointment',
+          },
+        },
+      },
+    },
   },
 
   admin: {

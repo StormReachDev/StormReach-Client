@@ -66,8 +66,13 @@ const AppointmentService = {
     return response.data;
   },
 
-  flagAppointment: async (appointmentId: string): Promise<void> => {
-    await axiosInstance.get(API_ABSOLUTE_ROUTES.DISPUTE + `/${appointmentId}`);
+  flagAppointment: async (
+    appointmentId: string,
+    disputeReason: string
+  ): Promise<void> => {
+    await axiosInstance.put(API_ABSOLUTE_ROUTES.DISPUTE + `/${appointmentId}`, {
+      disputeReason,
+    });
   },
 };
 

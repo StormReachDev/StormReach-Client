@@ -45,6 +45,7 @@ export type DisputesTableProps = Pick<
 > & {
   appointmentDetails: string;
   id: string;
+  disputeReason?: string;
 };
 
 // Roofer Table Types:

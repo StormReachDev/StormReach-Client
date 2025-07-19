@@ -14,7 +14,7 @@ export default function UploadWidget({
 }: {
   id: string;
   label: string;
-  onUpload: (data: { secure_url: string; public_id: string }) => void;
+  onUpload: (_data: { secure_url: string; public_id: string }) => void;
   cloudName: string;
   uploadPreset: string;
 }) {

@@ -1,6 +1,7 @@
 // Imports:
-import { useFlagAppointment } from '@/hooks/appointment';
 import { cn } from '@/lib/utils';
+import { useModalStore } from '@/stores/useModalStore';
+import { useTableStore } from '@/stores/useTableStore';
 import { RooferAppointmentsTableProps } from '@/types/UI/Table';
 import { Button, Chip, Typography } from '@material-tailwind/react';
 import { createColumnHelper, Row } from '@tanstack/react-table';
@@ -86,12 +87,12 @@ function CustomerActionsCell({
   row: Row<RooferAppointmentsTableProps>;
 }) {
   const appointmentId = row.original.id;
-  const mutation = useFlagAppointment();
+  const { setId } = useTableStore();
+  const { openModal } = useModalStore();
 
   function handleFlagAppointment() {
-    mutation.mutate({
-      id: appointmentId,
-    });
+    setId(appointmentId);
+    openModal('DisputeAppointment');
     return;
   }
 

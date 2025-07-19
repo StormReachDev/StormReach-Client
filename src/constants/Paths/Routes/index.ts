@@ -47,6 +47,7 @@ export const API_ABSOLUTE_ROUTES = {
   CLOUDINARY_IMAGE: `${config.PROD_API_URL}/meta/asset`,
   APPOINTMENTS_PER_DAY: `${config.PROD_API_URL}/meta/appointments-per-day`,
   CUSTOMER_APPOINTMENT_METRICS: `${config.PROD_API_URL}/meta/customer-appointment-metrics`,
+  GET_DISPUTE_REASONS: `${config.PROD_API_URL}/meta/dispute-reasons`,
 
   // ******** Sales Agent ********
   GET_SALES_AGENTS: `${config.PROD_API_URL}/sales-agents`,
