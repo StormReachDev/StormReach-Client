@@ -16,6 +16,7 @@ const TransactionService = {
       {
         params: {
           keyword: keyword ?? '',
+          type: 'adminTransactions',
           transactionType: transactionType ?? '',
           transactionStatus: transactionStatus ?? '',
           page,

@@ -55,6 +55,7 @@ export const API_ABSOLUTE_ROUTES = {
   PURCHASE_PLAN: `${config.PROD_API_URL}/customer/purchase-plan`,
   GET_ALL_ROOFERS: `${config.PROD_API_URL}/customer/all`,
   SINGLE_ROOFER: `${config.PROD_API_URL}/customer`,
+  GET_CUSTOMER_APPOINTMENTS: `${config.PROD_API_URL}/customer/:id/appointments`,
 
   // ******** Transaction ********
   GET_ALL_TRANSACTIONS: `${config.PROD_API_URL}/transaction/all`,

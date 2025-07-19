@@ -35,6 +35,9 @@ const SettingsModule = dynamic(() => import('./Modules/Settings'));
 const RooferDashboardModule = dynamic(
   () => import('./RooferModules/Dashboard')
 );
+const RooferAppointmentsModule = dynamic(
+  () => import('./RooferModules/Appointments')
+);
 
 const adminComponentMap: Record<string, React.ReactNode> = {
   Dashboard: <AdminDashboardModule />,
@@ -49,6 +52,7 @@ const adminComponentMap: Record<string, React.ReactNode> = {
 
 const rooferComponentMap: Record<string, React.ReactNode> = {
   Dashboard: <RooferDashboardModule />,
+  Appointments: <RooferAppointmentsModule />,
 };
 
 export default function DashboardShell() {

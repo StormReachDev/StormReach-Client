@@ -88,10 +88,34 @@ function useUpdateAppointment() {
   });
 }
 
+function useFlagAppointment() {
+  return useMutation<void, Error, { id: string }>({
+    mutationFn: ({ id }) => AppointmentService.flagAppointment(id),
+    onSuccess: (_, variables) => {
+      const { id } = variables;
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.FLAG_APPOINTMENT, id],
+      });
+      queryClient.refetchQueries({
+        queryKey: [QueryKeys.CUSTOMER_APPOINTMENTS],
+      });
+      queryClient.refetchQueries({
+        queryKey: [QueryKeys.CUSTOMER_APPOINTMENT_METRICS],
+      });
+      toast.success('Success! Appointment marked as flagged.');
+    },
+
+    onError: (error: APIError) => {
+      toast.error(error?.response?.data?.message);
+    },
+  });
+}
+
 export {
   useAllAppointments,
   useAppointment,
   useCreateAppointment,
   useDeleteAppointment,
+  useFlagAppointment,
   useUpdateAppointment,
 };

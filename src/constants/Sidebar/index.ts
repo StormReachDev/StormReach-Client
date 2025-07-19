@@ -60,6 +60,11 @@ export const rooferSidebarItems: SidebarItem[] = [
   },
 
   {
+    icon: CalendarDays,
+    label: 'Appointments',
+  },
+
+  {
     icon: LogOut,
     label: 'Logout',
   },

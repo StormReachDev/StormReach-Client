@@ -2,6 +2,7 @@
 import { QueryKeys } from '@/constants/Keys';
 import queryClient from '@/lib/queryClient';
 import RooferService from '@/services/Roofer';
+import { AppointmentsResponse } from '@/types/Api/Appointment';
 import { APIError, GenericResponse } from '@/types/Api/Auth';
 import { RooferResponse, RoofersResponse } from '@/types/Api/Roofer';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -91,4 +92,40 @@ function useUpdateRoofer() {
   });
 }
 
-export { useAllRoofers, useDeleteRoofer, useRoofer, useUpdateRoofer };
+function useCustomerAppointments(
+  id: string,
+  keyword?: string,
+  appointmentStatus?: string,
+  page?: number,
+  limit?: number
+) {
+  return useQuery<AppointmentsResponse, Error>({
+    queryKey: [
+      QueryKeys.CUSTOMER_APPOINTMENTS,
+      id,
+      page,
+      limit,
+      keyword,
+      appointmentStatus,
+    ],
+    queryFn: () =>
+      RooferService.customerAppointments(
+        id,
+        keyword,
+        appointmentStatus,
+        page,
+        limit
+      ),
+    enabled: !!id,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+export {
+  useAllRoofers,
+  useCustomerAppointments,
+  useDeleteRoofer,
+  useRoofer,
+  useUpdateRoofer,
+};

@@ -996,6 +996,7 @@ const stormyContent = {
         },
       },
     },
+
     dashboard: {
       summary: {
         heading: 'Summary Metrics',
@@ -1063,6 +1064,10 @@ const stormyContent = {
           colors: ['#FF3B30', '#007AFF', '#34C759'],
         },
       },
+    },
+
+    appointments: {
+      heading: 'Appointments Overview',
     },
   },
 };

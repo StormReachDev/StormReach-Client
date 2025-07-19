@@ -5,7 +5,6 @@ import {
   AppointmentResponse,
   AppointmentsResponse,
   CreateAppointmentRequest,
-  DisputesResponse,
 } from '@/types/Api/Appointment';
 import { GenericResponse } from '@/types/Api/Auth';
 
@@ -21,30 +20,13 @@ const AppointmentService = {
       {
         params: {
           keyword: keyword ?? '',
+          type: 'adminAppointments',
           appointmentStatus: appointmentStatus ?? '',
           page,
           limit,
         },
       }
     );
-
-    return response.data;
-  },
-
-  disputes: async (
-    keyword?: string,
-    appointmentStatus?: string,
-    page?: number,
-    limit?: number
-  ): Promise<DisputesResponse> => {
-    const response = await axiosInstance.get(API_ABSOLUTE_ROUTES.GET_DISPUTES, {
-      params: {
-        keyword: keyword ?? '',
-        appointmentStatus: appointmentStatus ?? '',
-        page,
-        limit,
-      },
-    });
 
     return response.data;
   },
@@ -82,6 +64,10 @@ const AppointmentService = {
     );
 
     return response.data;
+  },
+
+  flagAppointment: async (appointmentId: string): Promise<void> => {
+    await axiosInstance.get(API_ABSOLUTE_ROUTES.DISPUTE + `/${appointmentId}`);
   },
 };
 

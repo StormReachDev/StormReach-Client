@@ -1,19 +1,16 @@
 // Imports:
-import { QueryKeys } from '@/constants/Keys';
-import queryClient from '@/lib/queryClient';
-import AppointmentService from '@/services/Appointment';
-import { useModalStore } from '@/stores/useModalStore';
-import { useTableStore } from '@/stores/useTableStore';
-import { AppointmentsTableProps } from '@/types/UI/Table';
+import { useFlagAppointment } from '@/hooks/appointment';
+import { cn } from '@/lib/utils';
+import { RooferAppointmentsTableProps } from '@/types/UI/Table';
 import { Button, Chip, Typography } from '@material-tailwind/react';
 import { createColumnHelper, Row } from '@tanstack/react-table';
-import { Edit3, MapPin, Trash2 } from 'lucide-react';
+import { Flag, MapPin } from 'lucide-react';
 
-// ******** Appointment Table ********
-const columnHelper = createColumnHelper<AppointmentsTableProps>();
+// ******** Roofer's Appointment Table ********
+const columnHelper = createColumnHelper<RooferAppointmentsTableProps>();
 export const columns = [
-  columnHelper.accessor('customerUser.name', {
-    header: 'Customer Name',
+  columnHelper.accessor('homeOwnerName', {
+    header: 'Home Owner',
     cell: function (info) {
       return (
         <Typography
@@ -26,8 +23,8 @@ export const columns = [
     },
   }),
 
-  columnHelper.accessor('homeOwnerName', {
-    header: 'Home Owner',
+  columnHelper.accessor('homeOwnerAddress', {
+    header: 'Home Owner Address',
     cell: function (info) {
       return (
         <Typography
@@ -75,20 +72,6 @@ export const columns = [
     },
   }),
 
-  columnHelper.accessor('bookedByInfo.name', {
-    header: 'Booked By',
-    cell: function (info) {
-      return (
-        <Typography
-          variant="lead"
-          className="text-lg font-medium text-neutral-800"
-        >
-          {info.getValue()}
-        </Typography>
-      );
-    },
-  }),
-
   columnHelper.display({
     id: 'actions',
     header: 'Actions',
@@ -96,30 +79,24 @@ export const columns = [
   }),
 ];
 
-// ******** Appointment Action Cell ********
-function CustomerActionsCell({ row }: { row: Row<AppointmentsTableProps> }) {
+// ******** Roofer's Appointment Action Cell ********
+function CustomerActionsCell({
+  row,
+}: {
+  row: Row<RooferAppointmentsTableProps>;
+}) {
   const appointmentId = row.original.id;
-  const { openModal } = useModalStore();
-  const { setId } = useTableStore();
+  const mutation = useFlagAppointment();
 
-  async function handleTrigger() {
-    setId(appointmentId);
-    await queryClient.prefetchQuery({
-      queryKey: [QueryKeys.APPOINTMENT, appointmentId],
-      queryFn: () => AppointmentService.getAppointment(appointmentId),
+  function handleFlagAppointment() {
+    mutation.mutate({
+      id: appointmentId,
     });
-    openModal('EditAppointment');
-    return;
-  }
-
-  function handleDelete() {
-    setId(appointmentId);
-    openModal('ActionModal');
     return;
   }
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-start gap-3">
       <Button
         size="sm"
         className="bg-transparent p-0"
@@ -132,21 +109,20 @@ function CustomerActionsCell({ row }: { row: Row<AppointmentsTableProps> }) {
       <Button
         size="sm"
         className="bg-transparent p-0"
-        onClick={handleTrigger}
         ripple={false}
+        onClick={handleFlagAppointment}
         type="button"
+        disabled={
+          row.original.isDisputed || row.original.appointmentStatus === 'Denied'
+        }
       >
-        <Edit3 className="size-5 hover:text-primary transition-colors" />
-      </Button>
-
-      <Button
-        size="sm"
-        className="bg-transparent p-0 text-action-four"
-        ripple={false}
-        onClick={handleDelete}
-        type="button"
-      >
-        <Trash2 className="size-5 hover:text-primary transition-colors" />
+        <Flag
+          className={cn('size-5 hover:text-primary transition-colors', {
+            'text-primary':
+              row.original.isDisputed ||
+              row.original.appointmentStatus === 'Denied',
+          })}
+        />
       </Button>
     </div>
   );

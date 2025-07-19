@@ -7,7 +7,7 @@ export default function SearchBar({
   inputClass = '',
   value = '',
   onChange = () => {},
-  placeholder = 'Search by Name or Email',
+  placeholder = 'Search by name or email',
 }: {
   searchWrapperClass?: string;
   inputClass?: string;

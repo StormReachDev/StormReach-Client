@@ -14,6 +14,7 @@ const DisputeService = {
     const response = await axiosInstance.get(API_ABSOLUTE_ROUTES.GET_DISPUTES, {
       params: {
         keyword: keyword ?? '',
+        type: 'adminDisputes',
         disputeStatus: disputeStatus ?? '',
         page,
         limit,
