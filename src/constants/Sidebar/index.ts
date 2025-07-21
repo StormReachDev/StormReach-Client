@@ -65,6 +65,11 @@ export const rooferSidebarItems: SidebarItem[] = [
   },
 
   {
+    icon: ChartNoAxesColumn,
+    label: 'Billings & Plans',
+  },
+
+  {
     icon: LogOut,
     label: 'Logout',
   },

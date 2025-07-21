@@ -39,6 +39,10 @@ const RooferAppointmentsModule = dynamic(
   () => import('./RooferModules/Appointments')
 );
 
+const RooferBillingsAndPlansModule = dynamic(
+  () => import('./RooferModules/BillingsAndPlans')
+);
+
 const adminComponentMap: Record<string, React.ReactNode> = {
   Dashboard: <AdminDashboardModule />,
   Customers: <AdminCustomersModule />,
@@ -53,6 +57,7 @@ const adminComponentMap: Record<string, React.ReactNode> = {
 const rooferComponentMap: Record<string, React.ReactNode> = {
   Dashboard: <RooferDashboardModule />,
   Appointments: <RooferAppointmentsModule />,
+  'Billings & Plans': <RooferBillingsAndPlansModule />,
 };
 
 export default function DashboardShell() {

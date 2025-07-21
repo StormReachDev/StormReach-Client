@@ -4,11 +4,12 @@ import TableSkeleton from '@/components/UI/Skeletons/Table';
 import Table from '@/components/UI/Table';
 import Wrapper from '@/components/UI/Wrapper';
 import stormyContent from '@/constants/Content';
-import { columns as CreditsAndTransactionsColumns } from '@/constants/Table/Columns/CreditsAndTransactions';
-import { useAllTransactions } from '@/hooks/transaction';
+import { AppointmentCreditKeys } from '@/constants/Keys';
+import { columns as BillingColumns } from '@/constants/Table/RooferColumns/Billing';
+import { useMe } from '@/hooks/auth';
+import { useCustomerTransactions } from '@/hooks/roofer';
 import { useFilterStore } from '@/stores/useFilterStore';
-import { Transaction } from '@/types/Api/Transaction';
-import { CreditsAndTransactionsTableProps } from '@/types/UI/Table';
+import { RooferBillingsTableProps } from '@/types/UI/Table';
 import { Typography } from '@material-tailwind/react';
 import { useMemo } from 'react';
 import Actions from '../Actions';
@@ -16,7 +17,10 @@ import Actions from '../Actions';
 export default function Overview() {
   const { keyword, transactionType, transactionStatus, page, limit } =
     useFilterStore();
-  const { data, isLoading } = useAllTransactions(
+
+  const { data: currentUser } = useMe();
+  const { data, isLoading } = useCustomerTransactions(
+    currentUser?.customer?._id ?? '',
     keyword.trim(),
     transactionType.trim(),
     transactionStatus.trim(),
@@ -24,17 +28,23 @@ export default function Overview() {
     limit
   );
 
-  const columns = useMemo(() => CreditsAndTransactionsColumns, []);
+  const columns = useMemo(() => BillingColumns, []);
   const rows =
-    data?.transactions.map((transaction: Transaction) => ({
-      _id: transaction._id,
-      customerUser: { name: transaction.customerUser?.name ?? '' },
+    data?.transactions.map((transaction) => ({
+      id: transaction._id,
+      creditsPurchased:
+        transaction.transactionStatus === 'disputed'
+          ? '+' + 1
+          : AppointmentCreditKeys[
+              transaction.plan as keyof typeof AppointmentCreditKeys
+            ],
       plan: transaction.plan,
       amount: transaction.amount,
       transactionType: transaction.transactionType,
       transactionStatus: transaction.transactionStatus,
       createdAt: new Date(transaction.createdAt).toLocaleDateString(),
     })) ?? [];
+
   const totalPages = Math.ceil(Number(data?.totalCount) / limit);
 
   return (
@@ -43,7 +53,7 @@ export default function Overview() {
         variant="lead"
         className="text-neutral-800 font-semibold text-[28px]"
       >
-        {stormyContent.admin.creditsAndTransactions.overview.heading}
+        {stormyContent.cutomer.billingsAndPlans.overview.heading}
       </Typography>
 
       <Actions />
@@ -52,10 +62,7 @@ export default function Overview() {
         <TableSkeleton length={rows.length > 0 ? rows.length : 2} />
       ) : (
         rows.length > 0 && (
-          <Table<CreditsAndTransactionsTableProps>
-            data={rows}
-            columns={columns}
-          />
+          <Table<RooferBillingsTableProps> data={rows} columns={columns} />
         )
       )}
 

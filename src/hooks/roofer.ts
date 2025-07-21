@@ -5,6 +5,7 @@ import RooferService from '@/services/Roofer';
 import { AppointmentsResponse } from '@/types/Api/Appointment';
 import { APIError, GenericResponse } from '@/types/Api/Auth';
 import { RooferResponse, RoofersResponse } from '@/types/Api/Roofer';
+import { TransactionsResponse } from '@/types/Api/Transaction';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 
@@ -122,9 +123,43 @@ function useCustomerAppointments(
   });
 }
 
+function useCustomerTransactions(
+  id: string,
+  keyword?: string,
+  transactionType?: string,
+  transactionStatus?: string,
+  page?: number,
+  limit?: number
+) {
+  return useQuery<TransactionsResponse, Error>({
+    queryKey: [
+      QueryKeys.CUSTOMER_TRANSACTIONS,
+      id,
+      keyword,
+      transactionType,
+      transactionStatus,
+      page,
+      limit,
+    ],
+    queryFn: () =>
+      RooferService.customerTransactions(
+        id,
+        keyword,
+        transactionType,
+        transactionStatus,
+        page,
+        limit
+      ),
+    enabled: !!id,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
 export {
   useAllRoofers,
   useCustomerAppointments,
+  useCustomerTransactions,
   useDeleteRoofer,
   useRoofer,
   useUpdateRoofer,

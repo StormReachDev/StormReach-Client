@@ -35,6 +35,7 @@ export default function DisputeAppointmentModal() {
 
   function closeHandler() {
     setId('');
+    setDisputeReason('');
     closeModal();
   }
 
@@ -54,6 +55,8 @@ export default function DisputeAppointmentModal() {
       },
       {
         onSuccess: () => {
+          setId('');
+          setDisputeReason('');
           closeHandler();
         },
       }
@@ -64,7 +67,7 @@ export default function DisputeAppointmentModal() {
     <>
       <Dialog
         open={!!modal}
-        handler={closeModal}
+        handler={closeHandler}
         className="w-full outline-none rounded-[20px] border border-stroke bg-input py-8 px-6 space-y-8"
         size="md"
       >

@@ -29,6 +29,7 @@ export enum QueryKeys {
   CUSTOMER_APPOINTMENT_METRICS = 'customer-appointment-metrics',
   FLAG_APPOINTMENT = 'flag-appointment',
   DISPUTE_REASONS = 'dispute-reasons',
+  CUSTOMER_TRANSACTIONS = 'customer-transactions',
 }
 
 export const PlanKeys = {

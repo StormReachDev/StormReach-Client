@@ -15,6 +15,7 @@ const config = withMT({
     'bg-action-five',
     'text-action-two',
     'text-action-four',
+    'text-action-five',
   ],
   theme: {
     extend: {

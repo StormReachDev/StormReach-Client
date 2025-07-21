@@ -25,8 +25,6 @@ export default function Overview() {
     limit
   );
 
-  console.log('Roofer Appointments Data:', data);
-
   const columns = useMemo(() => rooferAppointmentColumns, []);
   const rows =
     data?.appointments.map((appointment) => ({

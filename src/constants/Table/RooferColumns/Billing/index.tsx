@@ -1,16 +1,13 @@
 // Imports:
-import { useModalStore } from '@/stores/useModalStore';
-import { useTableStore } from '@/stores/useTableStore';
-import { CreditsAndTransactionsTableProps } from '@/types/UI/Table';
-import { Button, Chip, Typography } from '@material-tailwind/react';
-import { createColumnHelper, Row } from '@tanstack/react-table';
-import { Trash2 } from 'lucide-react';
+import { RooferBillingsTableProps } from '@/types/UI/Table';
+import { Chip, Typography } from '@material-tailwind/react';
+import { createColumnHelper } from '@tanstack/react-table';
 
-// ******** Credits And Transactions Table ********
-const columnHelper = createColumnHelper<CreditsAndTransactionsTableProps>();
+// ******** Billings Table ********
+const columnHelper = createColumnHelper<RooferBillingsTableProps>();
 export const columns = [
-  columnHelper.accessor('customerUser.name', {
-    header: 'Customer Name',
+  columnHelper.accessor('createdAt', {
+    header: 'Billing Date',
     cell: function (info) {
       return (
         <Typography
@@ -24,7 +21,7 @@ export const columns = [
   }),
 
   columnHelper.accessor('plan', {
-    header: 'Reason',
+    header: 'Intent',
     cell: function (info) {
       return (
         <Typography
@@ -37,15 +34,15 @@ export const columns = [
     },
   }),
 
-  columnHelper.accessor('amount', {
-    header: 'Amount',
+  columnHelper.accessor('creditsPurchased', {
+    header: 'Credits Purchased',
     cell: function (info) {
       return (
         <Typography
           variant="lead"
           className="text-lg font-medium text-neutral-800 text-ellipsis"
         >
-          {`$${info.getValue()}`}
+          {info.getValue()}
         </Typography>
       );
     },
@@ -86,54 +83,17 @@ export const columns = [
     },
   }),
 
-  columnHelper.accessor('createdAt', {
-    header: 'Credit Timestamp',
+  columnHelper.accessor('amount', {
+    header: 'Amount',
     cell: function (info) {
       return (
         <Typography
           variant="lead"
-          className="text-lg font-medium text-neutral-800"
+          className="text-lg font-medium text-neutral-800 text-ellipsis"
         >
-          {info.getValue()}
+          {`$${info.getValue()}`}
         </Typography>
       );
     },
   }),
-
-  columnHelper.display({
-    id: 'actions',
-    header: 'Actions',
-    cell: (info) => <CAndTActionsCell row={info.row} />,
-  }),
 ];
-
-// ******** Credits And Transactions Action Cell ********
-function CAndTActionsCell({
-  row,
-}: {
-  row: Row<CreditsAndTransactionsTableProps>;
-}) {
-  const rooferId = row.original._id;
-  const { setId } = useTableStore();
-  const { openModal } = useModalStore();
-
-  function handleDelete() {
-    setId(rooferId);
-    openModal('ActionModal');
-    return;
-  }
-
-  return (
-    <div className="flex items-center justify-between">
-      <Button
-        size="sm"
-        className="bg-transparent p-0 text-action-four"
-        ripple={false}
-        onClick={handleDelete}
-        type="button"
-      >
-        <Trash2 className="size-5 hover:text-primary transition-colors" />
-      </Button>
-    </div>
-  );
-}

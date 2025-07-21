@@ -5,7 +5,7 @@ import { useTableStore } from '@/stores/useTableStore';
 import { RooferAppointmentsTableProps } from '@/types/UI/Table';
 import { Button, Chip, Typography } from '@material-tailwind/react';
 import { createColumnHelper, Row } from '@tanstack/react-table';
-import { Flag, MapPin } from 'lucide-react';
+import { Check, Flag, MapPin } from 'lucide-react';
 
 // ******** Roofer's Appointment Table ********
 const columnHelper = createColumnHelper<RooferAppointmentsTableProps>();
@@ -96,15 +96,35 @@ function CustomerActionsCell({
     return;
   }
 
+  function handleCheckAppointment() {
+    setId(appointmentId);
+    openModal('ActionModal');
+    return;
+  }
+
   return (
-    <div className="flex items-center justify-start gap-3">
+    <div className="flex items-center justify-between">
       <Button
         size="sm"
         className="bg-transparent p-0"
         ripple={false}
         type="button"
+        onClick={handleCheckAppointment}
+        disabled={
+          row.original.appointmentStatus === 'Completed' ||
+          row.original.isDisputed ||
+          row.original.appointmentStatus === 'Denied'
+        }
       >
-        <MapPin className="size-5 hover:text-primary transition-colors" />
+        <Check
+          className={cn('size-5 hover:text-primary transition-colors', {
+            'text-action-two':
+              row.original.appointmentStatus === 'Completed' ||
+              row.original.appointmentStatus === 'Denied' ||
+              row.original.appointmentStatus === 'Pending' ||
+              row.original.isDisputed,
+          })}
+        />
       </Button>
 
       <Button
@@ -114,7 +134,9 @@ function CustomerActionsCell({
         onClick={handleFlagAppointment}
         type="button"
         disabled={
-          row.original.isDisputed || row.original.appointmentStatus === 'Denied'
+          row.original.isDisputed ||
+          row.original.appointmentStatus === 'Denied' ||
+          row.original.appointmentStatus === 'Scheduled'
         }
       >
         <Flag
@@ -124,6 +146,15 @@ function CustomerActionsCell({
               row.original.appointmentStatus === 'Denied',
           })}
         />
+      </Button>
+
+      <Button
+        size="sm"
+        className="bg-transparent p-0"
+        ripple={false}
+        type="button"
+      >
+        <MapPin className="size-5 hover:text-primary transition-colors" />
       </Button>
     </div>
   );

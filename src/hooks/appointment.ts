@@ -75,9 +75,15 @@ function useUpdateAppointment() {
     onSuccess: (_, variables) => {
       const { id } = variables;
       queryClient.refetchQueries({ queryKey: [QueryKeys.APPOINTMENTS] });
+      queryClient.refetchQueries({
+        queryKey: [QueryKeys.CUSTOMER_APPOINTMENTS],
+      });
       queryClient.invalidateQueries({ queryKey: [QueryKeys.APPOINTMENT, id] });
       queryClient.invalidateQueries({
         queryKey: [QueryKeys.APPOINTMENT_METRICS],
+      });
+      queryClient.refetchQueries({
+        queryKey: [QueryKeys.CUSTOMER_APPOINTMENT_METRICS],
       });
       toast.success('Success! Appointment updated successfully.');
     },

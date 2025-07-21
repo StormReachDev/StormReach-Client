@@ -635,6 +635,21 @@ const stormyContent = {
         },
       },
     },
+
+    completeAppointment: {
+      key: 'completeAppointment',
+      heading: 'Complete Appointment?',
+      body: 'Once you complete the appointment, it will be marked as done and cannot be undone.',
+      buttons: {
+        cancel: {
+          text: 'Cancel',
+        },
+
+        completeAppointment: {
+          text: 'Complete Appointment',
+        },
+      },
+    },
   },
 
   admin: {
@@ -914,9 +929,6 @@ const stormyContent = {
         cards: [
           {
             title: 'Total Disputes',
-            value: '100',
-            percentage: '32%',
-            action: 'two',
             imageSrc:
               'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/briefcase_enhofg.png',
             imageAlt: 'Briefcase',
@@ -924,9 +936,6 @@ const stormyContent = {
 
           {
             title: 'Approved Disputes',
-            value: '40',
-            percentage: '20%',
-            action: 'two',
             imageSrc:
               'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/bulb_gnshzj.png',
             imageAlt: 'Lightbulb',
@@ -934,9 +943,6 @@ const stormyContent = {
 
           {
             title: 'Pending Disputes',
-            value: '5',
-            percentage: '10%',
-            action: 'two',
             imageSrc:
               'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/timer_gohbqz.png',
             imageAlt: 'Timer',
@@ -944,9 +950,6 @@ const stormyContent = {
 
           {
             title: 'Denied Disputes',
-            value: '15',
-            percentage: '10%',
-            action: 'one',
             imageSrc:
               'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/target_ukk84k.png',
             imageAlt: 'Target',
@@ -1059,7 +1062,7 @@ const stormyContent = {
             percentage: '10%',
             action: 'one',
             imageSrc:
-              'https://res.cloudinary.com/doozfybsm/image/upload/v1752532705/flag_j2rb8k.png',
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1753038255/flag_v82ucm.png',
             imageAlt: 'Flag',
           },
         ],
@@ -1090,6 +1093,45 @@ const stormyContent = {
 
     appointments: {
       heading: 'Appointments Overview',
+    },
+
+    billingsAndPlans: {
+      summary: {
+        heading: 'Summary Metrics',
+        cards: [
+          {
+            title: 'Current Plan',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/briefcase_enhofg.png',
+            imageAlt: 'Briefcase',
+          },
+
+          {
+            title: 'Total Credits Issued',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/bulb_gnshzj.png',
+            imageAlt: 'Lightbulb',
+          },
+
+          {
+            title: 'Total Credits Remaining',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/timer_gohbqz.png',
+            imageAlt: 'Timer',
+          },
+
+          {
+            title: 'Total Credits Used',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1753025842/Check_rx80vo.png',
+            imageAlt: 'Check',
+          },
+        ],
+      },
+
+      overview: {
+        heading: 'Billings & Plans Overview',
+      },
     },
   },
 };

@@ -4,6 +4,7 @@ import axiosInstance from '@/lib/axios';
 import { AppointmentsResponse } from '@/types/Api/Appointment';
 import { GenericResponse } from '@/types/Api/Auth';
 import { RooferResponse, RoofersResponse } from '@/types/Api/Roofer';
+import { TransactionsResponse } from '@/types/Api/Transaction';
 import qs from 'qs';
 
 const RooferService = {
@@ -72,6 +73,31 @@ const RooferService = {
           keyword: keyword ?? '',
           type: 'rooferAppointments',
           appointmentStatus: appointmentStatus ?? '',
+          page,
+          limit,
+        },
+      }
+    );
+
+    return response.data;
+  },
+
+  customerTransactions: async (
+    id: string,
+    keyword?: string,
+    transactionType?: string,
+    transactionStatus?: string,
+    page?: number,
+    limit?: number
+  ): Promise<TransactionsResponse> => {
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.GET_CUSTOMER_TRANSACTIONS.replace(':id', id),
+      {
+        params: {
+          keyword: keyword ?? '',
+          type: 'rooferTransactions',
+          transactionType: transactionType ?? '',
+          transactionStatus: transactionStatus ?? '',
           page,
           limit,
         },

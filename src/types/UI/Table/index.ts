@@ -57,3 +57,11 @@ export type RooferAppointmentsTableProps = Pick<
   id: string;
   isDisputed?: boolean;
 };
+
+export type RooferBillingsTableProps = Pick<
+  Transaction,
+  'amount' | 'plan' | 'transactionStatus' | 'transactionType' | 'createdAt'
+> & {
+  id: string;
+  creditsPurchased: number | string;
+};
