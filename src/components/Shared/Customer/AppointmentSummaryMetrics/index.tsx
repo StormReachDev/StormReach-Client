@@ -25,7 +25,7 @@ export default function AppointmentSummaryMetrics({
     string,
     CustomerAppointmentMetricKeys
   > = {
-    'Total Credits Issued': 'totalCreditsIssued',
+    'Total Credits Remaining': 'totalCreditsIssued',
     'Appointments Completed': 'totalAppointmentsCompleted',
     'Appointments Scheduled': 'totalAppointmentsScheduled',
     'Appointments Disputed': 'totalAppointmentsDisputed',

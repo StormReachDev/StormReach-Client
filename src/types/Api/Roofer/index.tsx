@@ -25,6 +25,7 @@ export type Roofer = {
     url: string;
   };
   appointmentsPerDay?: string;
+  sameAsBusinessAddress?: boolean;
 };
 
 type ApiResponse<T> = {

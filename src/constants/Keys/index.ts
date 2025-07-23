@@ -30,6 +30,7 @@ export enum QueryKeys {
   FLAG_APPOINTMENT = 'flag-appointment',
   DISPUTE_REASONS = 'dispute-reasons',
   CUSTOMER_TRANSACTIONS = 'customer-transactions',
+  ROOFER_SETTINGS = 'roofer-settings',
 }
 
 export const PlanKeys = {

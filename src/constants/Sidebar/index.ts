@@ -70,6 +70,11 @@ export const rooferSidebarItems: SidebarItem[] = [
   },
 
   {
+    icon: Settings,
+    label: 'Settings',
+  },
+
+  {
     icon: LogOut,
     label: 'Logout',
   },

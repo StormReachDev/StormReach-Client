@@ -82,6 +82,7 @@ function useUpdateRoofer() {
 
       queryClient.invalidateQueries({ queryKey: [QueryKeys.ROOFERS] });
       queryClient.invalidateQueries({ queryKey: [QueryKeys.ROOFER, id] });
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.USER] });
       queryClient.refetchQueries({ queryKey: [QueryKeys.CUSTOMER_METRICS] });
       queryClient.refetchQueries({ queryKey: [QueryKeys.TEAM_MEMBERS] });
       toast.success('Success! Customer updated successfully.');

@@ -772,27 +772,27 @@ const stormyContent = {
       form: {
         name: {
           label: 'Name',
-          id: 'settingsName',
+          id: 'adminSettingsName',
         },
 
         email: {
           label: 'Email',
-          id: 'settingsEmail',
+          id: 'adminSettingsEmail',
         },
 
         phone: {
           label: 'Phone Number',
-          id: 'settingsPhone',
+          id: 'adminSettingsPhone',
         },
 
         timeZone: {
           label: 'Timezone',
-          id: 'settingsTimezone',
+          id: 'adminSettingsTimezone',
         },
 
         disputeFeeAmount: {
           label: 'Dispute Fee Amount',
-          id: 'settingsDisputeFeeAmount',
+          id: 'adminSettingsDisputeFeeAmount',
         },
 
         submitButton: {
@@ -1027,7 +1027,7 @@ const stormyContent = {
         heading: 'Summary Metrics',
         cards: [
           {
-            title: 'Total Credits Issued',
+            title: 'Total Credits Remaining',
             value: '100',
             percentage: '32%',
             action: 'two',
@@ -1131,6 +1131,90 @@ const stormyContent = {
 
       overview: {
         heading: 'Billings & Plans Overview',
+      },
+    },
+
+    settings: {
+      headingOne: 'Account Settings',
+      headingTwo: 'Business Details',
+      subHeading: 'Change Password',
+      form: {
+        name: {
+          label: 'Name',
+          id: 'rooferSettingsName',
+          placeholder: 'e.g. John Doe',
+        },
+
+        email: {
+          label: 'Email',
+          id: 'rooferSettingsEmail',
+          placeholder: 'e.g. john.doe@example.com',
+        },
+
+        phone: {
+          label: 'Phone Number',
+          id: 'rooferSettingsPhone',
+          placeholder: 'e.g. +1 234 567 8900',
+        },
+
+        timeZone: {
+          label: 'Timezone',
+          id: 'rooferSettingsTimezone',
+          defaultValue: 'America/New_York',
+        },
+
+        cardNumber: {
+          label: 'Card Number',
+          id: 'rooferSettingsCardNumber',
+        },
+
+        companyName: {
+          label: 'Company Name',
+          id: 'rooferSettingsCompanyName',
+          placeholder: 'e.g. RoofCo Inc.',
+        },
+
+        businessAddress: {
+          label: 'Business Address',
+          id: 'rooferSettingsBusinessAddress',
+          placeholder: 'e.g. 123 Main St, Anytown, USA',
+        },
+
+        billingAddress: {
+          label: 'Billing Address',
+          id: 'rooferSettingsBillingAddress',
+          placeholder: 'e.g. 123 Main St, Anytown, USA',
+        },
+
+        uploadLogo: {
+          label: 'Upload Logo (png / jpg / jpeg)',
+          id: 'rooferSettingsUploadLogo',
+        },
+
+        zipCode: {
+          label: 'Zip Code',
+          id: 'rooferSettingsZipCode',
+          placeholder: 'e.g. 44001',
+        },
+
+        autoReload: {
+          label: 'Auto-Reload Credits',
+          id: 'rooferSettingsAutoReload',
+        },
+
+        maxAppointmentsPerDay: {
+          label: 'Maximum Appointments Per Day',
+          id: 'rooferSettingsMaxAppointmentsPerDay',
+        },
+
+        billingAddressToggle: {
+          label: 'Same as Business Address',
+          id: 'rooferSettingsBillingAddressToggle',
+        },
+
+        submitButton: {
+          text: 'Save',
+        },
       },
     },
   },

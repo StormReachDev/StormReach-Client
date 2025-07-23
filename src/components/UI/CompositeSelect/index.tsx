@@ -71,7 +71,7 @@ export default function CompositeSelectField({
           <Listbox.Button
             className={cn(
               `w-full text-left pl-12 pr-12 py-3 ${bgColor} border ${borderColor} rounded-xl ${textColor} text-lg font-medium appearance-none truncate
-              focus:outline-none focus:${borderColor}`,
+              focus:outline-none focus:${borderColor} ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`,
               listBoxClassName
             )}
             id={id}
