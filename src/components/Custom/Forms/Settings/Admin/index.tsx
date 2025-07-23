@@ -11,7 +11,7 @@ import { DollarSign, Globe, Mail, Phone, User } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
-export default function SettingsForm() {
+export default function AdminSettingsForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');

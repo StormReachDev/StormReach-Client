@@ -69,17 +69,13 @@ export const columns = [
       const transactionStatus = info.getValue() as
         | 'succeeded'
         | 'failed'
-        | 'pending'
         | 'disputed';
-      const statusClasses: Record<
-        'succeeded' | 'failed' | 'pending' | 'disputed',
-        string
-      > = {
-        succeeded: 'bg-action-two',
-        failed: 'bg-action-four',
-        pending: 'bg-action-five',
-        disputed: 'bg-action-two',
-      };
+      const statusClasses: Record<'succeeded' | 'failed' | 'disputed', string> =
+        {
+          succeeded: 'bg-action-two',
+          failed: 'bg-action-four',
+          disputed: 'bg-action-two',
+        };
 
       return (
         <Chip

@@ -23,6 +23,7 @@ export type Appointment = {
     name: string;
   };
   disputeSubmissionDate?: string;
+  disputeReason?: string;
 };
 
 export type AppointmentsResponse = {
@@ -49,4 +50,9 @@ export type AppointmentResponse = {
   appointment: Appointment & {
     customer: string;
   };
+};
+
+export type DisputeReasonsResponse = {
+  success: boolean;
+  disputeReasons: string[];
 };

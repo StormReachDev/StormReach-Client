@@ -75,11 +75,41 @@ function useUpdateAppointment() {
     onSuccess: (_, variables) => {
       const { id } = variables;
       queryClient.refetchQueries({ queryKey: [QueryKeys.APPOINTMENTS] });
+      queryClient.refetchQueries({
+        queryKey: [QueryKeys.CUSTOMER_APPOINTMENTS],
+      });
       queryClient.invalidateQueries({ queryKey: [QueryKeys.APPOINTMENT, id] });
       queryClient.invalidateQueries({
         queryKey: [QueryKeys.APPOINTMENT_METRICS],
       });
+      queryClient.refetchQueries({
+        queryKey: [QueryKeys.CUSTOMER_APPOINTMENT_METRICS],
+      });
       toast.success('Success! Appointment updated successfully.');
+    },
+
+    onError: (error: APIError) => {
+      toast.error(error?.response?.data?.message);
+    },
+  });
+}
+
+function useFlagAppointment() {
+  return useMutation<void, Error, { id: string; disputeReason: string }>({
+    mutationFn: ({ id, disputeReason }) =>
+      AppointmentService.flagAppointment(id, disputeReason),
+    onSuccess: (_, variables) => {
+      const { id } = variables;
+      queryClient.invalidateQueries({
+        queryKey: [QueryKeys.FLAG_APPOINTMENT, id],
+      });
+      queryClient.refetchQueries({
+        queryKey: [QueryKeys.CUSTOMER_APPOINTMENTS],
+      });
+      queryClient.refetchQueries({
+        queryKey: [QueryKeys.CUSTOMER_APPOINTMENT_METRICS],
+      });
+      toast.success('Success! Appointment marked as flagged.');
     },
 
     onError: (error: APIError) => {
@@ -93,5 +123,6 @@ export {
   useAppointment,
   useCreateAppointment,
   useDeleteAppointment,
+  useFlagAppointment,
   useUpdateAppointment,
 };

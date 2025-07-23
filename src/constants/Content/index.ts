@@ -613,6 +613,43 @@ const stormyContent = {
         },
       },
     },
+
+    disputeAppointment: {
+      heading: 'Dispute Appointment?',
+      body: 'Tell us why this appointment didn’t meet your expectations so we can review and resolve it quickly.',
+      form: {
+        reason: {
+          id: 'disputeReason',
+          label: 'Reason',
+          fallbackLabel: 'Select reason e.g. Invalid address',
+        },
+
+        buttons: {
+          cancel: {
+            text: 'Cancel',
+          },
+
+          disputeAppointment: {
+            text: 'Dispute Appointment',
+          },
+        },
+      },
+    },
+
+    completeAppointment: {
+      key: 'completeAppointment',
+      heading: 'Complete Appointment?',
+      body: 'Once you complete the appointment, it will be marked as done and cannot be undone.',
+      buttons: {
+        cancel: {
+          text: 'Cancel',
+        },
+
+        completeAppointment: {
+          text: 'Complete Appointment',
+        },
+      },
+    },
   },
 
   admin: {
@@ -735,27 +772,27 @@ const stormyContent = {
       form: {
         name: {
           label: 'Name',
-          id: 'settingsName',
+          id: 'adminSettingsName',
         },
 
         email: {
           label: 'Email',
-          id: 'settingsEmail',
+          id: 'adminSettingsEmail',
         },
 
         phone: {
           label: 'Phone Number',
-          id: 'settingsPhone',
+          id: 'adminSettingsPhone',
         },
 
         timeZone: {
           label: 'Timezone',
-          id: 'settingsTimezone',
+          id: 'adminSettingsTimezone',
         },
 
         disputeFeeAmount: {
           label: 'Dispute Fee Amount',
-          id: 'settingsDisputeFeeAmount',
+          id: 'adminSettingsDisputeFeeAmount',
         },
 
         submitButton: {
@@ -892,9 +929,6 @@ const stormyContent = {
         cards: [
           {
             title: 'Total Disputes',
-            value: '100',
-            percentage: '32%',
-            action: 'two',
             imageSrc:
               'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/briefcase_enhofg.png',
             imageAlt: 'Briefcase',
@@ -902,9 +936,6 @@ const stormyContent = {
 
           {
             title: 'Approved Disputes',
-            value: '40',
-            percentage: '20%',
-            action: 'two',
             imageSrc:
               'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/bulb_gnshzj.png',
             imageAlt: 'Lightbulb',
@@ -912,9 +943,6 @@ const stormyContent = {
 
           {
             title: 'Pending Disputes',
-            value: '5',
-            percentage: '10%',
-            action: 'two',
             imageSrc:
               'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/timer_gohbqz.png',
             imageAlt: 'Timer',
@@ -922,9 +950,6 @@ const stormyContent = {
 
           {
             title: 'Denied Disputes',
-            value: '15',
-            percentage: '10%',
-            action: 'one',
             imageSrc:
               'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/target_ukk84k.png',
             imageAlt: 'Target',
@@ -996,12 +1021,13 @@ const stormyContent = {
         },
       },
     },
+
     dashboard: {
       summary: {
         heading: 'Summary Metrics',
         cards: [
           {
-            title: 'Total Credits Issued',
+            title: 'Total Credits Remaining',
             value: '100',
             percentage: '32%',
             action: 'two',
@@ -1036,7 +1062,7 @@ const stormyContent = {
             percentage: '10%',
             action: 'one',
             imageSrc:
-              'https://res.cloudinary.com/doozfybsm/image/upload/v1752532705/flag_j2rb8k.png',
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1753038255/flag_v82ucm.png',
             imageAlt: 'Flag',
           },
         ],
@@ -1061,6 +1087,133 @@ const stormyContent = {
             'Appointments Completed',
           ],
           colors: ['#FF3B30', '#007AFF', '#34C759'],
+        },
+      },
+    },
+
+    appointments: {
+      heading: 'Appointments Overview',
+    },
+
+    billingsAndPlans: {
+      summary: {
+        heading: 'Summary Metrics',
+        cards: [
+          {
+            title: 'Current Plan',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/briefcase_enhofg.png',
+            imageAlt: 'Briefcase',
+          },
+
+          {
+            title: 'Total Credits Issued',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/bulb_gnshzj.png',
+            imageAlt: 'Lightbulb',
+          },
+
+          {
+            title: 'Total Credits Remaining',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1749062858/timer_gohbqz.png',
+            imageAlt: 'Timer',
+          },
+
+          {
+            title: 'Total Credits Used',
+            imageSrc:
+              'https://res.cloudinary.com/doozfybsm/image/upload/v1753025842/Check_rx80vo.png',
+            imageAlt: 'Check',
+          },
+        ],
+      },
+
+      overview: {
+        heading: 'Billings & Plans Overview',
+      },
+    },
+
+    settings: {
+      headingOne: 'Account Settings',
+      headingTwo: 'Business Details',
+      subHeading: 'Change Password',
+      form: {
+        name: {
+          label: 'Name',
+          id: 'rooferSettingsName',
+          placeholder: 'e.g. John Doe',
+        },
+
+        email: {
+          label: 'Email',
+          id: 'rooferSettingsEmail',
+          placeholder: 'e.g. john.doe@example.com',
+        },
+
+        phone: {
+          label: 'Phone Number',
+          id: 'rooferSettingsPhone',
+          placeholder: 'e.g. +1 234 567 8900',
+        },
+
+        timeZone: {
+          label: 'Timezone',
+          id: 'rooferSettingsTimezone',
+          defaultValue: 'America/New_York',
+        },
+
+        cardNumber: {
+          label: 'Card Number',
+          id: 'rooferSettingsCardNumber',
+        },
+
+        companyName: {
+          label: 'Company Name',
+          id: 'rooferSettingsCompanyName',
+          placeholder: 'e.g. RoofCo Inc.',
+        },
+
+        businessAddress: {
+          label: 'Business Address',
+          id: 'rooferSettingsBusinessAddress',
+          placeholder: 'e.g. 123 Main St, Anytown, USA',
+        },
+
+        billingAddress: {
+          label: 'Billing Address',
+          id: 'rooferSettingsBillingAddress',
+          placeholder: 'e.g. 123 Main St, Anytown, USA',
+        },
+
+        uploadLogo: {
+          label: 'Upload Logo (png / jpg / jpeg)',
+          id: 'rooferSettingsUploadLogo',
+        },
+
+        zipCode: {
+          label: 'Zip Code',
+          id: 'rooferSettingsZipCode',
+          placeholder: 'e.g. 44001',
+        },
+
+        autoReload: {
+          label: 'Auto-Reload Credits',
+          id: 'rooferSettingsAutoReload',
+        },
+
+        maxAppointmentsPerDay: {
+          label: 'Maximum Appointments Per Day',
+          id: 'rooferSettingsMaxAppointmentsPerDay',
+        },
+
+        billingAddressToggle: {
+          label: 'Same as Business Address',
+          id: 'rooferSettingsBillingAddressToggle',
+        },
+
+        submitButton: {
+          text: 'Save',
         },
       },
     },

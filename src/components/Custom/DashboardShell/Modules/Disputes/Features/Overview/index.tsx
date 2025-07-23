@@ -36,6 +36,7 @@ export default function Overview() {
       disputeSubmissionDate: new Date(
         String(appointment.disputeSubmissionDate)
       ).toLocaleDateString(),
+      disputeReason: appointment.disputeReason ?? 'N/A',
     })) ?? [];
   const totalPages = Math.ceil(Number(data?.totalCount) / limit);
 

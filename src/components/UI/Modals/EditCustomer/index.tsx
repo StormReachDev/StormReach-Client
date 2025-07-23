@@ -15,6 +15,7 @@ import {
   Typography,
 } from '@material-tailwind/react';
 import {
+  Building,
   DollarSign,
   Globe,
   Landmark,
@@ -271,7 +272,7 @@ export default function EditCustomerModal() {
               type="text"
               value={form.billingAddress}
               onChange={(e) => handleChange('billingAddress', e.target.value)}
-              icon={<MapPin className="h-6 w-6 text-neutral-700" />}
+              icon={<Building className="h-6 w-6 text-neutral-700" />}
               required
             />
 

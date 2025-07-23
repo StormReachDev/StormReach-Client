@@ -32,6 +32,8 @@ type ModalType =
   | 'DenyDispute'
   | 'PauseAccount'
   | 'FlagAccount'
+  | 'DisputeAppointment'
+  | 'CheckAppointment'
   | null;
 
 export type ModalStore = {

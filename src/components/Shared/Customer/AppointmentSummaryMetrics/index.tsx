@@ -8,7 +8,11 @@ import { useCustomerAppointmentMetrics } from '@/hooks/meta';
 import { CustomerAppointmentMetricKeys } from '@/types/Api/Meta';
 import { Typography } from '@material-tailwind/react';
 
-export default function Summary() {
+export default function AppointmentSummaryMetrics({
+  heading,
+}: {
+  heading: string;
+}) {
   const { data: userData } = useMe();
   const { data, isLoading } = useCustomerAppointmentMetrics(
     userData?.customer?._id ?? ''
@@ -21,7 +25,7 @@ export default function Summary() {
     string,
     CustomerAppointmentMetricKeys
   > = {
-    'Total Credits Issued': 'totalCreditsIssued',
+    'Total Credits Remaining': 'totalCreditsIssued',
     'Appointments Completed': 'totalAppointmentsCompleted',
     'Appointments Scheduled': 'totalAppointmentsScheduled',
     'Appointments Disputed': 'totalAppointmentsDisputed',
@@ -45,7 +49,7 @@ export default function Summary() {
         variant="lead"
         className="text-neutral-800 font-semibold text-[28px]"
       >
-        {stormyContent.cutomer.dashboard.summary.heading}
+        {heading}
       </Typography>
 
       <div className="flex flex-wrap items-center gap-5 overflow-hidden">

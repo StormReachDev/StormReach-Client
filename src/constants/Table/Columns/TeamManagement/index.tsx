@@ -139,7 +139,7 @@ function CustomerActionsCell({ row }: { row: Row<TeamMembersTableProps> }) {
   }
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-start gap-3">
       <Button
         size="sm"
         className="bg-transparent p-0"

@@ -47,6 +47,7 @@ export const API_ABSOLUTE_ROUTES = {
   CLOUDINARY_IMAGE: `${config.PROD_API_URL}/meta/asset`,
   APPOINTMENTS_PER_DAY: `${config.PROD_API_URL}/meta/appointments-per-day`,
   CUSTOMER_APPOINTMENT_METRICS: `${config.PROD_API_URL}/meta/customer-appointment-metrics`,
+  GET_DISPUTE_REASONS: `${config.PROD_API_URL}/meta/dispute-reasons`,
 
   // ******** Sales Agent ********
   GET_SALES_AGENTS: `${config.PROD_API_URL}/sales-agents`,
@@ -55,6 +56,8 @@ export const API_ABSOLUTE_ROUTES = {
   PURCHASE_PLAN: `${config.PROD_API_URL}/customer/purchase-plan`,
   GET_ALL_ROOFERS: `${config.PROD_API_URL}/customer/all`,
   SINGLE_ROOFER: `${config.PROD_API_URL}/customer`,
+  GET_CUSTOMER_APPOINTMENTS: `${config.PROD_API_URL}/customer/:id/appointments`,
+  GET_CUSTOMER_TRANSACTIONS: `${config.PROD_API_URL}/customer/:id/transactions`,
 
   // ******** Transaction ********
   GET_ALL_TRANSACTIONS: `${config.PROD_API_URL}/transaction/all`,
