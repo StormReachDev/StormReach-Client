@@ -14,6 +14,7 @@ import {
 } from '@material-tailwind/react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import {
+  Building,
   DollarSign,
   Globe,
   Landmark,
@@ -264,7 +265,7 @@ export default function AddCustomerModal() {
               type="text"
               value={form.billingAddress}
               onChange={(e) => handleChange('billingAddress', e.target.value)}
-              icon={<MapPin className="h-6 w-6 text-neutral-700" />}
+              icon={<Building className="h-6 w-6 text-neutral-700" />}
               required
             />
 
@@ -319,6 +320,7 @@ export default function AddCustomerModal() {
               >
                 {stormyContent.modal.addCustomer.form.card.label}
               </label>
+
               <CardElement
                 id={stormyContent.modal.addCustomer.form.card.id}
                 onChange={(e) => setCardComplete(e.complete)}

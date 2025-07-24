@@ -40,7 +40,7 @@ export default function Actions() {
           <SearchBar
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
-            placeholder="Search by customer name"
+            placeholder="Search by customer's name"
           />
         </div>
         <div className="flex gap-3 items-center flex-wrap">

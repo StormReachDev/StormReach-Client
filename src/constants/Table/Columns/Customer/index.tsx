@@ -8,7 +8,7 @@ import { useTableStore } from '@/stores/useTableStore';
 import { CustomersTableProps } from '@/types/UI/Table';
 import { Button, Chip, Typography } from '@material-tailwind/react';
 import { CellContext, createColumnHelper, Row } from '@tanstack/react-table';
-import { Edit3, Trash2 } from 'lucide-react';
+import { Edit3, MapPin, Trash2 } from 'lucide-react';
 
 // ******** Customer Table ********
 const columnHelper = createColumnHelper<CustomersTableProps>();
@@ -187,14 +187,14 @@ function CustomerActionsCell({ row }: { row: Row<CustomersTableProps> }) {
 
   return (
     <div className="flex items-center justify-between">
-      {/* <Button
+      <Button
         size="sm"
         className="bg-transparent p-0"
         ripple={false}
         type="button"
       >
         <MapPin className="size-5 hover:text-primary transition-colors" />
-      </Button> */}
+      </Button>
 
       <Button
         size="sm"

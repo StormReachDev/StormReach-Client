@@ -1,15 +1,14 @@
 // Imports:
-import SettingsForm from '@/components/Custom/Forms/Settings';
 import ChangePasswordModal from '@/components/UI/Modals/ChangePassword';
 import Wrapper from '@/components/UI/Wrapper';
 import HeaderLayout from '@/layouts/HeaderLayout';
 
-export default function SettingsModule() {
+export default function SettingsModule({ form }: { form: React.ReactNode }) {
   return (
     <>
       <HeaderLayout>
         <Wrapper className="max-w-full w-full space-y-7">
-          <SettingsForm />
+          {form}
           <ChangePasswordModal />
         </Wrapper>
       </HeaderLayout>

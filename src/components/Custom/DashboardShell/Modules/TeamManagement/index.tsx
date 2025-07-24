@@ -1,5 +1,5 @@
 // Imports:
-import Teams from '@/components/Shared/Teams';
+import Teams from '@/components/Shared/Admin/Teams';
 import ActionModal from '@/components/UI/Modals/Action';
 import AddTeamModal from '@/components/UI/Modals/AddTeam';
 import EditTeamModal from '@/components/UI/Modals/EditTeam';

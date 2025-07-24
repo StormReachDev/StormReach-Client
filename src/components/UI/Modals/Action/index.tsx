@@ -1,5 +1,4 @@
 // Imports:
-import stormyContent from '@/constants/Content';
 import { cn } from '@/lib/utils';
 import { useModalStore } from '@/stores/useModalStore';
 import { useTableStore } from '@/stores/useTableStore';
@@ -101,7 +100,7 @@ export default function ActionModal({
             onClick={closeHandler}
             type="button"
           >
-            {stormyContent.modal.logout.buttons.cancel.text}
+            Cancel
           </Button>
         </DialogBody>
       </Dialog>

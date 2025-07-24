@@ -120,13 +120,8 @@ const MetaService = {
   },
 
   getCloudinaryImage: async (publicId: string): Promise<string> => {
-    const response = await axiosInstance.put(
-      API_ABSOLUTE_ROUTES.CLOUDINARY_IMAGE,
-      {
-        data: {
-          public_id: publicId,
-        },
-      }
+    const response = await axiosInstance.get(
+      API_ABSOLUTE_ROUTES.CLOUDINARY_IMAGE + `?public_id=${publicId}`
     );
 
     return response.data?.asset?.secure_url;

@@ -1,5 +1,5 @@
 // Imports:
-import Customers from '@/components/Shared/Customers';
+import Customers from '@/components/Shared/Admin/Customers';
 import ActionModal from '@/components/UI/Modals/Action';
 import AddCustomerModal from '@/components/UI/Modals/AddCustomer';
 import EditCustomerModal from '@/components/UI/Modals/EditCustomer';

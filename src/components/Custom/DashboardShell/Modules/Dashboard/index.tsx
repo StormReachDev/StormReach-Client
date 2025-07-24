@@ -1,8 +1,8 @@
 // Imports:
-import Teams from '@/components/Shared/Teams';
+import Teams from '@/components/Shared/Admin/Teams';
 import stormyContent from '@/constants/Content';
 import HeaderLayout from '@/layouts/HeaderLayout';
-import Customers from '../../../../Shared/Customers';
+import Customers from '../../../../Shared/Admin/Customers';
 import DisputesAndAppointments from './Features/DisputesAndAppointments';
 
 export default function DashboardModule() {

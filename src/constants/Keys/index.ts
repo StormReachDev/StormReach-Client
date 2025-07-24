@@ -25,7 +25,12 @@ export enum QueryKeys {
   DISPUTE = 'dispute',
   CLOUDINARY_IMAGE = 'cloudinary-image',
   APPOINTMENTS_PER_DAY = 'appointments-per-day',
+  CUSTOMER_APPOINTMENTS = 'customer-appointments',
   CUSTOMER_APPOINTMENT_METRICS = 'customer-appointment-metrics',
+  FLAG_APPOINTMENT = 'flag-appointment',
+  DISPUTE_REASONS = 'dispute-reasons',
+  CUSTOMER_TRANSACTIONS = 'customer-transactions',
+  ROOFER_SETTINGS = 'roofer-settings',
 }
 
 export const PlanKeys = {

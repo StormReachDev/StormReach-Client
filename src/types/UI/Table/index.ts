@@ -8,6 +8,7 @@ export type TableComponentProps<TData> = {
   columns: ColumnDef<TData, any>[];
 };
 
+// Admin Table Types:
 export type CustomersTableProps = {
   id: string;
   name: string;
@@ -44,4 +45,23 @@ export type DisputesTableProps = Pick<
 > & {
   appointmentDetails: string;
   id: string;
+  disputeReason?: string;
+};
+
+// Roofer Table Types:
+export type RooferAppointmentsTableProps = Pick<
+  Appointment,
+  'homeOwnerName' | 'homeOwnerAddress' | 'appointmentStatus'
+> & {
+  appointmentDetails: string;
+  id: string;
+  isDisputed?: boolean;
+};
+
+export type RooferBillingsTableProps = Pick<
+  Transaction,
+  'amount' | 'plan' | 'transactionStatus' | 'transactionType' | 'createdAt'
+> & {
+  id: string;
+  creditsPurchased: number | string;
 };

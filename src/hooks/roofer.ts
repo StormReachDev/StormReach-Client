@@ -2,8 +2,10 @@
 import { QueryKeys } from '@/constants/Keys';
 import queryClient from '@/lib/queryClient';
 import RooferService from '@/services/Roofer';
+import { AppointmentsResponse } from '@/types/Api/Appointment';
 import { APIError, GenericResponse } from '@/types/Api/Auth';
 import { RooferResponse, RoofersResponse } from '@/types/Api/Roofer';
+import { TransactionsResponse } from '@/types/Api/Transaction';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 
@@ -80,6 +82,7 @@ function useUpdateRoofer() {
 
       queryClient.invalidateQueries({ queryKey: [QueryKeys.ROOFERS] });
       queryClient.invalidateQueries({ queryKey: [QueryKeys.ROOFER, id] });
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.USER] });
       queryClient.refetchQueries({ queryKey: [QueryKeys.CUSTOMER_METRICS] });
       queryClient.refetchQueries({ queryKey: [QueryKeys.TEAM_MEMBERS] });
       toast.success('Success! Customer updated successfully.');
@@ -91,4 +94,74 @@ function useUpdateRoofer() {
   });
 }
 
-export { useAllRoofers, useDeleteRoofer, useRoofer, useUpdateRoofer };
+function useCustomerAppointments(
+  id: string,
+  keyword?: string,
+  appointmentStatus?: string,
+  page?: number,
+  limit?: number
+) {
+  return useQuery<AppointmentsResponse, Error>({
+    queryKey: [
+      QueryKeys.CUSTOMER_APPOINTMENTS,
+      id,
+      page,
+      limit,
+      keyword,
+      appointmentStatus,
+    ],
+    queryFn: () =>
+      RooferService.customerAppointments(
+        id,
+        keyword,
+        appointmentStatus,
+        page,
+        limit
+      ),
+    enabled: !!id,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+function useCustomerTransactions(
+  id: string,
+  keyword?: string,
+  transactionType?: string,
+  transactionStatus?: string,
+  page?: number,
+  limit?: number
+) {
+  return useQuery<TransactionsResponse, Error>({
+    queryKey: [
+      QueryKeys.CUSTOMER_TRANSACTIONS,
+      id,
+      keyword,
+      transactionType,
+      transactionStatus,
+      page,
+      limit,
+    ],
+    queryFn: () =>
+      RooferService.customerTransactions(
+        id,
+        keyword,
+        transactionType,
+        transactionStatus,
+        page,
+        limit
+      ),
+    enabled: !!id,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+export {
+  useAllRoofers,
+  useCustomerAppointments,
+  useCustomerTransactions,
+  useDeleteRoofer,
+  useRoofer,
+  useUpdateRoofer,
+};

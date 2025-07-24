@@ -128,17 +128,13 @@ function useDeleteCloudinaryImage() {
   });
 }
 
-function useGetCloudinaryImage() {
-  return useMutation<string, Error, string>({
-    mutationFn: (publicId: string) => MetaService.getCloudinaryImage(publicId),
-    onSuccess: (_, publicId) => {
-      queryClient.invalidateQueries({
-        queryKey: [QueryKeys.CLOUDINARY_IMAGE, publicId],
-      });
-    },
-    onError: (error: APIError) => {
-      toast.error(error?.response?.data?.message);
-    },
+function useGetCloudinaryImage(publicId: string) {
+  return useQuery({
+    queryKey: [QueryKeys.CLOUDINARY_IMAGE, publicId],
+    queryFn: () => MetaService.getCloudinaryImage(publicId),
+    enabled: !!publicId,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
   });
 }
 

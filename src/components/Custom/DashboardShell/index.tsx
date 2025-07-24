@@ -5,10 +5,13 @@ import LogoutModal from '@/components/UI/Modals/Logout';
 import SplitScreen from '@/components/UI/SplitScreen';
 import Wrapper from '@/components/UI/Wrapper';
 import { UserRoleKeys } from '@/constants/Keys';
+import PaymentProvider from '@/contexts/PaymentProvider';
 import { useMe } from '@/hooks/auth';
 import { useSidebarStore } from '@/stores/useSidebarStore';
 import dynamic from 'next/dynamic';
 import AuthGate from '../AuthGate';
+import AdminSettingsForm from '../Forms/Settings/Admin';
+import RooferSettingsForm from '../Forms/Settings/Roofer';
 
 // General Subcomponents:
 const Sidebar = dynamic(() => import('@/components/Custom/Sidebar'));
@@ -29,11 +32,18 @@ const AdminAppointmentsLogModule = dynamic(
 const AdminTeamManagementModule = dynamic(
   () => import('./Modules/TeamManagement')
 );
-const SettingsModule = dynamic(() => import('./Modules/Settings'));
+const SettingsModule = dynamic(() => import('../../Shared/Settings'));
 
 // Roofer Modules:
 const RooferDashboardModule = dynamic(
   () => import('./RooferModules/Dashboard')
+);
+const RooferAppointmentsModule = dynamic(
+  () => import('./RooferModules/Appointments')
+);
+
+const RooferBillingsAndPlansModule = dynamic(
+  () => import('./RooferModules/BillingsAndPlans')
 );
 
 const adminComponentMap: Record<string, React.ReactNode> = {
@@ -43,12 +53,23 @@ const adminComponentMap: Record<string, React.ReactNode> = {
   Disputes: <AdminDisputesModule />,
   'Appointments Log': <AdminAppointmentsLogModule />,
   'Team Management': <AdminTeamManagementModule />,
-  Settings: <SettingsModule />,
+  Settings: <SettingsModule form={<AdminSettingsForm />} />,
   Notifications: <AdminNotificationsModule />,
 };
 
 const rooferComponentMap: Record<string, React.ReactNode> = {
   Dashboard: <RooferDashboardModule />,
+  Appointments: <RooferAppointmentsModule />,
+  'Billings & Plans': <RooferBillingsAndPlansModule />,
+  Settings: (
+    <SettingsModule
+      form={
+        <PaymentProvider>
+          <RooferSettingsForm />
+        </PaymentProvider>
+      }
+    />
+  ),
 };
 
 export default function DashboardShell() {

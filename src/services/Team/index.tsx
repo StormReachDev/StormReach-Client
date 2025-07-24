@@ -30,6 +30,7 @@ const TeamService = {
       {
         params: {
           keyword: keyword ?? '',
+          type: 'adminTeamMembers',
           accountStatus: accountStatus ?? '',
           page,
           limit,

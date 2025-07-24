@@ -41,4 +41,13 @@ function useDisputeAction() {
   });
 }
 
-export { useAllDisputes, useDisputeAction };
+function useDisputeReasons() {
+  return useQuery({
+    queryKey: [QueryKeys.DISPUTE_REASONS],
+    queryFn: () => DisputeService.disputeReasons(),
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
+export { useAllDisputes, useDisputeAction, useDisputeReasons };
